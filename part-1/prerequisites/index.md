@@ -9,9 +9,9 @@ has_toc: false
 
 # 1. Prerequisites (accounts, connecting, command-line basics)
 
-## [1.1 Slides: Accounts and projects](https://a3s.fi/CSC_training/00_account_and_project.html)
+## [1.1 Slides: Accounts and projects](https://a3s.fi/CSC_training/roihu/00_account_and_project.html)
 
-## [1.2 Slides: Connecting to Roihu](https://a3s.fi/CSC_training/01_logging_in.html)
+## [1.2 Slides: Connecting to Roihu](https://a3s.fi/CSC_training/roihu/01_logging_in.html)
 
 ## 1.3 Tutorials and exercises
 

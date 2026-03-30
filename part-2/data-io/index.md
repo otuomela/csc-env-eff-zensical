@@ -9,7 +9,7 @@ has_toc: false
 
 # 8. Working efficiently with data
 
-## [8.1 Slides](https://a3s.fi/CSC_training/08_datamigration_io.html)
+## [8.1 Slides](https://a3s.fi/CSC_training/roihu/08_datamigration_io.html)
 
 ## 8.2 Tutorials and exercises
 
