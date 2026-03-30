@@ -9,7 +9,7 @@ has_toc: false
 
 # 6. Batch job resource usage
 
-## [6.1 Slides](https://a3s.fi/CSC_training/06_understanding_usage.html)
+## [6.1 Slides](https://a3s.fi/CSC_training/roihu/06_understanding_usage.html)
 
 ## 6.2 Tutorials and exercises
 

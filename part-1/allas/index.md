@@ -9,7 +9,7 @@ has_toc: false
 
 # 7. Allas and where to keep your data
 
-## [7.1 Slides](https://a3s.fi/CSC_training/07_allas.html)
+## [7.1 Slides](https://a3s.fi/CSC_training/roihu/07_allas.html)
 
 ## 7.2 Tutorials and exercises
 

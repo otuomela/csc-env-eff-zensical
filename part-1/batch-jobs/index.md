@@ -9,7 +9,7 @@ has_toc: false
 
 # 5. Batch queue system and interactive use
 
-## [5.1 Slides](https://a3s.fi/CSC_training/05_batch_jobs.html)
+## [5.1 Slides](https://a3s.fi/CSC_training/roihu/05_batch_jobs.html)
 
 ## 5.2 Tutorials and exercises
 

@@ -9,7 +9,7 @@ has_toc: false
 
 # 9. Installing your own software
 
-## [9.1 Slides](https://a3s.fi/CSC_training/09_installing.html)
+## [9.1 Slides](https://a3s.fi/CSC_training/roihu/09_installing.html)
 
 ## 9.2 Tutorials and exercises
 

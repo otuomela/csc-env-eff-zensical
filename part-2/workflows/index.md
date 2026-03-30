@@ -9,7 +9,7 @@ has_toc: false
 
 # 11. How to speed up jobs
 
-## [11.1 Slides](https://a3s.fi/CSC_training/11_speed_up_jobs.html)
+## [11.1 Slides](https://a3s.fi/CSC_training/roihu/11_speed_up_jobs.html)
 
 ## 11.2 Tutorials and exercises
 

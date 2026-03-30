@@ -9,7 +9,7 @@ has_toc: false
 
 # 3. Disk areas
 
-## [3.1 Slides](https://a3s.fi/CSC_training/03_disk_areas.html)
+## [3.1 Slides](https://a3s.fi/CSC_training/roihu/03_disk_areas.html)
 
 ## 3.2 Tutorials and exercises
 
