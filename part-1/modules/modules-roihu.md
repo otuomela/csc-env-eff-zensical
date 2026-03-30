@@ -1,40 +1,42 @@
 ---
 layout: default
-title: Modules in Puhti
+title: Modules in Roihu
 parent: 4. Module system
 grand_parent: Part 1
 nav_order: 1
-permalink: /hands-on/modules/modules-puhti.html
+permalink: /hands-on/modules/modules-roihu.html
 ---
 
-# Modules in Puhti
+# Modules in Roihu
 
-> ☝🏻 This tutorial requires that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project that [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+> ☝🏻 This tutorial requires that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project that [has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+>
+> ☝🏻 You must also have [set up SSH keys and downloaded an SSH certificate that is still valid](../prerequisites/ssh-keys.md).
 
 ## Checking the default modules
 
-1. Log in to Puhti with your user credentials (SSH or [Puhti web interface](https://www.puhti.csc.fi)):
+1. Log in to Roihu-CPU with your user credentials (SSH or [Roihu web interface](https://www.roihu.csc.fi)):
 
    ```bash
-   ssh <username>@puhti.csc.fi    # replace <username> with your CSC username, e.g. myname@puhti.csc.fi
+   ssh <username>@roihu-cpu.csc.fi    # replace <username> with your CSC username, e.g. myname@roihu-cpu.csc.fi
    ```
 
-2. Try a `module` command! Check out which modules are loaded as default as you login to Puhti:
+2. Try a `module` command! Check out which modules are loaded as default as you login to Roihu:
 
    ```bash
    module list
    ```
 
-## More module commands with Gromacs as an example
+## More module commands with GROMACS as an example
 
-💬 Let's imagine that you want to do some molecular dynamics simulations using the [Gromacs](https://www.gromacs.org/about.html) application.
+💬 Let's imagine that you want to do some molecular dynamics simulations using the [GROMACS](https://www.gromacs.org/about.html) application.
 
-- It is always a good idea to start by checking [the application list in Docs CSC](https://docs.csc.fi/apps/) to see whether this application is installed in Puhti and how to use it.
+- It is always a good idea to start by checking [the application list in Docs CSC](https://docs.csc.fi/apps/) to see whether this application is installed in Roihu and how to use it.
 
-1. Check out the [Gromacs page](https://docs.csc.fi/apps/gromacs/).
+1. Check out the [GROMACS page](https://docs.csc.fi/apps/gromacs/).
 2. Skim through the documentation and verify that the license allows you to use the software.
-3. Check what is the module command that you need to run to be able to load Gromacs in Puhti.
-4. Back on the command-line, check which Gromacs versions are available in Puhti.
+3. Check what is the module command that you need to run to be able to load Gromacs in Roihu.
+4. Back on the command-line, check which GROMACS versions are available in Roihu.
 
    ```bash
    module spider gromacs
