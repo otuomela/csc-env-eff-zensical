@@ -88,7 +88,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - This causes the modules to be always loaded, also in batch jobs, which may cause hard-to-spot issues
    - Remember also that Roihu-CPU and Roihu-GPU do not have the same modules available
 - If it feels cumbersome to run multiple `module load modulenames` at the start of each session, you can define an *alias* for these in your `.bashrc`
-   - Add this line to your `.bashrc`: `alias gpumods="module load modulenames"`.
+   - For example: `alias gpumods="module load modulenames"`
    - Now you can load the modules you need on Roihu-GPU easily with `gpumods` (after logging out and in again, or `source ~/.bashrc`)
 
 # [Advanced module use](https://docs.csc.fi/computing/modules/#advanced-topics)
