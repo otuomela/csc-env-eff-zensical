@@ -9,7 +9,7 @@ has_toc: false
 
 # 4. Module system
 
-## [4.1 Slides](https://a3s.fi/CSC_training/roihu/04_modules.html)
+## [4.1 Slides](https://a3s.fi/CSC_training/04_modules.html)
 
 ## 4.2 Tutorials and exercises
 
