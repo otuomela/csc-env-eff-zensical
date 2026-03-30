@@ -20,37 +20,47 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 # Login via the web interfaces
 
-- A simple way to login to the Puhti supercomputer is via [puhti.csc.fi](https://www.puhti.csc.fi)
-- Login requires [multi-factor authentication](https://docs.csc.fi/accounts/mfa/) (MFA)
-  - Haka is recommended if your home organization already requires MFA
-  - Otherwise, [activate CSC MFA in MyCSC](https://my.csc.fi/mfa-activation-login) and use your CSC credentials
+- The easiest way to login to Roihu supercomputer is via [roihu.csc.fi](https://www.roihu.csc.fi)
+- Login requires 1) [multi-factor authentication](https://docs.csc.fi/accounts/mfa/) (MFA) and 2) a medium or high level of identity assurance (LoA)
+  - Haka is recommended if your home organization already requires MFA. Otherwise, [activate CSC MFA in MyCSC](https://my.csc.fi/mfa-activation-login) and use your CSC credentials
+  - Check your LoA in [MyCSC](https://my.csc.fi/profile) and [elevate it if needed](https://docs.csc.fi/accounts/strong-identification)
 - The web interface can be used, _e.g._, to launch GUI applications, browse files or open a command-line shell
    - The latter is useful if your computer does not have an SSH client, but you need command-line access to the supercomputer
-- Similar web interfaces are also available for Mahti and LUMI
-  - More in-depth documentation in [Docs CSC](https://docs.csc.fi/computing/webinterface/) and [Docs LUMI](https://docs.lumi-supercomputer.eu/runjobs/webui/)
+- LUMI also has a [similar web interface](https://docs.lumi-supercomputer.eu/runjobs/webui/).
 
-# Login with SSH (1/2)
+# Login with SSH (1/3)
 
 - SSH is a terminal program that gives you command-line access on the CSC supercomputer
 - It is a versatile main interface to a supercomputer
    - Laptop &harr; Toyota, Supercomputer &harr; F1. F1 needs a specialist interface.
-- Logging in with SSH requires setting up **SSH keys**
+- Logging in with SSH requires **SSH keys** and a valid **SSH certificate**
   - A key pair is created and the **public** key is uploaded to MyCSC
-  - Using SSH keys is easier and safer than using a password with every login
+  - The public key must then be signed **every 24 hours** to obtain a time-based certificate allowing SSH logins to Roihu
   - Read the [documentation](https://docs.csc.fi/computing/connecting/ssh-keys/) and do the [tutorial](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-keys.html)
   - Consult the [FAQ](https://docs.csc.fi/support/faq/ssh-keys-not-working/) or contact <servicedesk@csc.fi> to troubleshoot issues
 
-# Login with SSH (2/2)
+# Login with SSH (2/3)
 
-- After adding your public key to MyCSC, it takes 30-60min for it to sync to Puhti. Once done, you may log in using `ssh` command
-   - Example: `ssh cscusername@puhti.csc.fi` or  
-     `ssh -i /path/to/ssh/keyfile cscusername@puhti.csc.fi`
+- After adding your public key to MyCSC, you need to sign it to generate an SSH certificate
+   - The [CSC certificate helper tool](https://github.com/CSCfi/certificate-helper-tool) is recommended
+     - `python3 csc_cert.py -u <username> <path-to-local-public-key>`
+     - Signs the key, downloads the certificate, and adds it to your _SSH agent_ to make logging in easy
+     - Python is required on all operating systems.
+     - Authentication agent also requires `ssh-agent` utility (Linux/macOS/PowerShell) **or** Pageant & WinSCP (PuTTY users).
+
+# Login with SSH (3/3)
+
+- After adding your public key to MyCSC, you need to sign it to generate an SSH certificate
+   - The [CSC certificate helper tool](https://github.com/CSCfi/certificate-helper-tool) is recommended
+   - `python3 csc_cert.py -u <username> <path-to-local-public-key>`
+   - Signs the key, downloads the certificate, and adds it to your _SSH agent_ to make logging in easy
+   - Python is required on all operating systems. To add the certificate to authentication agnet
 - Detailed instructions for [logging in with SSH on macOS and Linux](https://docs.csc.fi/computing/connecting/ssh-unix/) and [on Windows](https://docs.csc.fi/computing/connecting/ssh-windows/)
   - On Windows, we recommend MobaXterm or PuTTY clients, or simply using the web interfaces instead of SSH
 - Note! Plain SSH will not allow displaying remote graphics
    - The web interfaces are often best for this, but a graphical connection can also be enabled over SSH using [X11 forwarding](https://docs.csc.fi/computing/connecting/#graphical-connection)
 
-# Moving files between a local computer and Puhti
+# Moving files between a local computer and Roihu
 
 - [`scp`](https://docs.csc.fi/data/moving/scp/) and [`rsync`](https://docs.csc.fi/data/moving/rsync/) are powerful command-line tools to copy files
    - `scp` works even in Windows PowerShell (but `rsync` is missing)
@@ -63,7 +73,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - The web interfaces can also be used to easily upload/download files
 - Note! Both the command-line and graphical file transfer tools are inherently SSH-based, so using them at CSC requires SSH keys!
 
-# Moving files between Puhti and Mahti (1/2)
+# Moving files between Puhti and Roihu (1/2)
 
 - SSH keys should be set up on your local computer
 - To access Mahti from Puhti, or vice versa, you must ensure your SSH keys are *forwarded* to the server from where you want to connect onward
@@ -72,7 +82,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - On Linux/macOS, add option `-A` to your SSH command
   - Example: `ssh -A cscusername@puhti.csc.fi`
 
-# Moving files between Puhti and Mahti (2/2)
+# Moving files between Puhti and Roihu (2/2)
 
 - Using MobaXterm:
   - Similar to Linux/macOS if using local terminal, otherwise toggle _Allow agent forwarding_ under "Session" -> "SSH" -> "Advanced SSH settings" -> "Expert SSH settings"
