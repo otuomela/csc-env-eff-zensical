@@ -51,32 +51,12 @@ permalink: /hands-on/connecting/ssh-certificate.html
 
    ☝🏻 Using SSH agent is also a prerequisite to be able to move files directly between Roihu and other CSC services (like Puhti or LUMI).
 
-4. Open PowerShell or MobaXterm local terminal and run the certificate helper tool for example like this:
-   1. PowerShell:
-
-      ```bash
-      # Please change the paths and usernames (localuser, cscuser) as needed
-      python3 C:\Users\localuser\Downloads\csc_cert.py -u cscuser C:\Users\localuser\.ssh\id_ed25519.pub
-      ```
-
-   2. MobaXterm local terminal:
-
-      ```bash
-      # Please change the paths and usernames (localuser, cscuser) as needed
-      python3 C:\Users\localuser\Downloads\csc_cert.py -u cscuser C:\Users\localuser\.ssh\id_ed25519.pub
-      ```
-
-   Example assuming you are in the same folder as `csc_cert.py`:
+4. Open PowerShell and run the certificate helper tool for example like this:
 
    ```bash
-   python3 csc_cert.py -u cscusername C:\Users\localusername\.ssh\id_ed25519.ppk
+   # Please change the paths and usernames (localuser, cscuser) as needed
+   python3 C:\Users\localuser\Downloads\csc_cert.py -u cscuser C:\Users\localuser\.ssh\id_ed25519.pub
    ```
-
-   - In MobaXterm terminal you should change the path syntax:
-
-      ```bash
-      python3 csc_cert.py -u cscusername C:\Users\localusername\.ssh\id_ed25519.ppk
-      ```
 
 ### Linux/macOS
 
