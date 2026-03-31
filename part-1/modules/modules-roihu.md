@@ -35,7 +35,7 @@ permalink: /hands-on/modules/modules-roihu.html
 
 1. Check out the [GROMACS page](https://docs.csc.fi/apps/gromacs/).
 2. Skim through the documentation and verify that the license allows you to use the software.
-3. Check what is the module command that you need to run to be able to load Gromacs in Roihu.
+3. Check what is the module command that you need to run to be able to load GROMACS in Roihu.
 4. Back on the command-line, check which GROMACS versions are available in Roihu.
 
    ```bash
@@ -97,6 +97,34 @@ permalink: /hands-on/modules/modules-roihu.html
 
 ## More information
 
-💭 If actually using Gromacs in Roihu, you would run the application as a batch job through the queueing system, which will be discussed in detail later.
+💭 If actually using GROMACS in Roihu, you would run the application as a batch job through the queueing system, which will be discussed in detail later.
 
-💭 Check out an [example batch job script for Gromacs](https://docs.csc.fi/apps/gromacs/) to see how the module is recommended to be loaded (`module load gromacs-env` loads the latest minor release of a specific year).
+💭 Check out an [example batch job script for GROMACS](https://docs.csc.fi/apps/gromacs/) to see how the module is recommended to be loaded (`module load gromacs-env` loads the latest minor release of a specific year).
+
+### Loading a module with non-default dependencies
+
+💬 As an example of a module with non-default dependencies, you can try to load the GPU version of CP2K 2026.1, a software package for electronic structure calculations.
+
+1. Log in to Roihu-GPU with your user credentials (SSH or [Roihu web interface](https://www.roihu.csc.fi)):
+
+   ```bash
+   ssh <username>@roihu-gpu.csc.fi    # replace <username> with your CSC username, e.g. myname@roihu-gpu.csc.fi
+   ```
+
+2. The `cp2k/2026.1` module cannot be loaded in the default environment since it has different dependencies.
+   - `module avail` will not show it and running `module load cp2k/2026.1` in the standard environment will give an error (feel free to try).
+3. Check with the `module spider` command which other modules are needed:
+
+   ```bash
+   module spider cp2k/2026.1
+   ```
+
+4. Load all of the required modules manually before loading `cp2k/2026.1`
+
+   ```bash
+   module purge
+   module load gcc/13.4.0
+   module load openmpi/5.0.8
+   module load cp2k/2026.1
+   module list
+   ```
