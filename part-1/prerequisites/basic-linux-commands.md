@@ -53,7 +53,7 @@ permalink: /hands-on/linux_prerequisites/basic-linux-commands.html
 2. Check what kind of file you got and what size it is using the `ls` command with some extra options:
 
    ```bash
-   ls -lth         # options are l for long format, t for sorting by time and h for convenient size units. Anything that starts with a hashtag is a comment and is not executed
+   ls -lth         # options are l for long format, t for sorting by time and h for convenient size units. Anything that starts with a hashtag is a comment
    ```
 
 3. Use the `less` command to check out what the file looks like:
@@ -87,6 +87,6 @@ permalink: /hands-on/linux_prerequisites/basic-linux-commands.html
 
 - Learn [how to edit that file](https://csc-training.github.io/csc-env-eff/hands-on/linux_prerequisites/basic-file-editing.html) in the next tutorial!
 
-💡 For more information of a given command line `command`: type `man command` or `command --help` where `command` is replaced with the one that you need help with.
+💡 For more information of a given command line `command`, type `man command` or `command --help` where `command` is replaced with the one that you need help with.
 
 💡 Tip: If you remember *a part of a command* that you have used recently you can search for it with the command `history | grep string`. This will show all your used commands that have included the string `string` (replace this with the pattern you are searching for).
