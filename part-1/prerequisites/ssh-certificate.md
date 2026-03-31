@@ -25,28 +25,73 @@ permalink: /hands-on/connecting/ssh-certificate.html
 
 ### Windows
 
-1. Check if you have Python installed on your computer:
-   2. Open PowerShell or MobaXterm terminal.
-   3. Type `python3` and hit `Enter`.
-   4. If this opens a Python interpreter, you're good to go!
-   5. If you get an error, you need to install Python. [Python downloads are available here](https://www.python.org/downloads/).
+1. [Download the certificate helper tool here](https://raw.githubusercontent.com/CSCfi/certificate-helper-tool/refs/heads/main/csc_cert.py) (right-click link and select _Save Link As..._).
+2. Check if you have Python installed on your computer:
+   1. Open PowerShell or MobaXterm terminal.
+   2. Type `python3` and hit `Enter`.
+   3. If this opens a Python interpreter, you're good to go!
+   4. If you get an error, you need to install Python. [Python downloads are available here](https://www.python.org/downloads/).
       - This may require admin privileges, so please be in contact with your local IT-support if necessary.
       - If Python for some reason cannot be installed on your computer, [please proceed with Option 2 instead](#option-2-manually-signing-and-downloading-certificate-in-mycsc).
-2. [Download the certificate helper tool here](https://raw.githubusercontent.com/CSCfi/certificate-helper-tool/refs/heads/main/csc_cert.py) (right-click link and select _Save Link As..._).
-3. Optional, but **strongly recommended**: Make sure you have an **SSH authentication agent** running.
+3. Optional, but **strongly recommended**: Make sure you have an **SSH authentication agent** running. There are two options:
    1. **Pageant** & **WinSCP** will enable automatic adding of SSH keys and certificates to Pageant SSH agent.
       - This is recommended for users logging in to Roihu using **PuTTY** or **MobaXterm GUI**.
       - Pageant comes bundled with both PuTTY and WinSCP installations. [Instructions for installing WinSCP are available here](https://winscp.net/eng/docs/installation).
-   2. `ssh-agent` utility will enable adding automatic adding of SSH keys and certificates OpenSSH agent.
+      - [Start Pageant following the instructions here](https://the.earth.li/~sgtatham/putty/0.83/htmldoc/Chapter9.html#pageant).
+   2. `ssh-agent` utility will enable adding automatic adding of SSH keys and certificates to OpenSSH agent.
+      - This is recommended for users logging in to Roihu using **PowerShell** or **MobaXterm terminal**.
+      - [Start `ssh-agent` in PowerShell following the instructions here](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement#user-key-generation) (requires admin privileges!).
+      - Start `ssh-agent` in MobaXterm terminal by running:
+
+        ```bash
+        eval $(ssh-agent -s)
+        ```
+
+   ‼️ **Important note:** SSH agent is not mandatory to sign and download SSH certificates for Roihu, but using it makes connecting much easier (e.g. no need to type SSH passphrase every time).
+
+   ☝🏻 Using SSH agent is also a prerequisite to be able to move files directly between Roihu and other CSC services (like Puhti or LUMI).
+
+4. Open PowerShell or MobaXterm local terminal and run the certificate helper tool for example like this:
+   1. PowerShell:
+
+      ```bash
+      # Please change the paths and usernames (localuser, cscuser) as needed
+      python3 C:\Users\localuser\Downloads\csc_cert.py -u cscuser C:\Users\localuser\.ssh\id_ed25519.pub
+      ```
+
+   2. MobaXterm local terminal:
+
+      ```bash
+      # Please change the paths and usernames (localuser, cscuser) as needed
+      python3 C:\Users\localuser\Downloads\csc_cert.py -u cscuser C:\Users\localuser\.ssh\id_ed25519.pub
+      ```
+
+   Example assuming you are in the same folder as `csc_cert.py`:
+
+   ```bash
+   python3 csc_cert.py -u cscusername C:\Users\localusername\.ssh\id_ed25519.ppk
+   ```
+
+   - In MobaXterm terminal you should change the path syntax:
+
+      ```bash
+      python3 csc_cert.py -u cscusername C:\Users\localusername\.ssh\id_ed25519.ppk
+      ```
 
 ### Linux/macOS
 
 ## Option 2: Manually signing and downloading certificate in MyCSC
 
-### Windows
+1. Log in to [MyCSC](https://my.csc.fi) with your CSC or Haka/Virtu credentials.
+2. Select _Profile_ from the left-hand navigation or the dropdown menu in the top-right corner.
+3. Locate _SSH PUBLIC KEYS_ section and click the three vertical dots next to the public key you want to sign.
+4. Click _Sign and download SSH certificate_. As a security measure, you may be asked to log in again.
 
-### Linux/macOS
+   ![Sign and download SSH certificate](../../_slides/img/sign-download-ssh-cert.png)
+
+5. **Recommended:** Move `cert.pub` certificate file to the same folder where you store your SSH keys and rename it as `<ssh private key name>-cert.pub`. For example, `id_ed25519-cert.pub`.
+6. You may now log in to Roihu using an SSH client! [This is covered in the next tutorial](ssh-roihu.md).
 
 ## More information
 
-💭 Docs CSC: More information about [connecting](https://docs.csc.fi/computing/connecting/) and [SSH keys](https://docs.csc.fi/computing/connecting/ssh-keys/).
+💭 Docs CSC: More information about [connecting](https://docs.csc.fi/computing/connecting/) and [SSH keys and certificates](https://docs.csc.fi/computing/connecting/ssh-keys/).
