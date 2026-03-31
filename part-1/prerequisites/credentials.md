@@ -40,7 +40,13 @@ permalink: /hands-on/connecting/credentials.html
 3. On the bottom right you'll find a box for *LEVEL OF IDENTITY ASSURANCE*.
 4. Your current identity assurance level should be **medium** at minimum.
    1. If this is the case, everything is OK and no further actions are needed.
-   2. If your LoA is **low**, please elevate it. There is a button you can click to start the process. [More detailed instructions are available in Docs CSC](https://docs.csc.fi/accounts/strong-identification/).
+   2. If your LoA is **low**, please elevate it. There is a button you can click to start the process. A notification is also displayed on the page of your project.
+
+      ![Low level of identity assurance](../../_slides/img/low-loa.png)
+
+      ![Project notification](../../_slides/img/elevate-loa.png)
+
+   3. [More detailed instructions are available in Docs CSC](https://docs.csc.fi/accounts/strong-identification/).
 
 ## Project
 
