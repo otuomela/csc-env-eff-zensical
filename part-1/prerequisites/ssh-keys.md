@@ -92,11 +92,7 @@ permalink: /hands-on/connecting/ssh-keys.html
 
 ‼️ Be patient, as it may take up to one hour for your new key to become active! If it takes longer than that, please contact <mailto:servicedesk@csc.fi>.
 
-💡 Once your key has been synced, you may log in to Roihu using an SSH client! [This is covered in the next tutorial](ssh-roihu.md).
-
-## Signing the SSH public key
-
-FIXME: Add here steps how to use SSH CA.
+💡 You may now sign your public key to obtain an **SSH certificate** that allows you to login to Roihu using an SSH client! [This is covered in the next tutorial](ssh-certificate.md).
 
 ## More information
 
