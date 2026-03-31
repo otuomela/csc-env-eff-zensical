@@ -9,7 +9,7 @@ permalink: /hands-on/connecting/credentials.html
 
 # Get a CSC account and a project
 
-> This document includes the information required when starting to use CSC supercomputers and other services.
+> This document includes the information required when starting to use Roihu and other CSC services.
 > This document is a simplified version of [the accounts and projects guide in docs.csc.fi](https://docs.csc.fi/accounts/).
 
 ## Create a CSC account
@@ -18,7 +18,7 @@ permalink: /hands-on/connecting/credentials.html
 
 💬 For registration, you will need a mobile device that has an authentication app for setting up multi-factor authentication (MFA).
 
-1. Go to [MyCSC](https://my.csc.fi)
+1. Go to [MyCSC](https://my.csc.fi).
 2. Click *Login* or *Create account*.
 3. Click *Virtu* or *Haka* depending on which federation your home organization is a member of.
     - If your home organization doesn't provide Haka or Virtu, please see [how to contact us to register](https://docs.csc.fi/accounts/how-to-create-new-user-account/#getting-an-account-without-haka-or-virtu).
@@ -26,12 +26,25 @@ permalink: /hands-on/connecting/credentials.html
 5. Fill in your information on the *Sign up* page.
 6. You will receive an email message containing a link to MyCSC where you can set your CSC account password.
     - Use 12 characters or more, containing both upper and lowercase letters and at least one number. No special characters are allowed.
-7. If you are signing up with *Virtu* you will be prompted to [set up your CSC MFA](https://docs.csc.fi/accounts/mfa/#how-to-activate-csc-mfa) after setting your CSC accounts password. If you are signing up with Haka, you might already have a working MFA login integrated with your Haka login, and you will be asked to sign in with the Haka MFA. If your home organisation doesn't provide Haka MFA, you will be guided to set up CSC MFA.
+7. If you are signing up with *Virtu* you will be prompted to [set up your CSC MFA](https://docs.csc.fi/accounts/mfa/#how-to-activate-csc-mfa) after setting your CSC accounts password.
+    - If you are signing up with Haka, you might already have a working MFA login integrated with your Haka login, and you will be asked to sign in with the Haka MFA.
+    - If your home organisation doesn't provide Haka MFA, you will be guided to set up CSC MFA.
 8. You will receive a confirmation via email after successfully registering your CSC user account.
+
+## Check level of identity assurance and elevate if needed
+
+💬 Accessing Roihu requires that every user has at least a medium **level of identity assurance** (LoA).
+
+1. Login to [MyCSC](https://my.csc.fi).
+2. Go to your MyCSC Profile page.
+3. On the bottom right you'll find a box for *LEVEL OF IDENTITY ASSURANCE*.
+4. Your current identity assurance level should be **medium** at minimum.
+   1. If this is the case, everything is OK and no further actions are needed.
+   2. If your LoA is **low**, please elevate it. There is a button you can click to start the process. [More detailed instructions are available in Docs CSC](https://docs.csc.fi/accounts/strong-identification/).
 
 ## Project
 
-💬 To use CSC supercomputers every account has to be a member of a project. Access to a supercomputer (service) and computing time are tied to projects.
+💬 To use Roihu every account has to be a member of a project. Access to Roihu service and computing time are tied to projects.
 
 ☝🏻 The default project called "Personal group of N.N." is **not** meant for submitting jobs!
 
@@ -54,7 +67,7 @@ permalink: /hands-on/connecting/credentials.html
 1. Login to [MyCSC](https://my.csc.fi)
 2. Click _Projects_ and select a project
 3. In the bottom right corner you see the _Services_ section. Click the _Add services_ button there.
-4. Select Roihu and Allas, approve the terms of use and click _Add selected services_
+4. Select **Roihu** and **Allas**, approve the terms of use and click _Add selected services_
 
 ## More information
 
