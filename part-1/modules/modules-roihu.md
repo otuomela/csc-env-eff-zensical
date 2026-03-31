@@ -56,11 +56,8 @@ permalink: /hands-on/modules/modules-roihu.html
 
    ```bash
    $ module load gromacs # and here double press TAB
-   gromacs                gromacs/2022.3         gromacs-env/2021-gpu
-   gromacs/2021.4-plumed  gromacs/2022.4         gromacs-env/2022
-   gromacs/2021.5         gromacs-env            gromacs-env/2022-gpu
-   gromacs/2021.6         gromacs-env/2020       
-   gromacs/2022.2         gromacs-env/2021
+   gromacs         gromacs/2025.2  gromacs/2025.4  gromacs/2026.1  
+   gromacs/2025.1  gromacs/2025.3  gromacs/2026.0  
    ```
 
 6. Which version is loaded with the default command? Is it the newest version? Try:
@@ -80,12 +77,14 @@ permalink: /hands-on/modules/modules-roihu.html
    - The default version is typically the latest **stable** version of the program.
    - It is recommended to also provide the version in the module load command, as the default version may change.
 
-8. Let's try loading the 2021.6 version specifically:
+8. Let's try loading the 2025.1 version specifically:
 
    ```bash
-   module load gromacs/2021.6
+   module load gromacs/2025.1
    module list
    ```
+
+   ☝🏻 It is generally best to use the latest versions since they typically are more performant than old ones and may have useful new features.
 
 9. If you want to do something else in the same session, it is usually best to reset the module environment to the default settings. This can be done by first removing all loaded modules and then loading the default environment:
 
@@ -98,30 +97,6 @@ permalink: /hands-on/modules/modules-roihu.html
 
 ## More information
 
-💭 If actually using Gromacs in Puhti, you would run the application as a batch job through the queueing system, which will be discussed in detail later.
+💭 If actually using Gromacs in Roihu, you would run the application as a batch job through the queueing system, which will be discussed in detail later.
 
-💭 Check out an [example batch job script for Gromacs](https://docs.csc.fi/apps/gromacs/#puhti) to see how the module is recommended to be loaded (`module load gromacs-env` loads the latest minor release of a specific year).
-
-### Loading an older version of a module
-
-💬 Using an older version of a module is usually possible
-
-💬 As an example, you can try to load an old version of Gromacs from 2020.
-
-1. The `gromacs/2020.5` module cannot be loaded in the default environment since it has different dependencies. Check with the `module spider` command which other modules are needed for the older version:
-
-   ```bash
-   module spider gromacs/2020.5
-   ```
-
-2. Load all of the required modules manually before loading `gromacs/2020.5`
-
-   ```bash
-   module purge
-   module load gcc/9.4.0
-   module load openmpi/4.1.4
-   module load gromacs/2020.5
-   module list
-   ```
-
-☝🏻 It is generally best to use the latest versions since they typically are more performant than old ones and may have useful new features.
+💭 Check out an [example batch job script for Gromacs](https://docs.csc.fi/apps/gromacs/) to see how the module is recommended to be loaded (`module load gromacs-env` loads the latest minor release of a specific year).
