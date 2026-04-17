@@ -72,7 +72,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 |                             | [Roihu](https://docs.csc.fi/computing/systems-roihu/)  | [Puhti](https://docs.csc.fi/computing/systems-puhti/)  | [Mahti](https://docs.csc.fi/computing/systems-mahti/)    | [LUMI](https://docs.lumi-supercomputer.eu/hardware/) |
 | ----------------------------------- |------- |------- | ----    |  ---- |
 | Pre-installed apps | [TBD](https://docs.csc.fi/apps/by_system/#roihu) | [120+](https://docs.csc.fi/apps/by_system/#puhti) | [40+](https://docs.csc.fi/apps/by_system/#mahti) | [See here](https://docs.lumi-supercomputer.eu/software/)
-| Cores per node              | 384    | 40     | 128        128
+| Cores per node              | 384    | 40     | 128       | 128
 | Job size (min-max cores)    | TBD    | 1-1040 | 1-25600 | 1-65536
 | Memory per node (GiB)       | 384-6144 | 192-1536 | 256     | 256-1024
 | GPU cards          | 528 (GH200) | 320 (V100) | 96 (A100) | 11912 (MI250X)
