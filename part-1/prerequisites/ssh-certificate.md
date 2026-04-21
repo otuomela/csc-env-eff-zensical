@@ -57,8 +57,42 @@ permalink: /hands-on/connecting/ssh-certificate.html
    # Please change the paths and usernames (localuser, cscuser) as needed
    python3 C:\Users\localuser\Downloads\csc_cert.py -u cscuser C:\Users\localuser\.ssh\id_ed25519.pub
    ```
+   1. The helper tool opens a MyCSC web page in your browsers and you may be requested to authenticate.
+   2. The MyCSC page displays a 6-digit code that you need to enter to the helper tool.
 
 ### Linux/macOS
+
+1. [Download the certificate helper tool here](https://raw.githubusercontent.com/CSCfi/certificate-helper-tool/refs/heads/main/csc_cert.py) (right-click link and select _Save Link As..._).
+2. Check if you have Python installed on your computer:
+   1. Open a terminal.
+   2. Type `python3` and hit `Enter`.
+   3. If this opens a Python interpreter, you're good to go!
+   4. If you get an error, you need to install Python. [Instructions for installing Python are available here](https://wiki.python.org/moin/BeginnersGuide/Download).
+      - This may require admin privileges, so please be in contact with your local IT-support if necessary.
+      - If Python for some reason cannot be installed on your computer, [please proceed with Option 2 instead](#option-2-manually-signing-and-downloading-certificate-in-mycsc).
+3. Optional, but **strongly recommended**: Make sure you have an **SSH authentication agent** running. There are two options:
+   1. `ssh-agent` utility will enable adding automatic adding of SSH keys and certificates to OpenSSH agent.
+      - On Linux systems, `ssh-agent` is typically configured and enabled automatically.
+      - On macOS systems, you should add the following lines to the `~/.ssh/config` file (create the file if it does not exist):
+         ```text
+         Host <host>.csc.fi
+             UseKeychain no
+             AddKeysToAgent yes
+         ```
+         Replace `<host>` with the host name. For Roihu CPU login nodes this it is `roihu-cpu`. You can also use `roihu-*` to add the keys both for CPU and GPU login nodes, or `*` for all CSC services.
+
+   ‼️ **Important note:** SSH agent is not mandatory to sign and download SSH certificates for Roihu, but using it makes connecting much easier (e.g. no need to type SSH passphrase every time).
+
+   ☝🏻 Using SSH agent is also a prerequisite to be able to move files directly between Roihu and other CSC services (like Puhti or LUMI).
+
+4. Run the certificate helper tool for example like this:
+
+   ```bash
+   # Please change the paths and username cscuser as needed
+   python3 ~\Downloads\csc_cert.py -u cscuser ~\.ssh\id_ed25519.pub
+   ```
+   1. The helper tool opens a MyCSC web page in your browsers and you may be requested to authenticate.
+   2. The MyCSC page displays a 6-digit code that you need to enter to the helper tool.
 
 ## Option 2: Manually signing and downloading certificate in MyCSC
 
