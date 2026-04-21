@@ -29,6 +29,8 @@ permalink: /hands-on/connecting/ssh-roihu.html
 
 ## Connecting with SSH from the command-line
 
+‼️ Roihu has separate login nodes for CPU and GPU usage. This tutorial assumes that you want to connect to Roihu CPU login nodes `roihu-cpu.csc.fi`. To use the GPU resources, you need to connect to the GPU login nodes `roihu-gpu.csc.fi`.
+
 💬 The basic Command-Line Interface (CLI) in Unix-based systems is the Terminal.
 
 💡 Different operating systems have slightly different CLIs and SSH clients, i.e. programs that you can use to connect to the supercomputers.
