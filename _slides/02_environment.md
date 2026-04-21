@@ -73,7 +73,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 | ----------------------------------- |------- | ---- |
 | Pre-installed apps | [TBD](https://docs.csc.fi/apps/by_system/#roihu) | [See here](https://docs.lumi-supercomputer.eu/software/)
 | Cores per node              | 384    | 128
-| Job size (min-max cores)    | TBD    | 1-65536
+| Job size (min-max cores)    | 1-23040    | 1-65536
 | Memory per node (GiB)       | 384-6144 | 256-1024
 | GPU cards          | 528 (GH200) | 11912 (MI250X)
 | Nodes with NVMe (CPU+GPU) | 486+132  | 8+8
