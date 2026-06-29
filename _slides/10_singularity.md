@@ -101,6 +101,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
   - E.g., to map the host directory `/scratch/project_2001234` to the `/data` directory inside the container: `--bind /scratch/project_2001234:/data`
   - The target directory inside the container does not need to exist, it is created if necessary
   - More than one directory can be mapped
+  - Running containers with `--bind="$(csc-common-bind)` takes care of the most common `--bind` commands automatically
 
 # Environment variables
 
@@ -108,19 +109,6 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
   - Can be prevented if necessary by adding the option `--cleanenv`
 - Environment variables can be set specifically inside the container by setting on the host `$APPTAINERENV_variablename`.
   - E.g., to set `$TEST` in a container, set `$APPTAINERENV_TEST` on the host
-
-# `apptainer_wrapper`
-
-- Running containers with `apptainer_wrapper` takes care of the most common `--bind` commands automatically
-- You just need to set the `$SING_IMAGE` environment variable to point to the correct Apptainer image file
-
-```bash
-export SING_IMAGE=/path/to/container.sif
-apptainer_wrapper exec myprog <options>
-```
-
-- Additional options can be set with variable `$SING_FLAGS`,  
-  e.g. `export SING_FLAGS=--nv`
 
 # Using Docker containers with Apptainer
 
