@@ -30,8 +30,8 @@ differences compared to the standard usage as described in the documentation.
 ‼️ Please see the software documentation in [Docs CSC](https://docs.csc.fi/apps/)
 for details and other considerations.
 
-- To run these exercises on Puhti, use `sinteractive` or open a compute node
-  shell in the [Puhti web interface](https://www.puhti.csc.fi):
+- To run these exercises on Roihu, use `sinteractive` or open a compute node
+  shell in the [Roihu web interface](https://www.roihu.csc.fi):
 
   ```bash
   sinteractive --account <project>  # replace <project> with your CSC project, e.g. project_2001234
@@ -45,11 +45,11 @@ for details and other considerations.
 
    ```bash
    module load r-env
-   cat /appl/soft/math/r-env/432/Rscript
+   cat /appl/soft/manual/aida/x86_64/r-env/wrappers/452/bin/Rscript
    ```
 
 2. Observe that it is not the "real" `Rscript` command, but a wrapper script
-   using `apptainer_wrapper exec`. Now, try running `Rscript`:
+   using `singularity exec`. Now, try running `Rscript`:
 
    ```bash
    Rscript --version
