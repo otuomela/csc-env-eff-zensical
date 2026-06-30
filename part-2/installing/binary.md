@@ -11,9 +11,9 @@ permalink: /hands-on/installing/installing_hands-on_binary.html
 
 # Installing binary applications
 
-> This tutorial is done on **Puhti**, which requires that:
+> This tutorial is done on **Roihu**, which requires that:
   - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
-  - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+  - Your account belongs to a project [that has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 💬 In some cases software developers offer ready-made binary versions of their
 software.
@@ -66,7 +66,7 @@ on to ensure correct operation.
 3. Here is the link for the Linux version. Download the `.zip` file by running:
 
    ```bash
-   wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.94.4-linux-kernel-3-x86_64.zip
+   wget https://yanglab.westlake.edu.cn/software/gcta/bin/gcta-1.95.2-linux-x86_64.zip
    ```
 
 4. Unzip the file:
@@ -81,20 +81,20 @@ on to ensure correct operation.
    you are not accessing the right folder yet.
 
    ```bash
-   gcta64
+   gcta
    ```
 
 7. Try instead:
 
    ```bash
-   gcta-1.94.4-linux-kernel-3-x86_64/gcta64
+   gcta-1.94.4-linux-kernel-3-x86_64/gcta
    ```
 
 8. Or:
 
    ```bash
    cd gcta-1.94.4-linux-kernel-3-x86_64
-   ./gcta64
+   ./gcta
    ```
 
 9. The result shows that the software runs.
@@ -113,7 +113,7 @@ on to ensure correct operation.
 12. You can now run the program from any directory simply with:
 
     ```bash
-    gcta64
+    gcta
     ```
 
 ## Some notes
@@ -125,7 +125,7 @@ on to ensure correct operation.
 `$HOME/.bashrc` file. Instead of `$PWD`, use the full path:
 
 ```bash
-export PATH=/projappl/<project>/$USER/gcta-1.94.4-linux-kernel-3-x86_64:$PATH   # replace <project> with your CSC project, e.g. project_2001234
+export PATH=/projappl/<project>/$USER/gcta-1.95.2-linux-x86_64:$PATH   # replace <project> with your CSC project, e.g. project_2001234
 ```
 
 ‼️ If you make changes to your environment (e.g. edit `.bashrc`), it is possible
