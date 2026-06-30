@@ -37,7 +37,7 @@ hours.
    ☝🏻 Note that if you mistype your password when using the `-k` option, you
    must use the command `unset OS_PASSWORD` before you can try again.
 
-3. Refresh the connection with the command:
+2. Refresh the connection with the command:
 
    ```bash
    allas-conf -k <project>  # replace <project> with your CSC project, e.g. project_2001234
@@ -47,7 +47,7 @@ hours.
    `a-delete`) automatically refresh the Allas connection when the commands are
    executed in a batch job.
 
-4. Choose a file from Allas. The file should have text in it. You can use the
+3. Choose a file from Allas. The file should have text in it. You can use the
    one you created in
    [one of the earlier tutorials](../../part-1/allas/allas-usage.md),
    or then any other text file you have in Allas:
@@ -56,13 +56,13 @@ hours.
    a-list <project_number>_$USER  # replace <project_number> with your CSC project number, e.g. 2001234, to match the bucket you created earlier
    ```
 
-5. Create a new batch job script. First open a new text file with the command:
+4. Create a new batch job script. First open a new text file with the command:
 
    ```bash
    nano allas_job.sh
    ```
 
-6. **Option 1:** `a-commands`
+5. **Option 1:** `a-commands`
    1. Copy the batch job script below to the text file you are editing:
 
       ```bash
@@ -71,7 +71,7 @@ hours.
       #SBATCH --account=<project>              # Choose the billing project. Has to be defined!
       #SBATCH --time=00:05:00                  # Maximum duration of the job. Max: depends of the partition
       #SBATCH --mem-per-cpu=1G                 # How much RAM is reserved for one processor
-      #SBATCH --partition=test                 # Job queues: test, interactive, small, large, longrun, hugemem, ...
+      #SBATCH --partition=test                 # Job queues (CPU): interactive, test, small, medium, large, longrun, hugemem, hugemem_longrun
       #SBATCH --output=allas_output_%j.txt     # Name of the output-file
       #SBATCH --error=allas_errors_%j.txt      # Name of the error-file
         
@@ -87,7 +87,7 @@ hours.
    and `<filename>` to the name of the file you have in Allas. Remember to also
    define your billing project (`--account`).
 
-7. **Option 2:** `rclone`  
+6. **Option 2:** `rclone`  
    
    ☝🏻 If you use `rclone` or `swift` instead of the `a-commands`, you need to
    add `source allas_conf` commands to your script.
@@ -100,7 +100,7 @@ hours.
       #SBATCH --account=<project>              # Choose the billing project. Has to be defined!
       #SBATCH --time=00:05:00                  # Maximum duration of the job. Max: depends of the partition. 
       #SBATCH --mem-per-cpu=1G                 # How much RAM is reserved for one processor.
-      #SBATCH --partition=test                 # Job queues: test, interactive, small, large, longrun, hugemem, $
+      #SBATCH --partition=test                 # Job queues (CPU): interactive, test, small, medium, large, longrun, hugemem, hugemem_longrun
       #SBATCH --output=allas_output_%j.txt     # Name of the output-file.
       #SBATCH --error=allas_errors_%j.txt      # Name of the error-file.
       
@@ -108,26 +108,27 @@ hours.
       filename=<filename>                      # Replace with your file name
       
       # Make sure the connection to Allas is open
-      source /appl/opt/csc-cli-utils/allas-cli-utils/allas_conf -f -k $OS_PROJECT_NAME
+      source /appl/soft/manual/general/common/allas/allas-cli-utils/allas_conf -f -k $OS_PROJECT_NAME
       rclone copy allas:$bucketname/$filename ./
       
       wc -l $filename > $filename.num_rows
       
       # Make sure the connection to Allas is open
-      source /appl/opt/csc-cli-utils/allas-cli-utils/allas_conf -f -k $OS_PROJECT_NAME
+      source /appl/soft/manual/general/common/allas/allas-cli-utils/allas_conf -f -k $OS_PROJECT_NAME
       rclone copy $filename.num_rows allas:$bucketname
       ```
 
    2. Replace `<project_number>_$USER` to match your bucket name and `<filename>`
    to the name of the file you have in Allas. Remember to also define your
    billing project (`--account`).
-8. Submit the batch job with the command:
+
+7. Submit the batch job with the command:
 
    ```bash
    sbatch allas_job.sh
    ```
 
-9.  Monitor the progress of your batch job:
+8.  Monitor the progress of your batch job:
 
     ```bash
     squeue -u $USER
