@@ -39,6 +39,8 @@ done on Roihu as is.
    apptainer run hello-world_latest.sif
    ```
 
+💡 Roihu base containers are available through [Satama](https://docs.csc.fi/support/tutorials/roihu/#containers).
+
 ## 2. Convert an existing Docker container to an Apptainer container
 
 💬 Docker images are downloaded as layers. These layers are stored in a cache
