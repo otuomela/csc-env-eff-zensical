@@ -53,10 +53,10 @@ the whole allas-cli-utils repository locally.
 
 💭 In addition to the configuration, you must define a set of environment
 variables to authenticate your Allas connection each time you start using
-`rclone`. If you have access to Puhti, you can use it as an easy way to
+`rclone`. If you have access to Roihu, you can use it as an easy way to
 generate a list of commands to set the authentication:
 
-1. Open a terminal connection to Puhti and activate there a connection to the
+1. Open a terminal connection to Roihu and activate there a connection to the
    Allas project you wish to use so that you add option `--show-powershell`
    (Windows) or option `--show-shell` (macOS and Linux) to the `allas-conf` 
    command.
@@ -67,7 +67,7 @@ generate a list of commands to set the authentication:
 ### Windows PowerShell
 
 1. If your local machine is running Windows, execute the following commands in
-   Puhti:
+   Roihu:
    ```bash
    module load allas
    allas-conf --show-powershell
@@ -84,7 +84,7 @@ generate a list of commands to set the authentication:
 
 1. If your local machine is running macOS or Linux, then the default shell is
    often `bash` or `zsh`. To activate Allas connection in these cases, run the
-   following commands in Puhti:
+   following commands in Roihu:
    ```bash
    module load allas
    allas-conf --show-shell
