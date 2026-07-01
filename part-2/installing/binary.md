@@ -72,7 +72,7 @@ on to ensure correct operation.
 4. Unzip the file:
 
    ```bash
-   unzip gcta-1.94.4-linux-kernel-3-x86_64.zip
+   unzip gcta-1.95.2-linux-x86_64.zip
    ```
 
 5. The software is now ready to use, but you will have to tell the computer
@@ -87,13 +87,13 @@ on to ensure correct operation.
 7. Try instead:
 
    ```bash
-   gcta-1.94.4-linux-kernel-3-x86_64/gcta
+   gcta-1.95.2-linux-x86_64.zip/gcta
    ```
 
 8. Or:
 
    ```bash
-   cd gcta-1.94.4-linux-kernel-3-x86_64
+   cd gcta-1.95.2-linux-x86_64
    ./gcta
    ```
 
@@ -103,7 +103,7 @@ on to ensure correct operation.
    💡 Instead of providing the full path in the command line, you can also add
    the application to your `$PATH`.
 
-10. Move to `./gcta-1.94.4-linux-kernel-3-x86_64` if not there yet.
+10. Move to `./gcta-1.95.2-linux-x86_64` if not there yet.
 11. Add the current working directory to `$PATH`:
 
     ```bash
