@@ -233,6 +233,5 @@ in which the Lua language is used to write modulefiles.
 - If you get stuck when compiling your own software, don't hesitate to ask for
   help from [CSC Service Desk](https://docs.csc.fi/support/contact/)
 - Documentation on how to compile on
-  [Puhti](https://docs.csc.fi/computing/compiling-puhti/),
-  [Mahti](https://docs.csc.fi/computing/compiling-mahti/) and
+  [Roihu](https://docs.csc.fi/computing/compiling-roihu/) and
   [LUMI](https://docs.lumi-supercomputer.eu/development/).
