@@ -11,9 +11,9 @@ permalink: /hands-on/installing/compiler_options.html
 
 # Compiling using optimizing compiler options
 
-> This tutorial is done on **Puhti**, which requires that:
+> This tutorial is done on **Roihu**, which requires that:
   - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
-  - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+  - Your account belongs to a project [that has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 ## Overview
 
@@ -35,7 +35,7 @@ optimization options and observe how they affect performance. Understanding
 the details of the program is not important for completing this tutorial, just
 consider it an illustrative example.
 
-1. Create and enter a suitable scratch directory on Puhti (replace `<project>`
+1. Create and enter a suitable scratch directory on Roihu (replace `<project>`
    with your CSC project, e.g. `project_2001234`):
 
    ```bash
@@ -119,6 +119,5 @@ of C++. You may download the source code from Allas:
 
 ## More information
 
-- Docs CSC: [Compiling on Puhti](https://docs.csc.fi/computing/compiling-puhti/)
-- Docs CSC: [Compiling on Mahti](https://docs.csc.fi/computing/compiling-mahti/)
+- Docs CSC: [Compiling on Roihu](https://docs.csc.fi/computing/compiling-roihu/)
 - Docs LUMI: [Compiling on LUMI](https://docs.lumi-supercomputer.eu/development/)
