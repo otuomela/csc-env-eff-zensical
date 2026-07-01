@@ -16,7 +16,7 @@ homology search to the [`/projappl` directory](https://docs.csc.fi/computing/dis
 Puhti.
 
 💭 This software is also available as an installation package (`.deb`, `.rpm`)
-for various Linux distributions, but these can not be used on Puhti. Instead,
+for various Linux distributions, but these can not be used on Roihu. Instead,
 we install it from the source code.
 
 ☝🏻 To follow the instructions, first set an environment variable pointing to
