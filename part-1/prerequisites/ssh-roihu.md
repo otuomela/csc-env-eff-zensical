@@ -116,24 +116,40 @@ Find the Terminal on your computer:
 4. Once you've logged in you'll see a greeting starting something like this:
 
    ```text
-   ┌─ Welcome ───────────────────────────────────────────────────────────────────┐
-   │         CSC - Tieteen tietotekniikan keskus - IT Center for Science         │
-   │            ____        __    __  _                                          │
-   │           / __ \__  __/ /_  / /_(_)   - -  -   -                            │
-   │          / /_/ / / / / __ \/ __/ /   - -  -   -                             │
-   │         / ____/ /_/ / / / / /_/ /   - -  -   -                              │
-   │        /_/    \__,_/_/ /_/\__/_/   - -  -   -                               │
-   │                                                                             │
-   │      Roihu.csc.fi - Atos BullSequana X400 - 682 CPU nodes - 80 GPU nodes    │
-   ├─ Contact ───────────────────────────────────────────────────────────────────┤
-   │ Servicedesk : 09-457 2821, servicedesk@csc.fi   Switchboard : 09-457 2001   │
-   ├─ User Guide ────────────────────────────────────────────────────────────────┤
-   │ https://docs.csc.fi                                                         │
-   ├─ Manage my account ─────────────────────────────────────────────────────────┤
-   │ https://my.csc.fi/                                                          │
-   ├─ Software ──────────────────────────────────────────────────────────────────┤
-   ...
-   └─────────────────────────────────────────────────────────────────────────────┘
+   ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓ 
+   ┃         CSC - Tieteen tietotekniikan keskus - IT Center for Science         ┃ 
+   ┃                                                                             ┃ 
+   ┃ ██████▙▄▄▄         ▗▄▟████▙▄▖       ▌      ▌         ▌       ▌         ▌    ┃ 
+   ┃ ███████████▙     ▟████████████▙     █▙▄▁   █▙▄▁      █▙▄▁    █▙▄▁      █▙▄▁ ┃ 
+   ┃ ▔▀▜█   ▀████   ▗█████▀▘  ▝▀█████▖   ████   ████      ████    ████      ████ ┃ 
+   ┃    ▐   ▄████   ▟███▛        ▜███▙   ████   ████▄▄▄▄▄▄████    ████      ████ ┃ 
+   ┃ ███████████▘   ████▌        ▐████   ████   ██████████████    ████      ████ ┃ 
+   ┃ ██████████▙    ▐████▖      ▗████▌   ████   ████▀▀▀▀▀▀████    ████      ████ ┃ 
+   ┃ ████   ████▙    ▀█████▙▄▄▟█████▀    ████   ████      ████    ▀████▄▄▄▟████▛ ┃ 
+   ┃ ▔▀▜█    ▀████▖   ▝▀██████████▀▘     ▔▀▜█   ▔▀▜█      ▔▀▜█     ▝██████████▀  ┃ 
+   ┃    ▐      ▀▀▀▀       ▝▀▀▀▀▘            ▐      ▐         ▐        ▝▀▀▀▀▘     ┃ 
+   ┃                                                                             ┃ 
+   ┃                   Roihu.csc.fi - Bull BullSequana XH3000                    ┃ 
+   ┃              486 AMD Turin CPU nodes - 132 Nvidia GH200 GPU nodes           ┃ 
+   ┃                                                                             ┃ 
+   ┠─── Links ───────────────────────────────────────────────────────────────────┨ 
+   ┃ Documentation:         https://docs.csc.fi                                  ┃ 
+   ┃ Account management:    https://my.csc.fi                                    ┃ 
+   ┃ Getting started guide: https://docs.csc.fi/support/tutorials/roihu          ┃ 
+   ┃ Web interface:         https://roihu.csc.fi                                 ┃ 
+   ┃                                                                             ┃ 
+   ┃                                                                             ┃ 
+   ┠─── Info ────────────────────────────────────────────────────────────────────┨ 
+   ┃  All GPU jobs should be launched from roihu-gpu login node, and             ┃ 
+   ┃  all CPU jobs should be launched from roihu-cpu login node                  ┃ 
+   ┃                                                                             ┃ 
+   ┃  Available modules can be listed with module avail and module spider        ┃ 
+   ┃                                                                             ┃ 
+   ┠─── News ────────────────────────────────────────────────────────────────────┨ 
+   ┃                                                                             ┃ 
+   ... 
+   ┃                                                                             ┃ 
+   ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
    [cscusername@roihu-cpu-login4 ~]$
    ```
 

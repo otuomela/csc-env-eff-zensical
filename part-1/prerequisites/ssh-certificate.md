@@ -17,6 +17,8 @@ permalink: /hands-on/connecting/ssh-certificate.html
 >
 > ‼️ Before starting this tutorial, make sure you have [set up your SSH keys](ssh-keys.md).
 
+An SSH certificate is a proof of a successful two-factor authentication completed at MyCSC. **You should never share your certificate with anyone.** Accompanied with your private SSH key, it can grant anyone an access to your account on Roihu.
+
 ## Option 1: Using the CSC certificate helper tool
 
 💬 CSC has developed a Python helper tool for signing and downloading an SSH certificates, and adding it to your SSH agent.
