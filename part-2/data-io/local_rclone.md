@@ -29,7 +29,7 @@ the whole allas-cli-utils repository locally.
 1. Download `rclone` executable to your own machine. Executables can be found
    from <https://rclone.org/downloads/>.
 2. In case of Windows, if you don’t know which version to choose, try the
-   [Intel/AMD 64 bit version](https://downloads.rclone.org/v1.66.0/rclone-v1.66.0-windows-amd64.zip).
+   [Intel/AMD 64 bit version](https://downloads.rclone.org/v1.74.3/rclone-v1.74.3-windows-amd64.zip).
 
 ## Step 2. Configuring rclone-Swift connection in local machine
 
