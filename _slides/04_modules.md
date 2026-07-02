@@ -34,7 +34,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - You can use `module spider` to search for an application
   - On LUMI you need to first run `module use /appl/local/csc/modulefiles` to see modules installed by CSC
 - Use the software by loading the module: `module load modulename/version`
-  - For example: `module load tykky/0.4.2`
+  - For example: `module load tykky/0.5.2`
 
 # How to use modules
 

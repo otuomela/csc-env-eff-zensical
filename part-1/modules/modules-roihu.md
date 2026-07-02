@@ -124,7 +124,7 @@ permalink: /hands-on/modules/modules-roihu.html
    ```bash
    module purge
    module load gcc/13.4.0
-   module load openmpi/5.0.8
+   module load openmpi/5.0.10
    module load cp2k/2026.1
    module list
    ```
