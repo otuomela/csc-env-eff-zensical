@@ -40,7 +40,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
     - Shared with project members
     - Files older than 180 days will be automatically removed
 - These directories reside on the [Lustre parallel file system](https://docs.csc.fi/computing/lustre/)
-- Default quotas and more info in [disk areas section of Docs CSC](https://docs.csc.fi/computing/disk/)
+- Default quotas and more info in [disk areas section of Docs CSC](https://docs.csc.fi/computing/roihu-disk/)
 
 # Dataset projects in Roihu
 
@@ -50,7 +50,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 - Dataset projects provide acces to shared disk area under (`/projappl/project_name`) but have no computational resources
 
-- Write access to a projdata directory is restricted to a single project, while multiple other projects can be granted read access to this disk area.
+- Write access to a dataset directory is restricted to a single project, while multiple other projects can be granted read access to this disk area.
 
 # Moving data between and to/from supercomputers
 
@@ -87,21 +87,24 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - Needs to be requested in the batch job script
 - You must copy data to and from the fast disk during your batch job since the storage is accessible only during your job allocation
 
-# What are the different disk areas for?
+# What are the different disk areas for? 1/2
 
 - [Allas](https://docs.csc.fi/data/Allas/) -- for data which is not actively used
-- [`$HOME`](https://docs.csc.fi/computing/disk/#home-directory) -- small, for the most important (small) files, personal access only
-- [`/scratch`](https://docs.csc.fi/computing/disk/#scratch-directory) -- main working area, shared with project members, only for data in active use
-- [`/projappl`](https://docs.csc.fi/computing/disk/#projappl-directory) -- not cleaned up, _e.g._ for shared binaries
-- `/projdata` -- dataset projects for sharing data between mutiple projects
-- [Login node `$TMPDIR`](https://docs.csc.fi/computing/disk/#login-nodes) -- compiling, temporary storage, fast I/O
-- [Compute node NVMe `$TMPDIR`](https://docs.csc.fi/computing/disk/#compute-nodes-with-local-ssd-nvme-disks) -- fast I/O in batch jobs
-- SBoF -- fast I/O in batch jobs for large amounts of data
+- [`$HOME`](https://docs.csc.fi/computing/roihu-disk/#home-directory) -- small, for the most important (small) files, personal access only
+- [`/scratch`](https://docs.csc.fi/computing/roihu-disk/#scratch-directory) -- main working area, shared with project members, only for data in active use
+- [`/projappl`](https://docs.csc.fi/computing/roihu-disk/#projappl-directory) -- not cleaned up, _e.g._ for shared binaries
+- [`/dataset`](https://docs.csc.fi/computing/roihu-disk/#dataset-directory) -- dataset projects for sharing data between mutiple projects
+
+# What are the different disk areas for? 2/2
+
+- [Login node `$TMPDIR`](https://docs.csc.fi/computing/roihu-disk/#login-nodes) -- compiling, temporary storage, fast I/O
+- [Compute node NVMe `$TMPDIR`](https://docs.csc.fi/computing/roihu-disk/#compute-nodes) -- fast I/O in batch jobs
+- [SBoF](https://docs.csc.fi/computing/roihu-disk/#disaggregated-storage) -- fast I/O in batch jobs for large amounts of data
 
 # Best practices
 
 - None of the disk areas are automatically backed up by CSC, so make sure to perform regular backups to, _e.g._, Allas
-- Don't run databases or Conda on Lustre (`/projappl`, `/scratch`, `$HOME`, `/projdata`)
+- Don't run databases or Conda on Lustre (`/projappl`, `/scratch`, `$HOME`, `/dataset`)
     - Containerize Conda environments with [Tykky](https://docs.csc.fi/computing/containers/tykky/) and use other CSC services like [Pukki](https://docs.csc.fi/cloud/dbaas/), [cPouta](https://docs.csc.fi/cloud/pouta/) or [Rahti](https://docs.csc.fi/cloud/rahti/) for databases
 - Don't create a lot of files, especially within a single folder
     - If you're creating 10 000+ files, you should probably rethink your workflow
