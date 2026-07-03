@@ -17,7 +17,7 @@ permalink: /hands-on/batch_jobs/serial.html
 
 💬 A batch job consists of two parts: resource requests and the job step(s)
 
-☝🏻 Examples are done on Puhti. If using the web interface, open a login node shell.
+☝🏻 Examples are done on Roihu. If using the web interface, open a login node shell.
 
 ## Serial jobs
 
@@ -77,7 +77,7 @@ permalink: /hands-on/batch_jobs/serial.html
 - for two minutes (`--time=00:02:00`)
 - from the test queue (`--partition=test`)  
 
-💬 We want to run the program `hostname` that will print the name of the Puhti compute node that has been allocated for this particular job
+💬 We want to run the program `hostname` that will print the name of the Roihu compute node that has been allocated for this particular job
 
 💬 In addition, we are running the `sleep` program to keep the job running for an additional 60 seconds, in order to have time to monitor the job
 
