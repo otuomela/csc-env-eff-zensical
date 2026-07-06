@@ -115,7 +115,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
   - [Installation tutorials](https://csc-training.github.io/csc-env-eff/#8-installing-your-own-software)
 - Check the Docs CSC pages:
   - [Installation overview](https://docs.csc.fi/computing/installing/)
-  - Compiling applications in [Puhti](https://docs.csc.fi/computing/compiling-puhti/) and [Mahti](https://docs.csc.fi/computing/compiling-mahti/)
+  - Compiling applications in [Roihu](https://docs.csc.fi/computing/compiling-roihu/)
   - [High-performance libraries](https://docs.csc.fi/computing/hpc-libraries/)
   - [Software installation on LUMI](https://docs.lumi-supercomputer.eu/software/)
 - Lots of information online
