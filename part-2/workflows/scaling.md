@@ -11,11 +11,11 @@ permalink: /hands-on/throughput/scaling.html
 
 # Performing a simple scaling test
 
-> This tutorial is done on **Puhti**, which requires that
+> This tutorial is done on **Roihu**, which requires that
 
 - you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/)
 - your account belongs to a project that has
-  [access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+  [access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 ## Overview
 
@@ -29,7 +29,7 @@ speeds up.
 
 ## Download a sample parallel program
 
-1. Create and enter a suitable scratch directory on Puhti (replace `<project>`
+1. Create and enter a suitable scratch directory on Roihu (replace `<project>`
    with your CSC project, e.g. `project_2001234`):
 
    ```bash
