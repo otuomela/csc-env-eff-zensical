@@ -11,16 +11,10 @@ permalink: /hands-on/throughput/tune_performance.html
 
 # Application performance
 
-> This exercise is done on **Mahti**, which requires that
+> This exercise is done on **Roihu**, which requires that
 
 - you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
-- your account belongs to a project [that has access to the Mahti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
-
-☝🏻 This exercise can in principle also be completed using Puhti. In this case,
-you need to edit the batch script settings below accordingly (e.g. partition,
-runtime limit), and note that Puhti has 40 CPU cores per node, not 128. Read
-more about
-[available batch job partitions on Puhti](https://docs.csc.fi/computing/running/batch-job-partitions/#puhti-partitions).
+- your account belongs to a project [that has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 ## Overview
 
@@ -33,7 +27,7 @@ uses hybrid MPI/OpenMP parallelization.
 
 ## Download a sample input file
 
-1. Create and enter a suitable scratch directory on Mahti (replace `<project>`
+1. Create and enter a suitable scratch directory on Roihu (replace `<project>`
    with your CSC project, e.g. `project_2001234`):
 
    ```bash
@@ -63,17 +57,13 @@ example simulation.
    #SBATCH --partition=medium
    #SBATCH --account=<project>    # replace <project> with your CSC project, e.g. project_2001234
    #SBATCH --nodes=<N>            # replace <N> with the number of nodes to run on
-   #SBATCH --ntasks-per-node=128  # Mahti has 128 CPU cores per node, Puhti has 40
+   #SBATCH --ntasks-per-node=384  # Roihu has 384 CPU cores per node
    #SBATCH --time=00:10:00
 
    module purge
-   module load gcc/9.4.0 openmpi/4.1.2 cp2k/2023.2
+   module load gcc/15.2.0 openmpi/5.0.10 cp2k/2026.1
    srun cp2k.psmp -i cp2k.inp
    ```
-
-   ☝🏻 If you run this exercise on Puhti, please replace modules `gcc/9.4.0` and
-   `openmpi/4.1.2` with `intel-oneapi-compilers-classic/2021.6.0` and
-   `intel-oneapi-mpi/2021.6.0`.
 
 2. Submit the batch script:
    
@@ -97,7 +87,7 @@ example simulation.
    |1                |                  | -                               |                 |
    |2                |                  | *t*<sub>1</sub>/*t*<sub>2</sub> |                 |
    |4                |                  | *t*<sub>2</sub>/*t*<sub>4</sub> |                 |
-   |8                |                  | *t*<sub>4</sub>/*t*<sub>8</sub> |                 |
+   |6                |                  | *t*<sub>4</sub>/*t*<sub>6</sub> |                 |
 
 ☝🏻 Remember that the speedup should be *at least* 1.5x when you double the
 number of cores! This is important to ensure that the CPU resources are used
@@ -114,9 +104,9 @@ ratio between the number of tasks and threads varies for each program and job
 input and should be tested.
 
 ☝🏻 To run multiple threads, one needs to set `--cpus-per-task`. The default
-is one CPU (thread) per task. To use all 128 physical cores in a Mahti node,
+is one CPU (thread) per task. To use all 384 physical cores in a Roihu node,
 the value of `--ntasks-per-node` multiplied by `--cpus-per-task` should equal
-128  (40 on Puhti). Most applications also require setting the `OMP_NUM_THREADS`
+384. Most applications also require setting the `OMP_NUM_THREADS`
 environment variable to be equal to the number of threads per task.
 
 1. Copy the following script into a file `job.sh` using, e.g., `nano`:
@@ -126,20 +116,16 @@ environment variable to be equal to the number of threads per task.
    #SBATCH --partition=medium
    #SBATCH --account=<project>   # replace <project> with your CSC project, e.g. project_2001234
    #SBATCH --nodes=<N>           # replace <N> by the optimum number of nodes you got in the last part
-   #SBATCH --ntasks-per-node=128
+   #SBATCH --ntasks-per-node=384
    #SBATCH --cpus-per-task=1
    #SBATCH --time=00:10:00
 
    export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK}
 
    module purge
-   module load gcc/9.4.0 openmpi/4.1.2 cp2k/2023.2
+   module load gcc/15.2.0 openmpi/5.0.10 cp2k/2026.1
    srun cp2k.psmp -i cp2k.inp
    ```
-
-   ☝🏻 If you run this exercise on Puhti, please replace modules `gcc/9.4.0` and
-   `openmpi/4.1.2` with `intel-oneapi-compilers-classic/2021.6.0` and
-   `intel-oneapi-mpi/2021.6.0`.
 
 2. Submit the job using different combinations of `--ntasks-per-node` and
    `--cpus-per-task`.
@@ -152,11 +138,12 @@ environment variable to be equal to the number of threads per task.
 
    | MPI tasks per node  | OpenMP threads per task | Elapsed time (s) | Memory utilized (GB) | Slurm job ID |
    |:-------------------:|:-----------------------:|:----------------:|:--------------------:|:------------:|
-   |128                  |                         |                  |                      |              |
-   |64                   |                         |                  |                      |              |
-   |32                   |                         |                  |                      |              |
-   |16                   |                         |                  |                      |              |
-   |8                    |                         |                  |                      |              |
+   |384                  |                         |                  |                      |              |
+   |192                  |                         |                  |                      |              |
+   |96                   |                         |                  |                      |              |
+   |48                   |                         |                  |                      |              |
+   |24                   |                         |                  |                      |              |
+   |12                   |                         |                  |                      |              |
 
 💭 Were you able to run the calculation faster by launching multiple OpenMP
 threads per MPI task? What is the optimum ratio?
