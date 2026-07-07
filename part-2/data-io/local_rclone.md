@@ -22,6 +22,11 @@ using `rclone`, which is available for all common operating systems including
 Windows and macOS. Note that in macOS and Linux machines you can also install
 the whole allas-cli-utils repository locally.
 
+‼️ Unlike previous supercomputers, Roihu defaults to **S3** instead of Swift.
+This exercise sets up a Swift-based connection for rclone, since Swift is well
+suited for short interactive sessions. S3 sessions are persistent and the connection
+details are stored in plaintext on your computer.
+
 ## Step 1. Installing rclone
 
 ☝🏻 If you already have `rclone` command available, skip to [Step 2](#step-2-configuring-rclone-swift-connection-in-local-machine).
@@ -70,7 +75,7 @@ generate a list of commands to set the authentication:
    Roihu:
    ```bash
    module load allas
-   allas-conf --show-powershell
+   allas-conf --swift --show-powershell
    ```
 2. Copy the last four lines, starting with `$Env:`, to the local PowerShell and
    execute them. Then, test the `rclone` connection with command:
@@ -87,7 +92,7 @@ generate a list of commands to set the authentication:
    following commands in Roihu:
    ```bash
    module load allas
-   allas-conf --show-shell
+   allas-conf --swift --show-shell
    ```
 2. Copy the last four lines, starting with `export`, to the local shell session
    and execute them. Then, test the `rclone` connection with command:
@@ -135,3 +140,4 @@ amount of data (less than 1 GiB).
 ## More information
 
 💡 Docs CSC: [Local `rclone` configuration for Allas](https://docs.csc.fi/data/Allas/using_allas/rclone_local/)
+💡 Docs CSC: [Allas in Roihu](https://docs.csc.fi/computing/allas-in-roihu/)
