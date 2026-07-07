@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Running Gaussian with sbatch-hq
+title: Running Gaussian with HyperQueue
 parent: 11. How to speed up jobs
 grand_parent: Part 2
 nav_order: 4
@@ -9,12 +9,12 @@ has_toc: false
 permalink: /hands-on/throughput/gaussian_hq.html
 ---
 
-# Using HyperQueue for farming Gaussian jobs on Puhti
+# Using HyperQueue for farming Gaussian jobs on Roihu
 
-> This tutorial is done on **Puhti**, which requires that:
+> This tutorial is done on **Roihu**, which requires that:
 
 - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
-- Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+- Your account belongs to a project [that has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 > This tutorial is **optional** as it requires that your account belongs to the
 Gaussian users group. See [Docs CSC](https://docs.csc.fi/apps/gaussian/#license)
@@ -34,21 +34,21 @@ to know how they differ energetically.
   formula.
 - The computational cost of each of the 200 calculations is expected to be
   comparable.
-- We will use the `sbatch-hq` wrapper which allows easy execution of many
-  commands without needing to write a batch script.
 
 ### The workflow of this exercise
 
 1. Download 200 sample molecular structures.
 2. Convert these structures to Gaussian format.
 3. Construct the corresponding Gaussian input files.
-4. Build a `sbatch-hq` command list to run the jobs.
-5. Submit the job using the `sbatch-hq` wrapper.
+4. Build a command list, and a small script that picks one
+   command per HyperQueue task.
+5. Write and submit a batch script that starts the HyperQueue
+   server and worker(s) that runs the task array.
 6. Analyze the results.
 
 ## Download 200 sample 3D molecular structures
 
-1. Create and enter a suitable scratch directory on Puhti (replace `<project>`
+1. Create and enter a suitable scratch directory on Roihu (replace `<project>`
    with your CSC project, e.g. `project_2001234`):
 
    ```bash
@@ -86,7 +86,7 @@ electronic structure calculations.
    structures to Gaussian format:
 
    ```bash
-   module load openbabel
+   module load gcc/15.2.0 openmpi/5.0.10 openbabel/3.2.0
    obabel *.mol -ocom -m
    ```
 
@@ -151,37 +151,82 @@ HyperQueue.
    mkdir -p output
    ```
 
-### Run the HyperQueue task array with `sbatch-hq`
+5. Write a small executable script, `run_task.sh`, that each HyperQueue task
+   will run. It picks out and executes the single line of `commandlist`
+   corresponding to its own task ID, available to the task as the `$HQ_TASK_ID`
+   environment variable:
+
+   ```bash
+   #!/bin/bash
+   # Pick the line matching this task's HyperQueue task ID
+   line=$(sed -n "${HQ_TASK_ID}p" commandlist)
+   eval "${line}"
+   ```
+
+### Run the HyperQueue task array
 
 💬 Running a HyperQueue task array is similar to running a Slurm array job.
 However, HyperQueue packs the individual tasks within a single Slurm job step
 and is thus much more efficient, especially if there are a huge number of
-tasks. In this case, submitting the job is also very easy since we can use the
-`sbatch-hq` wrapper to avoid having to create a batch script by hand.
+tasks. 
 
-1. Submit the list of Gaussian commands using `sbatch-hq`:
+1. Create a batch script called `batch.sh`:
 
    ```bash
-   module load sbatch-hq gaussian
-   sbatch-hq --cores=4 --nodes=1 --account=<project> --partition=small --time=00:15:00 commandlist
+   #!/bin/bash
+   #SBATCH --account=<project>
+   #SBATCH --partition=small
+   #SBATCH --nodes=1
+   #SBATCH --ntasks-per-node=1
+   #SBATCH --cpus-per-task=40
+   #SBATCH --mem-per-cpu=500
+   #SBATCH --time=00:15:00
+
+   module load hyperqueue gaussian/G16RevC.02
+
+   # Server files go in a job-specific directory. One server per job to avoid mixing computations
+   export HQ_SERVER_DIR="$PWD/hq-server/$SLURM_JOB_ID"
+   mkdir -p "$HQ_SERVER_DIR"
+
+   # Start the server in the background and wait until it is up
+   hq server start &
+   until hq job list &> /dev/null ; do sleep 1 ; done
+
+   # Start one worker with srun
+   srun --overlap --cpu-bind=none --mpi=none hq worker start \
+      --manager slurm \
+      --on-server-lost finish-running \
+      --cpus="$SLURM_CPUS_PER_TASK" &
+   hq worker wait "$SLURM_NTASKS"
+
+   # Submit the 200 Gaussian calculations as a task array. Each task reserves
+   # 4 cores, matching the %NProcShared=4 setting in the Gaussian input files,
+   # so up to 10 tasks run concurrently on the 40 reserved cores
+   hq submit --stdout=none --stderr=none --cpus=4 --array=1-200 ./run_task.sh
+   hq job wait all
+
+   # Shut down the worker and server to avoid a false error from Slurm
+   hq worker stop all
+   hq server stop
    ```
 
-💬 The `sbatch-hq` command creates and submits a batch script that starts the
-HyperQueue server and worker(s) and submits the task array with inputs read
-from the `commandlist` file. The following resources are requested:
+💬 The batch script requests the following resources:
 
-- One Puhti node, `--nodes=1`, i.e. 40 cores in total
-- 4 cores per command, `--cores=4`, matching the specification in each Gaussian
-  input file
+- 40 cores, `--cpus-per-task=40`, on the shared `small` partition
+  (which allows up to 384 CPUs per job)
 - Computing time for 15 minutes, `--time=00:15:00`
-- Billing project `--account <project>` (replace `<project>` accordingly)
-- The `small` partition
+- Billing project `--account=<project>` (replace `<project>` accordingly)
 
-💬 Given that 40 cores are requested for running 200 tasks, each using 4 cores,
-10 tasks are able to run concurrently. The number of commands in the file can
-(usually should) be much larger than the number of commands that can fit
-running simultaneously on the reserved resources to avoid creating too short
-Slurm jobs.
+💬 Given that 40 cores are reserved and each Gaussian task uses 4 cores
+(`--cpus=4` in the `hq submit` line, matching `%NProcShared=4`), 10 tasks
+are able to run concurrently. This means that no reserved cores sit idle 
+in the final wave.
+
+2. Submit the batch script:
+
+   ```bash
+   sbatch batch.sh
+   ```
 
 ## Monitor the job
 
@@ -201,7 +246,7 @@ Slurm jobs.
    HyperQueue server and use the `hq` commands:
 
    ```bash
-   export HQ_SERVER_DIR=$PWD/hq-server-<slurmjobid>   # replace <slurmjobid> with the actual id of your Slurm job
+   export HQ_SERVER_DIR=$PWD/hq-server/<slurmjobid>   # replace <slurmjobid> with the actual id of your Slurm job
    hq job info 1
    ```
 
