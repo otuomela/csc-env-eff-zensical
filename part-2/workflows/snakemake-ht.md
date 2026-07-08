@@ -96,7 +96,7 @@ decrease load on the Slurm batch job scheduler.
    #SBATCH --time=00:10:00
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=1
-   #SBATCH --cpus-per-task=384
+   #SBATCH --cpus-per-task=40
    #SBATCH --mem-per-cpu=2G
    
    module load hyperqueue/0.25.1
@@ -114,7 +114,7 @@ decrease load on the Slurm batch job scheduler.
    srun --exact --cpu-bind=none --mpi=none hq worker start --cpus=${SLURM_CPUS_PER_TASK} &
    hq worker wait "${SLURM_NTASKS}"
    
-   snakemake -s Snakefile --jobs 1 --use-singularity --executor cluster-generic --cluster-generic-submit-cmd "hq submit --cpus 4"
+   snakemake -s Snakefile --jobs 1 --use-singularity --executor cluster-generic --cluster-generic-submit-cmd "hq submit --cpus 5"
    
    # For Snakemake versions 7.x.x, use command:
    # snakemake -s Snakefile --jobs 1 --use-singularity --cluster "hq submit --cpus 4"
@@ -135,7 +135,7 @@ meta-scheduler.
    more jobs using the `snakemake` command as:
 
    ```bash
-   snakemake -s Snakefile --jobs 96 --use-singularity --executor cluster-generic --cluster-generic-submit-cmd "hq submit --cpus 4"
+   snakemake -s Snakefile --jobs 8 --use-singularity --executor cluster-generic --cluster-generic-submit-cmd "hq submit --cpus 5"
    ``` 
 
 2. Replace the above modification in the `snakemake_hq_roihu.sh` batch script
@@ -149,9 +149,9 @@ meta-scheduler.
 ☝🏻 Note that just increasing the value of `--jobs` will not automatically make
 all those jobs run at the same time. This option of the `snakemake` command is
 just a maximum limit for the number of concurrent jobs. Jobs will eventually
-run when resources are available. In this case, we run 96 concurrent jobs, each
-using 4 CPU cores to match the reserved 384 CPU cores (one Roihu node) in the
-batch script. In practice, it is also a good idea to dedicate a few cores
+run when resources are available. In this case, we run 8 concurrent jobs, each
+using 5 CPU cores to match the reserved 40 CPU cores in the batch script.
+In practice, it is also a good idea to dedicate a few cores
 for the workflow manager itself.
 
 💡 It is also possible to use more than one node to achieve even higher
@@ -199,7 +199,7 @@ You can prevent the creation of such task-specific folders by setting `stdout`
 and `stderr` HyperQueue flags to `none` as shown below:
 
 ```bash
-snakemake -s Snakefile -j 96 --use-singularity --executor cluster-generic --cluster-generic-submit-cmd "hq submit --stdout=none --stderr=none --cpus 4"
+snakemake -s Snakefile -j 8 --use-singularity --executor cluster-generic --cluster-generic-submit-cmd "hq submit --stdout=none --stderr=none --cpus 5"
 ```
 
 ## More Information

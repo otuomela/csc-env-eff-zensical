@@ -84,7 +84,7 @@ looping `srun` or `sbatch` commands.
    #SBATCH --account=<project>  # replace <project> with your CSC project, e.g. project_2001234
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=1
-   #SBATCH --cpus-per-task=384
+   #SBATCH --cpus-per-task=40
    #SBATCH --time=00:10:00
 
    # Required by openbabel
