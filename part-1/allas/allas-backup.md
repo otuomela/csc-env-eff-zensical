@@ -9,12 +9,12 @@ has_toc: false
 permalink: /hands-on/allas/tutorial_allas-file-backup.html
 ---
 
-# Backing up files to Allas from Puhti
+# Backing up files to Allas from Roihu
 
 ## Preparations (if not done already)
 
-1. Login to `puhti.csc.fi` (open a login node shell if using the web interface)
-2. In Puhti, check your environment with the command:
+1. Login to `roihu-cpu.csc.fi` (open a login node shell if using the web interface)
+2. In Roihu, check your environment with the command:
 
    ```bash
    csc-workspaces
@@ -39,7 +39,7 @@ permalink: /hands-on/allas/tutorial_allas-file-backup.html
 
    ```bash
    module load allas
-   allas-conf 
+   allas-conf --swift # allas-backup currently works only with the swift protocol
    ```
 
    💡 It might take a while to run `module load allas`.
@@ -72,7 +72,7 @@ permalink: /hands-on/allas/tutorial_allas-file-backup.html
    allas-backup files <snapshot_id>      # replace the <snapshot_id>
    ```
 
-7. Restore the files from your backup to Puhti:
+7. Restore the files from your backup to Roihu:
 
    ```bash
    allas-backup restore <snapshot_id>      # replace the <snapshot_id>

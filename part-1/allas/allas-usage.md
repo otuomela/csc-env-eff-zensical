@@ -18,16 +18,16 @@ permalink: /hands-on/allas/tutorial_allas-file-transfer.html
 3. Create a new bucket by pressing the *+Create Bucket* button.
    - Name it as `<id>-<username>`, in which `<id>` is the number of your project and `<username>` is your CSC username. Note that you cannot use a bucket name that already exists!
 4. Open the created bucket by clicking it.
-5. Upload one file from your computer into the bucket (any file should do, but prefer a file that you can open in Puhti, e.g. a text file). Upload process starts from the *Upload* button in the upper right corner of the interface.
+5. Upload one file from your computer into the bucket (any file should do, but prefer a file that you can open in Roihu, e.g. a text file). Upload process starts from the *Upload* button in the upper right corner of the interface.
 
 💭 During the exercises, you can use this web interface to get another view to your buckets and objects in Allas.
 
-## Accessing Allas from Puhti command-line
+## Accessing Allas from Roihu command-line
 
 ### Preparations (if not done already)
 
-1. Login to `puhti.csc.fi` (open a login node shell if using the web interface)
-2. In Puhti, check your environment with the command
+1. Login to `roihu-cpu.csc.fi` (open a login node shell if using the web interface)
+2. In Roihu, check your environment with the command
 
    ```bash
    csc-workspaces
@@ -71,14 +71,14 @@ permalink: /hands-on/allas/tutorial_allas-file-transfer.html
    - With `rclone`:
 
      ```bash
-     rclone lsd allas:
-     rclone ls allas:<id>-$USER
-     rclone lsl allas:<id>-$USER
-     rclone lsf allas:<id>-$USER
-     rclone cat allas:<id>-$USER/<filename>
+     rclone lsd s3allas:
+     rclone ls s3allas:<id>-$USER
+     rclone lsl s3allas:<id>-$USER
+     rclone lsf s3allas:<id>-$USER
+     rclone cat s3allas:<id>-$USER/<filename>
      ```
 
-4. Download to Puhti the file that you just uploaded from your local computer to Allas. This can be done in two ways:
+4. Download to Roihu the file that you just uploaded from your local computer to Allas. This can be done in two ways:
 
    - With `a-commands`:
 
@@ -89,7 +89,7 @@ permalink: /hands-on/allas/tutorial_allas-file-transfer.html
    - With `rclone`:
 
      ```bash
-     rclone copy allas:<id>-$USER/<filename> ./    # replace <id> with your CSC project number, e.g. 2001234, and <filename> with the file you uploaded
+     rclone copy s3allas:<id>-$USER/<filename> ./    # replace <id> with your CSC project number, e.g. 2001234, and <filename> with the file you uploaded
      ```
 
 5. Open, edit and rename the file so that you can distinguish it from the original one.
@@ -108,10 +108,10 @@ permalink: /hands-on/allas/tutorial_allas-file-transfer.html
    - With `rclone`:
 
      ```bash
-     rclone copy <newfilename> allas:<id>_$USER/   # replace <newfilename> and <id> accordingly
+     rclone copy <newfilename> s3allas:<id>_$USER/   # replace <newfilename> and <id> accordingly
      ```
 
-7. Check that the file in Puhti indeed has a counterpart in Allas:
+7. Check that the file in Roihu indeed has a counterpart in Allas:
 
    ```bash
    a-list <id>-$USER <newfilename>   # replace <id> and <newfilename>
@@ -121,7 +121,7 @@ permalink: /hands-on/allas/tutorial_allas-file-transfer.html
 
 ### Clean up
 
-1. Delete the local file from Puhti:
+1. Delete the local file from Roihu:
 
    ```bash
    rm <filename>             # replace <filename>
