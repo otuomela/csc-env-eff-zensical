@@ -48,7 +48,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - Naturally, read the manual/instructions
 - Check if there's a page about it in [Docs CSC](https://docs.csc.fi/apps/)
    - If there is, use the batch script example from _there_
-   - Otherwise, use a general template
+   - Otherwise, use a [general template](https://docs.csc.fi/computing/running/example-job-scripts-roihu/)
 - Try first running interactively (**not** on a login node)
    - Perhaps it is easier to find the correct command line options
    - Use the `top` command to get rough estimate of memory use, _etc_.
