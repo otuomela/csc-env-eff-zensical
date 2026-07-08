@@ -9,11 +9,9 @@ has_toc: false
 
 # 4. Module system
 
-## [4.1 Slides](https://a3s.fi/CSC_training/04_modules.html)
-
-## [4.2 Video: Modules and preinstalled software](https://video.csc.fi/media/t/0_w9iswgcj/725892)
+## [4.1 Slides](https://a3s.fi/CSC_training/roihu/04_modules.html)
 
 ## 4.2 Tutorials and exercises
 
-1. [Essential tutorial - Modules in Puhti]({{ site.baseurl }}{% link part-1/modules/modules-puhti.md %})
-2. [Advanced tutorial - Biosoftware in Puhti]({{ site.baseurl }}{% link part-1/modules/modules-bio.md %})
+1. [Essential tutorial - Modules in Roihu]({{ site.baseurl }}{% link part-1/modules/modules-roihu.md %})
+2. [Advanced tutorial - Biosoftware in Roihu]({{ site.baseurl }}{% link part-1/modules/modules-bio.md %})
