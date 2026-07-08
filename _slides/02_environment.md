@@ -47,16 +47,13 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 # Available HPC and cloud resources
 
-- [Puhti](https://docs.csc.fi/computing/systems-puhti/) is the general-purpose supercomputer ☑️
+- [Roihu](https://docs.csc.fi/computing/systems-roihu/) is CSC's new national supercomputer, replaces Puhti and Mahti ☑️
+- [Puhti](https://docs.csc.fi/computing/systems-puhti/) is the general-purpose supercomputer
 - [Mahti](https://docs.csc.fi/computing/systems-mahti/) is the massively parallel flagship supercomputer
 - [LUMI](https://docs.lumi-supercomputer.eu/hardware/) is a European pre-exascale supercomputer operated by CSC
 - [Pouta](https://docs.csc.fi/cloud/pouta/pouta-what-is/) provides cloud resources via OpenStack (IaaS)
 - [Rahti](https://docs.csc.fi/cloud/rahti/rahti-what-is/) provides containers via OKD (PaaS)
 - [Allas](https://docs.csc.fi/data/Allas/) provides object storage for all services
-
-Coming early 2026:
-
-- [Roihu](https://docs.csc.fi/computing/systems-roihu/) is CSC's next national supercomputer, will replace Puhti and Mahti
 
 # Which supercomputer to use? 
 
@@ -70,17 +67,17 @@ Coming early 2026:
   - Max runtime, partitions (queues), provisioning policy (Per core/per node/other)
   - Each system is different, so check the documentation
 
-# Quick and dirty comparison of Puhti, Mahti and LUMI
+# Quick and dirty comparison of Roihu and LUMI
 
-|                             | [Puhti](https://docs.csc.fi/computing/systems-puhti/)  | [Mahti](https://docs.csc.fi/computing/systems-mahti/)    | [LUMI](https://docs.lumi-supercomputer.eu/hardware/) |
-| ----------------------------------- |------- | ----     | ---- |
-| Pre-installed apps | [120+](https://docs.csc.fi/apps/by_system/#puhti) | [40+](https://docs.csc.fi/apps/by_system/#mahti) | [See here](https://docs.lumi-supercomputer.eu/software/)
-| Cores per node              | 40     | 128       | 128
-| Job size (min-max cores)    | 1-1040 | 1-25600 | 1-65536
-| Memory per node (GiB)       | 192-1536 | 256     | 256-1024
-| GPU cards          | 320 (V100) | 96 (A100) | 11912 (MI250X)
-| Nodes with NVMe (CPU+GPU) | 106+80   | 60+24  | 8+8
+|                             | [Roihu](https://docs.csc.fi/computing/systems-roihu/)  | [LUMI](https://docs.lumi-supercomputer.eu/hardware/) |
+| ----------------------------------- |------- | ---- |
+| Pre-installed apps | [50+](https://docs.csc.fi/apps/by_system/#roihu) | [See here](https://docs.lumi-supercomputer.eu/software/)
+| Cores per node              | 64-384 | 128
+| Job size (min-max cores)    | 1-23040    | 1-65536
+| Memory per node (GiB)       | 384-6144 | 256-1024
+| GPU cards          | 528 (GH200) | 11912 (MI250X)
+| Nodes with NVMe (CPU+GPU) | 486+132  | 8+8
 
-<small>
+<!--<small>
 In short: Mahti is for large parallel jobs, prepare to install and optimize your code. Still, one Puhti *node* is 10x your laptop. LUMI is like Mahti + massive AMD GPU capacity
-</small>
+</small>-->
