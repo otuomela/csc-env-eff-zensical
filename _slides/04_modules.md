@@ -5,7 +5,7 @@ lang: en
 
 # Modules and pre-installed software {.title}
 
-The module system and how to use it on CSC supercomputers.
+The module system and how to use it on Roihu.
 The same information can be found in [the module section of Docs CSC](https://docs.csc.fi/computing/modules/).
 
 <div class="column">
@@ -27,21 +27,21 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    -  Load libraries, adjust paths, set environment variables
 - CSC uses [*Lmod*](https://lmod.readthedocs.io/en/latest/) environment modules
 
-# How to access pre-installed software on CSC supercomputers
+# How to access pre-installed software on Roihu
 
 - You can check the available applications and their respective modules in the [application list](https://docs.csc.fi/apps/)
    - Each application page in Docs CSC contains information on basic usage
 - You can use `module spider` to search for an application
   - On LUMI you need to first run `module use /appl/local/csc/modulefiles` to see modules installed by CSC
-- Use the software by loading the module: `module load modulename`
-   - For example: `module load gromacs-env`
+- Use the software by loading the module: `module load modulename/version`
+  - For example: `module load tykky/0.5.2`
 
 # How to use modules
 
 - The general syntax is simple: `module command modulename`
    - [List of the most common commands](https://docs.csc.fi/computing/modules/#module-commands-table)
 - These modules are used both in *interactive sessions* and *batch jobs*
-   - Include `module purge` and `module load modulename` in your batch scripts to always get the same modules in consecutive jobs
+   - Include `module purge` and `module load modulename/version` in your batch scripts to always get the same modules in consecutive jobs
 - You can't just load all the modules because of possibly conflicting dependencies
 
 # Useful commands for the module environment
@@ -57,19 +57,26 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 - Some modules contain software that have a graphical user interface
    - For example, the chemistry visualization software [VMD](https://docs.csc.fi/apps/vmd/)
-   - Use the [Puhti](https://www.puhti.csc.fi) or [Mahti web interface](https://www.mahti.csc.fi), or [another method to open the GUI](https://docs.csc.fi/computing/connecting/#graphical-connection)
+   - Use the [Roihu web interface](https://www.roihu.csc.fi), or [another method to open the GUI](https://docs.csc.fi/computing/connecting/#graphical-connection)
 - Some modules contain software that only provide a command-line interface
-   - For example, the [OpenBabel module](https://docs.csc.fi/apps/openbabel/)
-- A module might contain only one program (*e.g.* `gromacs-env`), while some provide a collection of applications (*e.g.* Python or R packages)
-   - For example, [Geoconda](https://docs.csc.fi/apps/geoconda/) and [Python Data](https://docs.csc.fi/apps/python-data/)
+   - For example, the [`gromacs` module](https://docs.csc.fi/apps/gromacs/)
+- A module might contain only one program (*e.g.* `gromacs`), while some provide a collection of applications
+   - For example, [`python-data`](https://docs.csc.fi/apps/python-data/) or [`r-env`](https://docs.csc.fi/apps/r-env/)
+
+# Separate modules for Roihu-CPU and Roihu-GPU
+
+- Some modules are only available for Roihu-CPU, while others are only for Roihu-GPU
+  - In practice, `module spider` will show different modules whether you're connected to `roihu-cpu.csc.fi` or `roihu-gpu.csc.fi`
+- Reason: The CPU and GPU nodes have completely different *architectures*
+  - Running a program built on Roihu-GPU on the CPU nodes (and vice versa) will not work!
 
 # Conda, Python and R packages
 
 - Some pre-installed software are distributed through the [Conda](https://docs.conda.io/en/latest/) package management tool
    - Do not install Conda environments directly on the Lustre parallel file system, [containerize](https://docs.csc.fi/support/tutorials/singularity-scratch/) them instead using *e.g.* [Tykky](https://docs.csc.fi/computing/containers/tykky/)
    - See the [usage policy](https://docs.csc.fi/computing/usage-policy/#conda-installations) for further details
-- Pre-installed Python packages are available in [Python-related modules](https://docs.csc.fi/apps/python/)
-   - Check Docs CSC for the available packages and usage instructions 
+- Pre-installed Python packages are available in [`python-*` modules](https://docs.csc.fi/apps/python/)
+   - Check Docs CSC for the available packages and usage instructions
    - It is not possible to load multiple modules with Python packages at once
    - `pip list` shows a [list of packages](https://pip.pypa.io/en/stable/cli/pip_list/) installed in the current environment
 - Instructions on [how to check installed R libraries](https://docs.csc.fi/apps/r-env/#r-package-installations)
@@ -78,16 +85,18 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 # Customizing your own environment
 
 - If you "always" use certain modules, it is possible to load them in your `.bashrc`, but **we do not recommend this**
-   - This causes the modules to be always loaded, also in batch jobs which may cause hard-to-spot issues
-   - If you already did this, see the [`csc-env`](https://docs.csc.fi/support/tutorials/using_csc_env/) command
+   - This causes the modules to be always loaded, also in batch jobs, which may cause hard-to-spot issues
+   - Remember also that Roihu-CPU and Roihu-GPU do not have the same modules available
 - If it feels cumbersome to run multiple `module load modulenames` at the start of each session, you can define an *alias* for these in your `.bashrc`
-   - Add this line to your `.bashrc`: `alias mods="module load modulenames"`
-   - Now you can load all those modules easily with `mods` (after sourcing your `.bashrc` or logging out and in again)
+   - For example: `alias gpumods="module load modulenames"`
+   - Now you can load the modules you need on Roihu-GPU easily with `gpumods` (after logging out and in again, or `source ~/.bashrc`)
 
 # [Advanced module use](https://docs.csc.fi/computing/modules/#advanced-topics)
 
 - You can save your current set of modules with `module save filename` and load it later with `module restore filename`
 - You can also write your own module files:
-    1. Add them to your home directory (`$HOME/modulefiles`)
-    2. Add this path to the module search path (`module use $HOME/modulefiles`)
+    1. Add them to your home directory, but keep CPU and GPU modules separate
+       - `$HOME/modulefiles/cpu` and `$HOME/modulefiles/gpu`
+    2. Add the appropriate path to the module search path
+       - For example, run `module use $HOME/modulefiles/cpu` to be able to find and load your own Roihu-CPU modules
 - To see the parameters of a module file, use the command `module show modulename`
