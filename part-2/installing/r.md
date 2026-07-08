@@ -9,13 +9,13 @@ has_toc: false
 permalink: /hands-on/installing/installing_hands-on_r.html
 ---
 
-# R on Puhti and package installations
+# R on Roihu and package installations
 
-> This tutorial is done on **Puhti**, which requires that:
+> This tutorial is done on **Roihu**, which requires that:
   - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
-  - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+  - Your account belongs to a project [that has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
-💬 A pre-installed R environment is available on Puhti.
+💬 A pre-installed R environment is available on Roihu.
 
 1. To check available module versions, run:
 
@@ -23,10 +23,10 @@ permalink: /hands-on/installing/installing_hands-on_r.html
     module spider r-env
     ```
 
-2. There are several ways to use R in `r-env` on Puhti:
+2. There are several ways to use R in `r-env` on Roihu:
    - Interactive jobs on a compute node, using either the R console or RStudio  
      💡 The easiest way to launch RStudio is to use the Puhti web interface at
-     [www.puhti.csc.fi](https://www.puhti.csc.fi/)
+     [www.roihu.csc.fi](https://www.roihu.csc.fi/)
    - Non-interactive batch jobs
    - Interactively on the login node, using the R console (**only** for moving
      data, checking package availability, installing packages)
@@ -40,7 +40,7 @@ permalink: /hands-on/installing/installing_hands-on_r.html
    ```
 
 💡 See the [r-env documentation](https://docs.csc.fi/apps/r-env/) for further
-instructions on different ways to launch R on Puhti.
+instructions on different ways to launch R on Roihu.
 
 💬 It is also possible to
 [install R packages yourself](https://docs.csc.fi/apps/r-env/#r-package-installations).
@@ -50,7 +50,7 @@ module contains more than 1300 R packages! The easiest way to check if a
 package is available is trying to load it with the command
 `library(packagename)`.
 
-## How to install an R package on Puhti
+## How to install an R package on Roihu
 
 - Note that your own package installations are:
   - project specific
@@ -58,7 +58,7 @@ package is available is trying to load it with the command
   - located in the `/projappl` directory of your project
 
 1. Create a folder for your R packages in `/projappl` (open a login node shell
-   in the [Puhti web interface](https://www.puhti.csc.fi/) or log in to Puhti
+   in the [Roihu web interface](https://www.roihu.csc.fi/) or log in to Roihu
    with SSH):
 
    ``` bash
@@ -67,7 +67,7 @@ package is available is trying to load it with the command
    ```
 
 2. Start an R session:
-   1. Launch RStudio in the [Puhti web interface](https://www.puhti.csc.fi/)
+   1. Launch RStudio in the [Roihu web interface](https://www.roihu.csc.fi/)
    2. ... or launch the R console in an interactive shell session:
       ```bash
       sinteractive 
@@ -118,5 +118,5 @@ for a module-wide installation for all users by contacting
 
 ## More information
 
-💡 Docs CSC: Read more about using R on Puhti in our
+💡 Docs CSC: Read more about using R on Roihu in our
 [r-env documentation](https://docs.csc.fi/apps/r-env/).

@@ -9,7 +9,7 @@ has_toc: false
 permalink: /hands-on/installing/installing_hands-on_java.html
 ---
 
-# Installing Java applications (on Puhti)
+# Installing Java applications
 
 💬 Java applications do not typically require special installation.
 
@@ -24,12 +24,9 @@ You can check the available modules with the command:
 module spider java
 ```
 
-💬 Despite their name, modules named `biojava` are just normal Java
-installations, which can be used with any software, not just bio applications.
-
-☝🏻 Some java applications fail to run on the login nodes. Try running them
+☝🏻 Some Java applications fail to run on the login nodes. Try running them
 using `sinteractive` instead (or by opening a compute node shell in the
-[Puhti web interface](https://www.puhti.csc.fi)).
+[Roihu web interface](https://www.roihu.csc.fi)).
 
 ‼️ Naturally, computationally heavy tasks should be never ran on the login
 nodes.
@@ -85,20 +82,3 @@ export _JAVA_OPTIONS=-Djava.io.tmpdir=/path/to/tmp  # replace with the actual pa
    java -jar /projappl/<project>/$USER/abra2/abra2-2.24.jar  # replace <project> with your CSC project, e.g. project_2001234, and ensure that the path corresponds to the true path
    ```
 
-## Example 2: Java application with a shell wrapper script
-
-💬 Some Java applications come with shell scripts that are used to launch them
-instead of calling Java directly. See the documentation of each software for
-details.
-
-💡 One example of such an application is BEAST:
-
-```bash
-sinteractive --account <project>  # replace <project> with your CSC project, e.g. project_2001234
-module load beast
-beast -help
-```
-
-☝🏻 BEAST will fail to run on the login nodes. Try running it in an interactive
-session instead (using `sinteractive` or a compute node shell in the
-[Puhti web interface](https://www.puhti.csc.fi)).
