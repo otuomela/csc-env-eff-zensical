@@ -11,7 +11,7 @@ permalink: /hands-on/batch_resources/tutorial_sacct_and_seff.html
 
 # Using `sacct` and `seff` to understand resource usage of finished jobs
 
-💬 In this tutorial we look at the `seff` and `sacct` commands. The tutorial should be done on Puhti.
+💬 In this tutorial we look at the `seff` and `sacct` commands. The tutorial should be done on Roihu.
 
 💭 `seff` shows detailed data on used resources in an easy-to-read format, but can only show one job at a time.
 
@@ -63,14 +63,14 @@ permalink: /hands-on/batch_resources/tutorial_sacct_and_seff.html
 
 💬 Run a simple array job to practice using `seff` and `sacct`.
 
-☝🏻 If you have limited time, you can skip to [Examining the finished job](#examining-the-finished-job) and use the job ID `29925966` (it is the same job).
+☝🏻 If you have limited time, you can skip to [Examining the finished job](#examining-the-finished-job) and use the job ID `148001` (it is the same job).
 
 1. Create a file named `array.sh` and paste the following contents in it.
 
    ```bash
    #!/bin/bash
    #SBATCH --account=<project>      # Choose the billing project. Has to be defined!
-   #SBATCH --time=00:01:00          # Maximum duration of the job. Max: depends of the partition.
+   #SBATCH --time=00:01:30          # Maximum duration of the job. Max: depends of the partition.
    #SBATCH --partition=small        # Job queues: test, interactive, small, large, longrun, hugemem, hugemem_longrun
    #SBATCH --job-name=array_job     # Name of the job visible in the queue.
    #SBATCH --output=out_%A_%a.txt   # Name of the output-file.
@@ -80,7 +80,7 @@ permalink: /hands-on/batch_resources/tutorial_sacct_and_seff.html
    #SBATCH --mem=1000               # How much RAM is reserved for job per node. Unit: MiB
    #SBATCH --array=1-6              # The indices of the array jobs.
 
-   /appl/soft/bio/course/sacct_exercise/test-a ${SLURM_ARRAY_TASK_ID}
+   /appl/soft/manual/chem/x86_64/course/sacct_exercise/test-a ${SLURM_ARRAY_TASK_ID}
    ```
 
 2. Replace `<project>` with your actual project name, e.g. `project_2001234`
@@ -144,12 +144,12 @@ permalink: /hands-on/batch_resources/tutorial_sacct_and_seff.html
 1. Look at the error messages produced by the failed jobs.
 2. When you know which sub jobs failed and why, adjust the resource requests as necessary.
 
-   ☝🏻 If you have limited time, you can skip to step 4 and use the job ID `29926087` (it is the same job with adjusted resource requests).
+   ☝🏻 If you have limited time, you can skip to step 4 and use the job ID `148017` (it is the same job with adjusted resource requests).
 
    - Change time and memory reservations:
 
    ```bash
-   #SBATCH --time=00:05:00
+   #SBATCH --time=00:06:00
    #SBATCH --mem=2000
    ```
 

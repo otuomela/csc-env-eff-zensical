@@ -96,13 +96,14 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 # BUs are also a metric for comparing usage efficiency
 
 - Different resources have different rates
-   - 1 CPU core hour on Puhti equals 1 CPU BU
-   - 1 GPU card hour on Puhti equals 60 GPU BU (+ 1 GPU BU per allocated CPU core)
-   - 1 CPU node hour on Mahti equals 100 CPU BU
-   - 1 GiB hour of Memory on Puhti equals 0.1 CPU BU
-   - 1st TiB of disk quota (`/scratch`, `/projappl`) is free-of-charge (0 Storage BU)
-      - Applied excess quota is billed by 5 Storage BU/TiBh. (5 Storage Billing Units per TiB per hour)
-   - 1 used TiB hour in Allas equals 1 Storage BU (i.e. 1 TiB of data consumes 8760 Storage BU per year)
+   - 1 CPU core hour on Roihu equals 0.75 CPU BU
+   - 1 GPU card hour on Roihu equals 200 GPU BU
+   - 1 CPU node hour on Roihu equals 288 CPU BU
+   - 1 GiB hour of Memory on Roihu equals 0.375 CPU BU
+   - 1 TiB hour of disk quota (`/scratch`) on Roihu equals 6 Storage BU
+      - [The billing differs from disk area to disk area](https://docs.csc.fi/computing/hpc-billing/#storage)
+      - Storage is billed based on the amount of data stored, not by the size of storage quota
+   - 1 used TiB hour in Allas equals 1.05 Storage BU (i.e. 1 TiB of data consumes 9198 Storage BU per year)
    - [This and other service billing information in Docs CSC](https://docs.csc.fi/accounts/billing/)
      - For LUMI billing policy, [see the LUMI documentation](https://docs.lumi-supercomputer.eu/runjobs/lumi_env/billing/)
 
