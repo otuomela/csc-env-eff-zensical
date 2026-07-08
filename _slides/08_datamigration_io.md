@@ -87,13 +87,16 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - Do not use databases on `/scratch`
    - Instead, consider hosting DBs on cloud resources (e.g. [Pukki DBaaS](https://docs.csc.fi/cloud/dbaas/))
 
-# Using Allas in batch jobs
+# Using Allas in batch jobs (1/2)
 
 - Command-line interface: use either Swift or S3 protocol
    - Swift (multiple projects, 8-hour) vs. S3 protocol (fixed for a project, persistent)
    - Roihu defaults to S3, unlike Puhti And Mahti
 - `allas-conf` needs setting up CSC password interactively
    - Jobs may start late and actual job may take longer than 8 hrs
+
+# Using Allas in batch jobs (1/2)
+
 - Use `allas-conf -k`
    - stores password in variable `$OS_PASSWORD` to generate a new token automatically
      - a-tools regenerate a token using `$OS_PASSWORD` automatically
