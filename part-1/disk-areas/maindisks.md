@@ -20,7 +20,7 @@ permalink: /hands-on/disk-areas/disk-areas-tutorial-maindisks.html
 
 💬 Active data files needed for computational simulations and analyses should be stored and shared in directories under `/scratch` while any software installations and binaries should be shared under the `/projappl` directory.
 
-## Identify your personal and project-specific directories on Roihu supercomputers
+## Identify your personal and project-specific directories on Roihu supercomputer
 
 1. First login to Roihu using SSH (or by opening a login node shell in the [Roihu web interface](https://www.roihu.csc.fi)):
   

@@ -48,7 +48,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 - Intended for data sharing and active use, not long-term storage
 
-- Dataset projects provide acces to shared disk area under (`/projappl/project_name`) but have no computational resources
+- Dataset projects provide access to shared disk area under (`/projappl/project_name`) but have no computational resources
 
 - Write access to a dataset directory is restricted to a single project, while multiple other projects can be granted read access to this disk area.
 

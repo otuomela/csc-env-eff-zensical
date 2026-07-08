@@ -13,7 +13,7 @@ permalink: /hands-on/disk-areas/disk-areas-tutorial-lue.html
 
 > In this tutorial you
 >
-> - Familiarize yourself with efficient ways to check where you have a lot of files and data on Rouhu.
+> - Familiarize yourself with efficient ways to check where you have a lot of files and data on Roihu.
 
 💬 CSC has developed a tool called [LUE](https://docs.csc.fi/support/tutorials/lue/) for keeping track of much data/files one has on the disk. Conventional tools such as `stat` or `du` are slow and heavy on the parallel file system, while `lue` is significantly faster. This comes with a slight loss in accuracy, although this is usually not a problem. See [Docs CSC](https://docs.csc.fi/support/tutorials/lue/#short-prelude) for a list of possible caveats.
 
