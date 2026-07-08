@@ -50,10 +50,10 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 # Optimize the performance of your code (1/2)
 
 - When compiling a program, possibly one that you've written yourself, remember to use optimizing compiler flags
-   - Docs CSC: Compiling on [Puhti](https://docs.csc.fi/computing/compiling-puhti/), [Mahti](https://docs.csc.fi/computing/compiling-mahti/) and [LUMI](https://docs.lumi-supercomputer.eu/development/)
+   - Docs CSC: Compiling on [Roihu](https://docs.csc.fi/computing/compiling-roihu/) and [LUMI](https://docs.lumi-supercomputer.eu/development/)
    - Tutorial: [Compiling using optimizing compiler options](https://csc-training.github.io/csc-env-eff/hands-on/installing/compiler_options.html)
 - Construct a small and quick test case and run it in the test queue
-   - Docs CSC: Available partitions on [Puhti, Mahti](https://docs.csc.fi/computing/running/batch-job-partitions/) and [LUMI](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/)
+   - Docs CSC: Available partitions on [Roihu](https://docs.csc.fi/computing/running/batch-job-partitions/) and [LUMI](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/partitions/)
    - Use the test case to optimize computations before starting massive ones
 
 # Optimize the performance of your code (2/2)
@@ -70,7 +70,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 - It is not just how your software is constructed and compiled that affects performance -- how it is parallelized and run are important factors, too!
 - **Recall:** a parallel job distributes the calculation over several cores in order to achieve a shorter wall-clock time
-  - Example batch job scripts for [Puhti](https://docs.csc.fi/computing/running/creating-job-scripts-puhti/), [Mahti](https://docs.csc.fi/computing/running/example-job-scripts-mahti/), [LUMI-C](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumic-job/) and [LUMI-G](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumig-job/)
+  - Example batch job scripts for [Roihu](https://docs.csc.fi/computing/running/creating-job-scripts-roihu/), [LUMI-C](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumic-job/) and [LUMI-G](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumig-job/)
   - **The best starting point:** [Software-specific batch scripts in Docs CSC](https://docs.csc.fi/apps/)
 
 # Parallel programming models
@@ -247,7 +247,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - When working with lots of small files:
   - Check the tool you're using, there may be different options for data storage
   - [Tar/untar and compress your datasets](https://docs.csc.fi/support/tutorials/env-guide/packing-and-compression-tools/), use [SquashFS](https://docs.csc.fi/computing/containers/run-existing/#mounting-datasets-with-squashfs) for read-only datasets and containers
-  - Use [local disks](https://docs.csc.fi/computing/disk/#temporary-local-disk-areas)
+  - Use [local disks](https://docs.csc.fi/computing/roihu-disk/#temporary-local-disk-areas)
   - Remove intermediate files if possible
 
 # Summary (1/2)
