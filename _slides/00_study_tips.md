@@ -41,23 +41,23 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - What error messages resulted
    - [More tips to help us quickly solve your issue](https://docs.csc.fi/support/support-howto/)
 
-# Running a new application in Puhti 1/2
+# Running a new application in Roihu 1/2
 
 - If it comes with tutorials, do at least one
    - This will likely be the fastest way forward
    - Naturally, read the manual/instructions
 - Check if there's a page about it in [Docs CSC](https://docs.csc.fi/apps/)
    - If there is, use the batch script example from _there_
-   - Otherwise, use a [general template](https://docs.csc.fi/computing/running/example-job-scripts-puhti/)
+   - Otherwise, use a [general template](https://docs.csc.fi/computing/running/example-job-scripts-roihu/)
 - Try first running interactively (**not** on a login node)
    - Perhaps it is easier to find the correct command line options
    - Use the `top` command to get rough estimate of memory use, _etc_.
    - If developers provide some test or example data, run it first and make sure results are correct
 
-# Running a new application in Puhti 2/2
+# Running a new application in Roihu 2/2
 
-- You can use the _test_ queue to check that your batch job script is correct
-   - Limits : 15 min, 2 nodes
+- Use the _test_ and _gputest_ queues to check that your batch job script works
+   - Limits: 15 min, 2 nodes
    - Job turnaround usually very fast even if machine is "full"
    - Can be useful to spot typos, missing files, _etc_. before submitting a job that will idle in the queue
 - Before large runs, it's a good idea to do a smaller trial run
@@ -68,12 +68,13 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 # What if your job fails? Troubleshooting checklist 1/2
 
-1. Did the job run out of time?
-2. Did the job run out of memory?
-3. Did the job actually use the resources you specified?
+1. Did the job run out of **time** or **memory**?
+2. Did the job actually use the resources you specified?
    - Problems in the batch job script can cause parameters to be ignored and default values are used instead
-4. Did it fail immediately or did it run for some time?
+3. Did it fail immediately or did it run for some time?
    - Jobs failing immediately are often due to something simple like typos, missing inputs, bad parameters, _etc_.
+4. Did you install the application and submit it from the correct login node?
+   - Roihu has dedicated login nodes for the CPU and GPU partitions. Software built on the GPU login cannot be run on the CPU side, and _vice versa_.
 
 # What if your job fails? Troubleshooting checklist 2/2
 
@@ -82,7 +83,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 7. Error messaged can sometimes be long, cryptic and a bit intimidating, but ...
    - Try skimming through them and see if you can spot something "human-readable"
    - Often you can spot the actual problem easily if you go through the whole message. Something like "required input file so-and-so missing" or "parameter X out of range", _etc_.
-8. Consult the [FAQ on common Slurm issues](https://docs.csc.fi/support/faq/why-does-my-batch-job-fail/) in the CSC Docs
+8. Consult the [FAQ on common Slurm issues](https://docs.csc.fi/support/faq/why-does-my-batch-job-fail/) in Docs CSC
 
 # Document your discoveries
 

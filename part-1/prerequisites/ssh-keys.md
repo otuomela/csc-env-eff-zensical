@@ -9,11 +9,11 @@ permalink: /hands-on/connecting/ssh-keys.html
 
 # Creating and adding SSH keys
 
-> ‼️ To begin, make sure you have a user account at CSC that is a member of a project which has access to the Roihu service and perhaps Allas. Note that there’s a small delay before one can login to Roihu after creating a new project and adding services.
+> ‼️ To begin, make sure you have a user account at CSC that is a member of a project which has access to the Roihu and Allas services. Note that there’s a small delay before one can login to Roihu after creating a new project and adding services.
 >
-> 💬 SSH keys improve security and ease-of-use. They are required to be able to log in to CSC supercomputers from the terminal using an **SSH client**.
+> 💬 SSH keys and certificates improve security and ease-of-use. They are required to be able to log in to Roihu from the terminal using an **SSH client**.
 >
-> ☝🏻 SSH keys are not necessary if you only use the browser-based web interfaces to log in to CSC supercomputers.
+> ☝🏻 SSH keys and certificates are **not** necessary if you only use the browser-based web interfaces to log in to Roihu.
 
 ## Create SSH key pair
 
@@ -21,7 +21,7 @@ permalink: /hands-on/connecting/ssh-keys.html
 
 💬 On Windows, there are multiple SSH clients available, such as [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) and [MobaXterm](https://mobaxterm.mobatek.net/download.html). More examples can be found in [Docs CSC](https://docs.csc.fi/computing/connecting/ssh-windows/).
 
-‼️ MobaXterm and PuTTY provide MobaKeyGen and PuTTYgen tools for generating SSH key pairs. In this tutorial we assume you use MobaXterm and MobaKeyGen. The tools are, however, identical and the instructions can easily be adapted for PuTTYgen as well.
+‼️ MobaXterm and PuTTY provide MobaKeyGen and PuTTYgen tools for generating SSH key pairs. In this tutorial we assume you use MobaXterm and MobaKeyGen. The tools are, however, identical and the instructions can easily be used for PuTTYgen as well.
 
 1. Launch MobaXterm from the applications list (opens from the Windows logo), or search for it in the bottom bar search box.
 2. Open **MobaKeyGen** from the **Tools** tab.
@@ -92,11 +92,7 @@ permalink: /hands-on/connecting/ssh-keys.html
 
 ‼️ Be patient, as it may take up to one hour for your new key to become active! If it takes longer than that, please contact <mailto:servicedesk@csc.fi>.
 
-💡 Once your key has been synced, you may log in to Roihu using an SSH client! [This is covered in the next tutorial](ssh-roihu.md).
-
-## Signing the SSH public key
-
-FIXME: Add here steps how to use SSH CA.
+💡 You may now sign your public key to obtain an **SSH certificate** that allows you to login to Roihu using an SSH client! [This is covered in the next tutorial](ssh-certificate.md).
 
 ## More information
 
