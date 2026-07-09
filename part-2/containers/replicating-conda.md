@@ -52,7 +52,7 @@ container is that it can usually be pulled/converted with normal user
 privileges on Roihu.
 
 You can find more detailed instructions on converting Docker containers in
-[Docs CSC](https://docs.csc.fi/computing/containers/creating/#converting-a-docker-container).
+[Docs CSC](https://docs.csc.fi/computing/containers/overview/#building-sif-image-from-existing-docker-or-oci-image).
 
 ## Replicating an existing Conda environment
 

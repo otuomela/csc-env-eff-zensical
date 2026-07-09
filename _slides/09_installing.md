@@ -112,7 +112,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 # More information 
 
 - See the tutorials for each category for more detailed instructions
-  - [Installation tutorials](https://csc-training.github.io/csc-env-eff/#8-installing-your-own-software)
+  - [Installation tutorials](https://csc-training.github.io/csc-env-eff/part-2/installing/)
 - Check the Docs CSC pages:
   - [Installation overview](https://docs.csc.fi/computing/installing/)
   - Compiling applications in [Roihu](https://docs.csc.fi/computing/compiling-roihu/)
