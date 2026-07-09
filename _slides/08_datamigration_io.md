@@ -29,7 +29,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - A parallel file system (PFS) provides a common file system area that can be accessed from all nodes in a cluster
 - Without PFS users would have to always copy all needed data to compute nodes before runs (cf. local disk)
     - Also the results would not be visible outside the compute node
-- CSC uses **Lustre** parallel file system Puhti and Mahti
+- CSC uses **Lustre** parallel file system Roihu 
 
 # Lustre
 
@@ -61,8 +61,9 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - Optimized for parallel I/O of large files, slow if accessing lots of small files!
 - [Temporary local storage (NVMe)](https://docs.csc.fi/computing/disk/#temporary-local-disk-areas):
    - Accessible on login nodes (`$TMPDIR`) and to jobs on some compute nodes (`$LOCAL_SCRATCH`)
+      - Only XL and Viz nodes provide `$LOCAL_SCRATCH`, `$TMPDIR` and disaggregated storage are [available on other nodes](https://docs.csc.fi/computing/roihu-disk/#automatic-local-temporary-storage)
    - Automatically purged after the job finishes
-   - Availability varies slightly depending on the supercomputer (Puhti/Mahti/LUMI)
+   - Availability varies slightly depending on the supercomputer (Roihu/LUMI)
       - Check the availability of [local storage in different job partitions](https://docs.csc.fi/computing/running/batch-job-partitions)
 
 # Managing file I/O (2/3)
@@ -82,25 +83,26 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 - Use fast local disk to handle file I/O with lots of small files
    - Requires staging and unstaging of data
-   - `tar xf /scratch/<project>/big_dataset.tar.gz -C $LOCAL_SCRATCH`
-- Processing data in memory allows better performance compared to writing to and reading from the disk
-   - "Ramdisk" (`/dev/shm`) can be used on Mahti nodes without NVMe
-   - `export TMPDIR=/dev/shm`
+   - `tar xf /scratch/<project>/big_dataset.tar.gz -C $TMPDIR`
 - Do not use databases on `/scratch`
    - Instead, consider hosting DBs on cloud resources (e.g. [Pukki DBaaS](https://docs.csc.fi/cloud/dbaas/))
 
-# Using Allas in batch jobs
+# Using Allas in batch jobs (1/2)
 
 - Command-line interface: use either Swift or S3 protocol
    - Swift (multiple projects, 8-hour) vs. S3 protocol (fixed for a project, persistent)
+   - Roihu defaults to S3, unlike Puhti And Mahti
 - `allas-conf` needs setting up CSC password interactively
    - Jobs may start late and actual job may take longer than 8 hrs
+
+# Using Allas in batch jobs (1/2)
+
 - Use `allas-conf -k`
    - stores password in variable `$OS_PASSWORD` to generate a new token automatically
      - a-tools regenerate a token using `$OS_PASSWORD` automatically
      - `rclone` requires explicitly setting environment variable in batch jobs:
       ```bash
-      source /appl/opt/csc-cli-utils/allas-cli-utils/allas_conf -f -k $OS_PROJECT_NAME
+      source /appl/soft/manual/general/common/allas/allas-cli-utils/allas_conf -f -k $OS_PROJECT_NAME
       ```
 
 # Configuring Allas for S3 protocol
@@ -113,10 +115,10 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - `rclone` with endpoint `s3allas:`
    - `a-put`/`a-get` with `-S` flag
 
-# How to use LUMI-O from Puhti/Mahti?
+# How to use LUMI-O from Roihu?
 
 - LUMI-O is very similar to Allas, but it uses only S3 protocol
-- In Puhti and Mahti, connection to LUMI-O can be opened with command:
+- In Roihu, connection to LUMI-O can be opened with command:
   - `allas-conf --lumi`
 - Usage:
   - Using LUMI-O with `rclone` (endpoint is `lumi-o:`)
@@ -135,7 +137,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 # Moving data between Fairdata IDA and Allas
 
-- Needs transfer of data *via* supercomputer (e.g. Puhti)
+- Needs transfer of data *via* supercomputer (e.g. Roihu)
 - Requires [configuring Fairdata IDA in CSC supercomputers](https://docs.csc.fi/data/ida/using_ida/)
    - Load IDA module: `module load ida`
    - Configure IDA database: `ida_configure`
@@ -155,9 +157,10 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 - **[Disk cleaning](https://docs.csc.fi/support/tutorials/clean-up-data/#automatic-removal-of-files)**
   - In force for project disk areas under `/scratch` **on Puhti**
+    - [Will also be implemented on Roihu](https://docs.csc.fi/computing/systems-roihu/#parallel-file-system)
   - Files older than 180 days will be removed periodically
     - Listed in a purge list, e.g. `/scratch/purge_lists/project_2001234/path_summary.txt`
-    - *[LCleaner](https://docs.csc.fi/support/tutorials/clean-up-data/#using-lcleaner-to-check-which-files-will-be-automatically-removed)* tool can help you discover which of your files have been targeted for automatic removal
+
 - **Best practice tips**
   - Don't save everything automatically
   - Use *[LUE](https://docs.csc.fi/support/tutorials/lue/)* tool to analyze your disk usage

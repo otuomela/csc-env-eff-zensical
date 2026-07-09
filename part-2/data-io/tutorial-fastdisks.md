@@ -11,7 +11,7 @@ permalink: /hands-on/data-io/tutorial-fastdisks.html
 
 # Fast disk areas in CSC's computing environment
 
-> ☝🏻 This tutorial requires that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project that [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+> ☝🏻 This tutorial requires that you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project that [has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 >
 > Upon completion of this tutorial, you will be familiar with ideal disk areas
 > for I/O-intensive workloads, i.e. frequent read and write operations.
@@ -25,11 +25,11 @@ file system used in CSC's computing environment.
 💬 In order to facilitate such heavy I/O operations, CSC provides fast local
 disk areas on the login and compute nodes.
 
-1. First login to Puhti using SSH (or by opening a login node shell in the
-   Puhti web interface):
+1. First login to Roihu using SSH (or by opening a login node shell in the
+   Roihu web interface):
 
    ```bash
-   ssh <username>@puhti.csc.fi    # replace <username> with your CSC username, e.g. myname@puhti.csc.fi
+   ssh <username>@roihu-cpu.csc.fi    # replace <username> with your CSC username, e.g. myname@roihu-cpu.csc.fi
    ```
 
 2. Identify the fast local disk areas on the login nodes with the following
@@ -49,7 +49,7 @@ cleaned often, so make sure to move important data to `/scratch` or `/projappl`
 once you do not need the fast disk anymore.
 
 ☝🏻 Note that a local disk is specific to a particular node, i.e. you cannot
-access the local disk of `puhti-login11` from `puhti-login12`.
+access the local disk of `roihu-cpu-login11` from `roihu-cpu-login12`.
 
 ### Download a tar archive containing thousands of small files and merge the files into one large file using the fast local disk
 
@@ -109,29 +109,27 @@ instead of the login nodes. The compute nodes are accessed either
 [interactively](../../part-1/batch-jobs/interactive.md) or using
 [batch jobs](../../part-1/batch-jobs/serial.md).
 
+☝🏻 On Roihu, local NVMe storage on compute nodes is available automatically
+for every job, with no extra flag needed. The amount you get depends on the
+partition. More information available in [Docs CSC](https://docs.csc.fi/computing/roihu-disk/#automatic-local-temporary-storage)
+
 1. Move to the `/scratch` area of your project and use the `sinteractive`
-   command to request an interactive session on a compute node with 1 GB fast
-   local disk for 10 minutes:
+   command to request an interactive session on a compute node for 10 minutes:
 
    ```bash
    cd /scratch/<project>/$USER    # replace <project> with your CSC project, e.g. project_2001234
-   sinteractive --account <project> --time 00:10:00 --tmp 1    # replace <project> with your CSC project, e.g. project_2001234
+   sinteractive --account <project> --time 00:10:00    # replace <project> with your CSC project, e.g. project_2001234
    ```
-
-   ☝🏻 Not all compute nodes have fast local disks, meaning that you may have to
-   queue for a while before the interactive session starts. You may skip this
-   part if you're in a hurry.
 
 2. **In the interactive session**, use the following commands to locate the
    fast local storage areas on that compute node:
 
    ```bash
-   echo $LOCAL_SCRATCH
    echo $TMPDIR
    ```
 
-   💡 Note how the path to the fast local storage area contains the ID of your
-   Slurm job, `/run/nvme/job_<id>`.
+   💡 Note how the path to the fast local storage area contains your username
+   and the ID of your Slurm job, `/tmp/<username>/<jobid>`.
 
 3. Terminate the interactive session and now try the same in a proper batch
    job. Create a file called `my_nvme.bash` using, for example, the `nano` text
@@ -148,13 +146,15 @@ instead of the login nodes. The compute nodes are accessed either
    #!/bin/bash
    #SBATCH --account=<project>      # Choose the billing project. Has to be defined!
    #SBATCH --time=00:01:00          # Maximum duration of the job. Upper limit depends on the partition. 
-   #SBATCH --partition=small        # Job queues: test, interactive, small, large, longrun, hugemem, hugemem_longrun
+   #SBATCH --partition=small        # Job queues (CPU): interactive, test, small, medium, large, longrun, hugemem, hugemem_longrun
    #SBATCH --ntasks=1               # Number of tasks. Upper limit depends on partition. For a serial job this should be set 1!
-   #SBATCH --gres=nvme:1            # Request fast local disk space. Default unit is GB.
 
-   echo $LOCAL_SCRATCH
    echo $TMPDIR
    ```
+
+   ‼️ It is possible to request additional local storage if the $TMPDIR quota
+   is not sufficient. Note however, that this currently requires allocating
+   a full node. More information in [Docs CSC](https://docs.csc.fi/computing/roihu-disk/#disaggregated-storage)
 
 5. Submit the batch job with the command:
 
@@ -170,11 +170,6 @@ instead of the login nodes. The compute nodes are accessed either
    cat slurm-<jobid>.out    # replace <jobid> with the actual Slurm job ID
    ```
 
-   ☝🏻 Again, please note that requesting fast local disk space tends to
-   increase your queueing time. It is a scarce resource, and should only be
-   requested if you really need it. Please ask
-   [CSC Service Desk](https://docs.csc.fi/support/contact/) if you're unsure.
-
    ‼️ If you write important data to the local disk in your interactive session
    or batch job, remember to copy the data back to `/scratch` before the job
    terminates! The local disk is cleaned immediately after your job, and
@@ -186,8 +181,5 @@ instead of the login nodes. The compute nodes are accessed either
 
 ## More information
 
-💡 Docs CSC: [Temporary local disk areas](https://docs.csc.fi/computing/disk/#temporary-local-disk-areas)
+💡 Docs CSC: [Temporary local disk areas on Roihu](https://docs.csc.fi/computing/running/creating-job-scripts-roihu/#local-temporary-storage)
 
-💡 Docs CSC: [Local storage on Puhti](https://docs.csc.fi/computing/running/creating-job-scripts-puhti/#local-storage)
-
-💡 Docs CSC: [Local storage on Mahti](https://docs.csc.fi/computing/running/creating-job-scripts-mahti/#local-storage)

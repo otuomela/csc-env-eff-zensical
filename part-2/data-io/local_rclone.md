@@ -22,82 +22,59 @@ using `rclone`, which is available for all common operating systems including
 Windows and macOS. Note that in macOS and Linux machines you can also install
 the whole allas-cli-utils repository locally.
 
+‼️ Unlike previous supercomputers, Roihu defaults to **S3** instead of Swift.
+This exercise sets up a S3-based connection for rclone. S3 credentials are
+permanent and are stored in plaintext on your computer, so you should treat
+them with the same care as a password. Removing the keys from your own
+computer is not enough to deactivate the credentials.
+
 ## Step 1. Installing rclone
 
-☝🏻 If you already have `rclone` command available, skip to [Step 2](#step-2-configuring-rclone-swift-connection-in-local-machine).
+☝🏻 If you already have `rclone` command available, skip to [Step 2](#step-2-configuring-rclone-s3-connection-in-local-machine).
 
 1. Download `rclone` executable to your own machine. Executables can be found
    from <https://rclone.org/downloads/>.
 2. In case of Windows, if you don’t know which version to choose, try the
-   [Intel/AMD 64 bit version](https://downloads.rclone.org/v1.66.0/rclone-v1.66.0-windows-amd64.zip).
+   [Intel/AMD 64 bit version](https://downloads.rclone.org/v1.74.3/rclone-v1.74.3-windows-amd64.zip).
 
-## Step 2. Configuring rclone-Swift connection in local machine
+## Step 2. Configuring rclone-S3 connection in local machine
 
-1. Start the process by opening a command shell and executing command:
-    1. Windows: `.\rclone.exe config`
-    2. Linux and macOS: `./rclone config`
-2. The configuration process in now done interactively in your command shell.
-   In case of Allas, you need to do the following selections:
-    1. Select **n** to create a *New remote*
-    2. Name the remote as: `allas`
-    3. From the list of storage protocols, select the number corresponding to:
-       *OpenStack Swift (Rackspace Cloud Files, Memset Memstore, OVH)*
-    4. Select authentication option **2**: *Get swift credentials from
-       environment vars*.
-    5. Select the default blank setting for all the remaining settings until
-       you are back in the starting menu of the configuration process. 
-    6. Finally, choose **q** to stop the configuration process.
-3. You need to do this configuration only once.
-
-## Step 3. Authentication
-
-💭 In addition to the configuration, you must define a set of environment
-variables to authenticate your Allas connection each time you start using
-`rclone`. If you have access to Puhti, you can use it as an easy way to
-generate a list of commands to set the authentication:
-
-1. Open a terminal connection to Puhti and activate there a connection to the
-   Allas project you wish to use so that you add option `--show-powershell`
-   (Windows) or option `--show-shell` (macOS and Linux) to the `allas-conf` 
-   command.
-2. With these options, the configuration process prints out environment
-   variable setting commands that you can run in your local machine to enable
-   authentication to Allas.
-
-### Windows PowerShell
-
-1. If your local machine is running Windows, execute the following commands in
-   Puhti:
+1. Open a terminal connection to Roihu and load the Allas tools
    ```bash
    module load allas
-   allas-conf --show-powershell
    ```
-2. Copy the last four lines, starting with `$Env:`, to the local PowerShell and
-   execute them. Then, test the `rclone` connection with command:
-   ```console
-   .\rclone.exe lsd allas:
-   ```
-3. Note that also in this case the connection will work only for the next 8
-   hours. 
 
-### macOS and Linux (bash and zsh)
-
-1. If your local machine is running macOS or Linux, then the default shell is
-   often `bash` or `zsh`. To activate Allas connection in these cases, run the
-   following commands in Puhti:
+2. Check your access key and secret key with the following commands:
    ```bash
-   module load allas
-   allas-conf --show-shell
+   grep access_key $HOME/.s3cfg | cut -d " " -f5
+   grep secret_key $HOME/.s3cfg | cut -d " " -f5
    ```
-2. Copy the last four lines, starting with `export`, to the local shell session
-   and execute them. Then, test the `rclone` connection with command:
-   ```bash
-   ./rclone lsd allas:
-   ```
-3. Note that also in this case the connection will work only for the next 8
-   hours.
 
-## Step 4. Upload and download from local computer
+3. On your own machine, open a command shell and start the 
+   configuration process:
+   1. Windows: `.\rclone.exe config`
+   2. Linux and macOS: `./rclone config`
+4. In the interactive configuration process, make the following
+   selections:
+   1. Select **n** to create a *New remote*
+   2. Name the remote as: `s3allas`
+   3. From the list of storage protocols, select the number corresponding to:
+      *Amazon S3 Compliant Storage Providers including AWS, ...*
+   4. Choose your S3 provider: select the option for
+      *Any other S3 compatible provider*
+   5. Select that you want to *Enter AWS credentials in the next step.*
+   6. Give the *AWS access key*: the `access_key` value you looked up in step 2.2
+   7. Give the *AWS secret access key*: the `secret_key` value you looked up in step 2.2
+   8. Region: **1**
+   9. Endpoint: `a3s.fi`
+   10. Location constraint: leave blank
+   11. ACL: **1**
+   12. Object lock: leave the default
+   13. Edit advanced config: **n**
+   14. Remote config: **y**
+   15. Finally, choose **q** to stop the configuraiton process
+
+## Step 3. Upload and download from local computer
 
 💬 Use `rclone` to upload a small directory from your local computer to Allas.
 The sample commands below are written for Windows PowerShell. In macOS and
@@ -112,22 +89,22 @@ amount of data (less than 1 GiB).
    make it unique. So in the sample commands below you should replace
    `local-directory` and `username` with you own values.
    ```console
-   .\rclone.exe copy -P --dry-run .\local-directory allas:username_local-directory
+   .\rclone.exe copy -P --dry-run .\local-directory s3allas:username_local-directory
    ```
 2. If the test command above works, then run the same command without
    `--dry-run` to actually copy the data:
    ```console
-   .\rclone.exe copy -P .\local-directory allas:username_local-directory
+   .\rclone.exe copy -P .\local-directory s3allas:username_local-directory
    ```
 3. What was the speed of transfer? Calculate how long time it would take to
    copy 10 GiB of data with the same speed?
 4. Check the results with command:
    ```console
-   .\rclone.exe ls allas:username_local-directory
+   .\rclone.exe ls s3allas:username_local-directory
    ```
 5. Finally, copy the same data to a new directory on your local computer:
    ```console
-   .\rclone.exe copy -P  allas:username_local-directory .\username_local-directory
+   .\rclone.exe copy -P s3allas:username_local-directory .\username_local-directory
    ```
 6. What was the speed of transfer? Calculate how long time it would take to
    copy 10 GiB of data with the same speed?
@@ -135,3 +112,4 @@ amount of data (less than 1 GiB).
 ## More information
 
 💡 Docs CSC: [Local `rclone` configuration for Allas](https://docs.csc.fi/data/Allas/using_allas/rclone_local/)
+💡 Docs CSC: [Allas in Roihu](https://docs.csc.fi/computing/allas-in-roihu/)
