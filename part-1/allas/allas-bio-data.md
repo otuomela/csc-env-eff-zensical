@@ -149,15 +149,13 @@ Before the actual exercise, open a view to the Allas service in your browser usi
    rclone cat s3allas:<project number>-$USER-genomes-ap/Pythium_vexans.tar_ameta
    ```
 
-<!-- commented out because a-flip currently works only with the swift protocol, which is not compatible with the other methods
 10. Finally, try the command:
 
     ```bash
-    a-flip pythium/pythium_vexans/Pythium_vexans.fasta 
+    a-flip pythium/Pythium_vexans/Pythium_vexans.amb 
     ```
 
 11. Try opening the public link that `a-flip` produced with your browser
--->
 
 <!-- commented out because allas-backup currently works only with the swift protocol, which is not compatible with the other methods
 ### Upload case 3: `allas-backup`
