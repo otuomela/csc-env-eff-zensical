@@ -35,7 +35,7 @@ permalink: /hands-on/allas/tutorial_allas-file-backup.html
 
 ## Connecting to Allas
 
-1. Open a connection to Allas wih these commands:
+1. Open a connection to Allas with these commands:
 
    ```bash
    module load allas

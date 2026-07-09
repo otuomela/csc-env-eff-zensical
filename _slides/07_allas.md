@@ -144,5 +144,5 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - Suitable for all static digital research material and related metadata
 - Free of charge for users in Finnish higher education institutions and research institutes
 - **[IDA](https://ida.fairdata.fi):** storage for research data
-- **[Qvain](https://qvain.fairdata.fi/):** Describe your dataset and get a persistent indentifier for it
+- **[Qvain](https://qvain.fairdata.fi/):** Describe your dataset and get a persistent identifier for it
 - **[Etsin](https://etsin.fairdata.fi/):** Discover datasets based on metadata

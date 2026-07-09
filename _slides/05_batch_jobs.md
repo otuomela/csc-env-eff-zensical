@@ -156,7 +156,7 @@ srun echo "Hello $USER! You are on node $HOSTNAME"
 - A parallel job distributes the calculation over several cores in order to achieve a shorter wall-time (and/or a larger allocatable memory)
    - The total computational problem is divided into subtasks, which are processed by each core in parallel
 - There are two major parallelization standards: [OpenMP](https://en.wikipedia.org/wiki/OpenMP) and [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface)
-   - Note, depending on the parallellization scheme there is a slight difference between _how_ the resource reservation is done
+   - Note, depending on the parallelization scheme there is a slight difference between _how_ the resource reservation is done
 - Batch job scripts for Roihu ([how to create](https://docs.csc.fi/computing/running/creating-job-scripts-roihu/) and [examples](https://docs.csc.fi/computing/running/example-job-scripts-roihu/)) and LUMI ([quickstart](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/slurm-quickstart/), [CPU](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumic-job/) and [GPU examples](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumig-job/))
 - **The best starting point:** [Software specific batch scripts in Docs CSC](https://docs.csc.fi/apps/)
 

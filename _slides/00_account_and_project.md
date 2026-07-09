@@ -24,7 +24,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - With the account, you can join projects and access resources
 - Check out the [tutorial](https://csc-training.github.io/csc-env-eff/hands-on/connecting/credentials.html) and the [documentation](https://docs.csc.fi/accounts/)
 - The password of your CSC user account is valid for one year at a time
-    - You will recieve a notification when it is about to expire
+    - You will receive a notification when it is about to expire
 - Never share your account or send the password to anyone
 
 # CSC project
