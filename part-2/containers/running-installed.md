@@ -48,8 +48,13 @@ for details and other considerations.
    cat /appl/soft/manual/aida/x86_64/r-env/wrappers/452/bin/Rscript
    ```
 
-2. Observe that it is not the "real" `Rscript` command, but a wrapper script
-   using `singularity exec`. Now, try running `Rscript`:
+   Observe that it is not the "real" `Rscript` command, but a wrapper script
+   using `singularity exec`.
+
+   ‼️ This is actually using `Apptainer` under the hood, as `/usr/bin/singularity`
+   is a symlink to `/usr/bin/apptainer`.
+
+2. Now, try running `Rscript`:
 
    ```bash
    Rscript --version
