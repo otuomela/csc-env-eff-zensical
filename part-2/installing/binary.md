@@ -56,7 +56,7 @@ on to ensure correct operation.
 
 💬 In this example we'll install the binary release of the GCTA software.
 
-1. Go to the [GCTA download page](https://yanglab.westlake.edu.cn/software/gcta/#Download).
+1. Go to the [GCTA download page](https://yanglab.westlake.edu.cn/software/gcta/#Overview).
 2. Identify the Linux version.
    - If several Linux versions are offered, try to find one with "x86" in the
      name.

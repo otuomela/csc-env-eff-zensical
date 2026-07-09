@@ -227,9 +227,6 @@ in which the Lua language is used to write modulefiles.
 
 ## More information
 
-- Not all software use CMake build system. For an example how to build software
-  using the traditional configure-make procedure, see
-  [this tutorial](https://csc-training.github.io/csc-env-eff/hands-on/installing/installing_hands-on_mcl.html).
 - If you get stuck when compiling your own software, don't hesitate to ask for
   help from [CSC Service Desk](https://docs.csc.fi/support/contact/)
 - Documentation on how to compile on
