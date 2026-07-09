@@ -171,7 +171,7 @@ srun echo "Hello $USER! You are on node $HOSTNAME"
     - A GPU on Roihu uses 270 times more GPU BUs than a single CPU core uses CPU BUs - see above for performance requirements
     - On Roihu GPU nodes, each reserved GPU grants access to up to 72 CPU cores
     - The CPU cores on Roihu GPU nodes don't affect the billing but must be requested explicitely
-    - Note that [LUMI-G](https://docs.lumi-supercomputer.eu/hardware/compute/lumig/) has a massive GPU capacity available, which is also "cheaper" as measured in BUs compared to Roihu
+    - Note that [LUMI-G](https://docs.lumi-supercomputer.eu/hardware/lumig/) has a massive GPU capacity available, which is also "cheaper" as measured in BUs compared to Roihu
 
 # Interactive jobs
 

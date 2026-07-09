@@ -51,7 +51,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - [Puhti](https://docs.csc.fi/computing/systems-puhti/) is the general-purpose supercomputer
 - [Mahti](https://docs.csc.fi/computing/systems-mahti/) is the massively parallel flagship supercomputer
 - [LUMI](https://docs.lumi-supercomputer.eu/hardware/) is a European pre-exascale supercomputer operated by CSC
-- [Pouta](https://docs.csc.fi/cloud/pouta/pouta-what-is/) provides cloud resources via OpenStack (IaaS)
+- [Pouta](https://docs.csc.fi/cloud/pouta/) provides cloud resources via OpenStack (IaaS)
 - [Rahti](https://docs.csc.fi/cloud/rahti/rahti-what-is/) provides containers via OKD (PaaS)
 - [Allas](https://docs.csc.fi/data/Allas/) provides object storage for all services
 
@@ -71,7 +71,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 |                             | [Roihu](https://docs.csc.fi/computing/systems-roihu/)  | [LUMI](https://docs.lumi-supercomputer.eu/hardware/) |
 | ----------------------------------- |------- | ---- |
-| Pre-installed apps | [50+](https://docs.csc.fi/apps/by_system/#roihu) | [See here](https://docs.lumi-supercomputer.eu/software/)
+| Pre-installed apps | [50+](https://docs.csc.fi/apps/by_availability/#roihu) | [See here](https://docs.lumi-supercomputer.eu/software/)
 | Cores per node              | 64-384 | 128
 | Job size (min-max cores)    | 1-23040    | 1-65536
 | Memory per node (GiB)       | 384-6144 | 256-1024

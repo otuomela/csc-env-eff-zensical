@@ -109,4 +109,4 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - Don't create a lot of files, especially within a single folder
     - If you're creating 10 000+ files, you should probably rethink your workflow
 - Consider using fast local disks when working with many small files
-- [Lustre best practices](https://docs.csc.fi/computing/lustre/#best-practices) and [efficient I/O in high-throughput workflows](https://docs.csc.fi/computing/running/throughput/#inputoutput-efficiency)
+- [Lustre best practices](https://docs.csc.fi/computing/lustre/#best-practices) and [efficient I/O in high-throughput workflows](https://docs.csc.fi/computing/running/throughput/#other-considerations)

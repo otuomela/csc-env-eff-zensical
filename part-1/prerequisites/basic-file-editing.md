@@ -11,7 +11,7 @@ permalink: /hands-on/linux_prerequisites/basic-file-editing.html
 
 > ‼️ To begin, make sure you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project which [has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 >
-> ☝🏻 You should also have already [logged in to Roihu with SSH](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-Roihu.html).
+> ☝🏻 You should also have already [logged in to Roihu with SSH](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-roihu.html).
 
 In the [previous tutorial](https://csc-training.github.io/csc-env-eff/hands-on/linux_prerequisites/basic-linux-commands.html) we downloaded a file called `my-first-file.txt`, made a copy of it named `YourName-first-file.txt`, and now we practice how to edit it!
 
