@@ -72,7 +72,7 @@ computer is not enough to deactivate the credentials.
    12. Object lock: leave the default
    13. Edit advanced config: **n**
    14. Remote config: **y**
-   15. Finally, choose **q** to stop the configuraiton process
+   15. Finally, choose **q** to stop the configuration process
 
 ## Step 3. Upload and download from local computer
 

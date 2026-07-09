@@ -72,7 +72,7 @@ syntax is `--bind /path/inside/host:/path/inside/container`.
    💡 You can use `--bind` to set the container, for example, to find input
    data or configuration files from a certain directory.
 
-6. Bind a host directory in `/projappl` to a directory called `/config` indide
+6. Bind a host directory in `/projappl` to a directory called `/config` inside
 the container:
 
    ```bash
