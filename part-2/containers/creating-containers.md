@@ -108,7 +108,7 @@ problems on Ubuntu, so we'll start with that.
     apt update
     apt install -y hmmer
     ```
-   Often the versions available through package mangers are not the latest,
+   Often the versions available through package managers are not the latest,
    so installing from source files may be preferable.
 
    💡 The base container images are typically very bare-bones and do not

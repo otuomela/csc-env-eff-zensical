@@ -56,7 +56,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
   - Can solve some incompatibilities
   - Less likely to be affected by changes in the host system
   
-# Benefits of containers: Enviroment reproducibility
+# Benefits of containers: Environment reproducibility
 
 - Environment can be saved as a whole
   - Useful with, e.g., Python, where updating underlying packages (NumPy, etc.) can lead to differences in the behavior  
