@@ -149,7 +149,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - Ask <servicedesk@csc.fi> if you're unsure
    - Docs CSC: [how to check if your batch job used GPU](https://docs.csc.fi/support/tutorials/gpu-ml/#gpu-utilization)
    - The [CSC usage policy](https://docs.csc.fi/computing/usage-policy/#gpu-nodes) limits GPU usage to where it is most efficient
-- Does your code run on AMD GPUs? [LUMI](https://docs.lumi-supercomputer.eu/hardware/compute/lumig/) has a massive GPU capacity!
+- Does your code run on AMD GPUs? [LUMI](https://docs.lumi-supercomputer.eu/hardware/lumig/) has a massive GPU capacity!
 
 # GPU programming models
 
@@ -234,7 +234,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
   - For 100+ jobs, regroup your tasks and execute them in a single job (step)
 - Check the tool you're using, there may be built-in support for running many tasks within a single job step (best option!)
   - E.g. [GROMACS multidir](https://docs.csc.fi/support/tutorials/gromacs-throughput/), [CP2K farming](https://docs.csc.fi/apps/cp2k/#high-throughput-computing-with-cp2k)
-  - Also [Python](https://docs.csc.fi/apps/python/#python-parallel-jobs) and [R](https://docs.csc.fi/support/tutorials/parallel-r/) if you write your own code
+  - Also [Python](https://docs.csc.fi/support/tutorials/python-usage-guide/#python-parallel-jobs) and [R](https://docs.csc.fi/support/tutorials/parallel-r/) if you write your own code
 - External tools: Array jobs*, HyperQueue
   - [Array jobs](https://docs.csc.fi/computing/running/array-jobs/) are simply a Slurm feature for submitting many jobs from a single batch script -- **don't submit hundreds of short jobs!**
   - [HyperQueue](https://docs.csc.fi/apps/hyperqueue/) is a *meta-scheduler*, which allows you to pack many (non-MPI) jobs within a single job step (recommended!)
@@ -246,7 +246,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
   - See [Docs CSC](https://docs.csc.fi/computing/running/throughput/) for more details
 - When working with lots of small files:
   - Check the tool you're using, there may be different options for data storage
-  - [Tar/untar and compress your datasets](https://docs.csc.fi/support/tutorials/env-guide/packing-and-compression-tools/), use [SquashFS](https://docs.csc.fi/computing/containers/run-existing/#mounting-datasets-with-squashfs) for read-only datasets and containers
+  - [Tar/untar and compress your datasets](https://docs.csc.fi/support/tutorials/env-guide/packing-and-compression-tools/), use [SquashFS](https://docs.csc.fi/computing/containers/overview/#reading-datasets-from-squashfs-file) for read-only datasets and containers
   - Use [local disks](https://docs.csc.fi/computing/roihu-disk/#temporary-local-disk-areas)
   - Remove intermediate files if possible
 
