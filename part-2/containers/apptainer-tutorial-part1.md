@@ -14,8 +14,8 @@ permalink: /hands-on/singularity/singularity-tutorial_part1.html
 💬 In this tutorial, we will get familiar with the basic usage of Apptainer
 (previously Singularity) containers.
 
-- To run these exercises on Puhti, use `sinteractive` or open a compute node
-  shell in the [Puhti web interface](https://www.puhti.csc.fi).
+- To run these exercises on Roihu, use `sinteractive` or open a compute node
+  shell in the [Roihu web interface](https://www.roihu.csc.fi).
 
   ```bash
   sinteractive --account <project>  # replace <project> with your CSC project, e.g. project_2001234
@@ -74,7 +74,6 @@ scripts.
 1. Create a file called `test.sh`:
 
    ```bash
-   module load nano  # The compute nodes do not have nano available by default
    nano test.sh
    ```
 
@@ -85,7 +84,7 @@ scripts.
    #!/bin/bash
    #SBATCH --job-name=test           # Name of the job visible in the queue.
    #SBATCH --account=<project>       # Choose the billing project. Has to be defined!
-   #SBATCH --partition=test          # Job queues: test, interactive, small, large, longrun, hugemem, hugemem_longrun
+   #SBATCH --partition=test          # Job queues (CPU): interactive, test, small, medium, large, longrun, hugemem, hugemem_longrun
    #SBATCH --time=00:01:00           # Maximum duration of the job. Max: depends of the partition. 
    #SBATCH --mem=1G                  # How much RAM is reserved for job per node.
    #SBATCH --ntasks=1                # Number of tasks. Max: depends on partition.

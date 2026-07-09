@@ -80,7 +80,12 @@ problems on Ubuntu, so we'll start with that.
 
 5. Note that instead of an image file, we created a directory called `hmmer`. If
    you need to include some reference files etc., you can copy them to the
-   correct subdirectory.
+   correct subdirectory. The sandbox requires a /users mountpoint, which we must
+   create manually:
+
+   ```bash
+   mkdir -p hmmer/users
+   ```
 
 6. We can now open a shell in the container. We need the container file system
    to be writable, so we include the option `--writable`. Option `--cleanenv` prevents
@@ -147,7 +152,7 @@ problems on Ubuntu, so we'll start with that.
     ```
 
    💡 Notice that in the container we can install to the default location (in this case /usr/local/bin), 
-   so we don't need to specify `--prefix` like when installing on Puhti directly. We also don't need to 
+   so we don't need to specify `--prefix` like when installing on Roihu directly. We also don't need to 
    add anything to `$PATH`, as the installation location is already included in the default `$PATH` 
    
 
