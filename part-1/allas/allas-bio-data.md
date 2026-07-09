@@ -11,24 +11,24 @@ permalink: /hands-on/allas/allas-tutorial.html
 
 # Using Allas in CSC's HPC environment
 
-Before the actual exercise, open a view to the Allas service in your browser using the Puhti web interface.
+Before the actual exercise, open a view to the Allas service in your browser using the Roihu web interface.
 
-1. Go to <https://www.puhti.csc.fi> and login with your account.
+1. Go to <https://www.roihu.csc.fi> and login with your account.
 2. Configure an Allas S3 connection using the _Cloud storage configuration_ tool.
    - You need to first authenticate by providing your CSC password.
    - If you have several projects available, choose one that you want to use in this exercise.
 3. Once you've configured a connection, select `s3allas-project_<id>` from the _Files_ dropdown menu in the top navigation bar. Replace `<id>` with the number of the project you chose to use (e.g. 2001234).
 4. During the exercise, you can use this web interface to get another view to the buckets and objects in Allas.
 
-## 1. Login to Puhti
+## 1. Login to Roihu
 
-1. Login to Puhti (open a login node shell if using the web interface):
+1. Login to Roihu (open a login node shell if using the web interface):
 
    ```bash
-   ssh <username>@puhti.csc.fi    # replace <username> with your CSC username
+   ssh <username>@roihu-cpu.csc.fi    # replace <username> with your CSC username
    ```
 
-2. In Puhti, check your environment with the command:
+2. In Roihu, check your environment with the command:
 
    ```bash
    csc-workspaces
@@ -76,10 +76,10 @@ Before the actual exercise, open a view to the Allas service in your browser usi
 
 ### Upload case 1: `rclone`
 
-1. Upload the data from Puhti to Allas with `rclone`:
+1. Upload the data from Roihu to Allas with `rclone`:
 
    ```bash
-   rclone -P copyto pythium allas:$USER-genomes-rc/
+   rclone -P copyto pythium s3allas:$USER-genomes-rc/
    ```
 
    - How long did the data upload take?
@@ -89,37 +89,36 @@ Before the actual exercise, open a view to the Allas service in your browser usi
 2. Study what you have uploaded to Allas with the commands:
 
    ```bash
-   rclone lsd allas:
-   rclone ls allas:$USER-genomes-rc/
-   rclone lsl allas:$USER-genomes-rc/
-   rclone lsf allas:$USER-genomes-rc/
+   rclone lsd s3allas:
+   rclone ls s3allas:$USER-genomes-rc/
+   rclone lsl s3allas:$USER-genomes-rc/
+   rclone lsf s3allas:$USER-genomes-rc/
    ```
 
-3. Check how this looks like in the Puhti web interface. Open a browser and go to <https://www.puhti.csc.fi/>
-4. In the Puhti web interface, go to the _Files_ app and select `s3allas-project_<id>` to list the buckets of your project (replace `<id>` as needed).
-5. Locate your own `$USER-genomes-rc` bucket and download one of the uploaded fasta files to your local computer
+3. Check how this looks like in the Roihu web interface. Open a browser and go to <https://www.roihu.csc.fi/>
+4. In the Roihu web interface, go to the _Files_ app and select `s3allas-project_<id>` to list the buckets of your project (replace `<id>` as needed).
+5. Locate your own `$USER-genomes-rc` bucket and download one of the uploaded files to your local computer
 
-💡 You can read more about moving files at Docs CSC: [Copying files using scp](https://docs.csc.fi/data/moving/scp/) and [Moving data with rclone](https://docs.csc.fi/support/faq/how-to-move-data-between-puhti-and-allas/#move-data-with-rclone)
+💡 You can read more about moving files at Docs CSC: [Copying files using scp](https://docs.csc.fi/data/moving/scp/) and [Moving data with rclone](https://docs.csc.fi/data/Allas/allas-roihu/#example-2-using-allas-with-rclone)
 
 ### Upload case 2: `a-put`
 
-1. Upload the pythium directory from Puhti to Allas using a-commands
+1. Upload the pythium directory from Roihu to Allas using a-commands
 2. Case 1: Store everything as a single object (replace `<project number>` with your CSC project number, e.g. 2001234):
 
    ```bash
    a-put pythium      
    a-list
-   a-list <project number>-puhti-SCRATCH
-   a-info <project number>-puhti-SCRATCH/$USER/pythium.tar
+   a-list <project number>-roihu-scratch
+   a-info <project number>-roihu-scratch/$USER/pythium.tar
    ```
 
 3. Case 2: Each subdirectory (species) as a separate object (replace `<project number>` with your CSC project number, e.g. 2001234):
 
    ```bash
    a-put pythium/*
-   a-list <project number>-puhti-SCRATCH 
-   a-check pythium/*
-   a-info <project number>-puhti-SCRATCH/$USER/pythium/pythium_vexans.tar
+   a-list <project number>-roihu-scratch 
+   a-info <project number>-roihu-scratch/$USER/pythium/Pythium_vexans.tar
    ```
 
 4. Case 3: Use a custom bucket name (replace `<project number>` with your project number, e.g. 2001234):
@@ -134,30 +133,31 @@ Before the actual exercise, open a view to the Allas service in your browser usi
 
    ```bash
    a-list <project number>-$USER-genomes-ap
-   rclone ls allas:<project number>-$USER-genomes-ap 
+   rclone ls s3allas:<project number>-$USER-genomes-ap 
    ```
 
 7. Why do the two commands above list a different amount of objects?
 8. Try the command (replace `<project number>` with your project number, e.g. 2001234):
 
    ```bash
-   a-info <project number>-$USER-genomes-ap/pythium_vexans.tar
+   a-info <project number>-$USER-genomes-ap/Pythium_vexans.tar
    ```
 
 9. This command is actually the same as:
 
    ```bash
-   rclone cat allas:<project number>-$USER-genomes-ap/pythium_vexans.tar_ameta
+   rclone cat s3allas:<project number>-$USER-genomes-ap/Pythium_vexans.tar_ameta
    ```
 
 10. Finally, try the command:
 
     ```bash
-    a-flip pythium/pythium_vexans/pythium_vexans.fasta 
+    a-flip pythium/Pythium_vexans/Pythium_vexans.amb 
     ```
 
 11. Try opening the public link that `a-flip` produced with your browser
 
+<!-- commented out because allas-backup currently works only with the swift protocol, which is not compatible with the other methods
 ### Upload case 3: `allas-backup`
 
 1. Run the commands:
@@ -169,26 +169,27 @@ Before the actual exercise, open a view to the Allas service in your browser usi
    ```
 
 2. What did these commands do to your data?
+-->
 
 ## 4. Exit
 
-1. The data in the `pythium` directory is now stored in many ways in Allas, so we can remove the data from Puhti and log out:
+1. The data in the `pythium` directory is now stored in many ways in Allas, so we can remove the data from Roihu and log out:
 
    ```bash
    rm -r pythium
    exit
    ```
 
-## 5. Downloading data from Allas to Puhti
+## 5. Downloading data from Allas to Roihu
 
-1. Login to Puhti and move to your personal directory in your project's `/scratch`:
+1. Login to Roihu and move to your personal directory in your project's `/scratch`:
 
    ```bash
-   ssh <username>@puhti.csc.fi   # replace <username> with your CSC username
+   ssh <username>@roihu-cpu.csc.fi   # replace <username> with your CSC username
    cd /scratch/<project>/$USER   # replace `<project>` with your CSC project, e.g. project_2001234
    ```
 
-2. In Puhti, check you projects with the command:
+2. In Roihu, check you projects with the command:
 
    ```bash
    csc-workspaces
@@ -205,12 +206,12 @@ Before the actual exercise, open a view to the Allas service in your browser usi
 
    ```bash
    a-list
-   rclone lsd allas:
+   rclone lsd s3allas:
    # replace <project number> with your project number, e.g. 2001234
    a-list <project number>-$USER-genomes-ap
-   rclone ls allas:<project number>-$USER-genomes-ap
-   a-find pythium_vexans.fasta
-   a-find -a pythium_vexans.fasta
+   rclone ls s3allas:<project number>-$USER-genomes-ap
+   a-find Pythium_vexans.amb
+   a-find -a Pythium_vexans.amb
    ```
 
 5. Next, download the data in different ways:
@@ -223,8 +224,8 @@ Before the actual exercise, open a view to the Allas service in your browser usi
    mkdir rclone_dir
    cd rclone_dir/
    mkdir all
-   rclone ls allas:<project number>-$USER-genomes-ap
-   rclone copyto -P allas:<project number>-$USER-genomes-ap all/
+   rclone ls s3allas:<project number>-$USER-genomes-ap
+   rclone copyto -P s3allas:<project number>-$USER-genomes-ap all/
    ls all
    ```
 
@@ -232,20 +233,20 @@ Before the actual exercise, open a view to the Allas service in your browser usi
 
    ```bash
    mkdir vexans 
-   rclone copyto allas:$USER-genomes-rc/pythium_vexans vexans/
+   rclone copyto s3allas:$USER-genomes-rc/Pythium_vexans vexans/
    ls vexans
    ```
 
 3. Copy just one object:
 
    ```bash
-   rclone copyto allas:$USER-genomes-rc/pythium_vexans/pythium_vexans.fasta ./vexans.fasta
+   rclone copyto s3allas:$USER-genomes-rc/Pythium_vexans/Pythium_vexans.amb ./vexans.amb
    ls
    ```
 
 ## 2. Download with `a-get`
 
-1. Return to your `$USER` directory under your project's `/scratch` on Puhti (The `pwd` command should print `/scratch/<project/$USER`):
+1. Return to your `$USER` directory under your project's `/scratch` on Roihu (The `pwd` command should print `/scratch/<project/$USER`):
 
    ```bash
    cd ..
@@ -266,23 +267,23 @@ Before the actual exercise, open a view to the Allas service in your browser usi
    cd all
    ```
 
-4. List your default `SCRATCH` bucket (replace `<project number>` with your project number, e.g. 2001234):
+4. List your default `scratch` bucket (replace `<project number>` with your project number, e.g. 2001234):
 
    ```bash
-   a-list <project number>-puhti-SCRATCH
-   a-list <project number>-puhti-SCRATCH/$USER
+   a-list <project number>-roihu-scratch
+   a-list <project number>-roihu-scratch/$USER
    ```
 
-5. Look for the file `pythium_vexans.fasta` in your Puhti `SCRATCH` bucket:
+5. Look for the file `Pythium_vexans.amb` in your Roihu `scratch` bucket:
 
    ```bash
-   a-find pythium_vexans.fasta -b <project number>-puhti-SCRATCH    # replace <project number> with your project number, e.g. 2001234
+   a-find Pythium_vexans.amb -b <project number>-roihu-scratch    # replace <project number> with your project number, e.g. 2001234
    ```
 
 6. Download the full dataset with command:
 
    ```bash
-   a-get <project number>-puhti-SCRATCH/$USER/pythium.tar   # replace <project number> with your project number, e.g. 2001234
+   a-get <project number>-roihu-scratch/$USER/pythium.tar   # replace <project number> with your project number, e.g. 2001234
    ```
 
 7. Check what you got:
@@ -296,11 +297,12 @@ Before the actual exercise, open a view to the Allas service in your browser usi
 
    ```bash
    cd ..
-   a-get <project number>-puhti-SCRATCH/$USER/pythium/pythium_vexans.tar   # replace <project number> with your project number, e.g. 2001234
+   a-get <project number>-roihu-scratch/$USER/pythium/Pythium_vexans.tar   # replace <project number> with your project number, e.g. 2001234
    ls -l pythium/
-   ls -l pythium/pythium_vexans/
+   ls -l pythium/Pythium_vexans/
    ```
 
+<!-- commented out because allas-backup currently works only with the swift protocol, which is not compatible with the other methods
 ## 3. Downloading data from `allas-backup`
 
 1. Return to your main scratch directory and make a new directory:
@@ -325,3 +327,4 @@ Before the actual exercise, open a view to the Allas service in your browser usi
    ls -l
    ls -l pythium
    ```
+-->

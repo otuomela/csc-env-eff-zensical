@@ -25,7 +25,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - Meant for data storage during project lifetime
    - All project members have equal access to the data in Allas
    - Default quota is 10 TB per project
-- Clients available on Puhti and Mahti
+- Clients available on Roihu
    - See Docs CSC for instructions on [accessing Allas from LUMI](https://docs.csc.fi/data/Allas/allas_lumi/)
 
 # The Allas object storage: what it is NOT
@@ -73,17 +73,17 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 
 # Allas clients
 
-- **Puhti, Mahti, Linux servers, Mac:**
+- **Roihu, Linux servers, Mac:**
     - `rclone`, `swift`, `s3cmd`, `a-tools`
 - **Laptops (Windows, Mac):**
-    - [Cyberduck](https://cyberduck.io/), [FileZilla (pro)](https://filezilla-project.org/), [Puhti web interface](https://puhti.csc.fi), [Mahti web interface](https://mahti.csc.fi), [Allas UI](https://allas.csc.fi)
+    - [Cyberduck](https://cyberduck.io/), [FileZilla (pro)](https://filezilla-project.org/), [Roihu web interface](https://www.roihu.csc.fi), [Allas UI](https://allas.csc.fi)
 - **Virtual machines, small servers:**
     - In addition to the tools above, you can use FUSE-based virtual mounts
 
 # Allas -- first steps
 
 - Use [MyCSC](https://my.csc.fi) to apply for Allas access for your project -- Allas is not automatically available
-- In Puhti/Mahti, setup connection to Allas using the commands:
+- In Roihu, setup connection to Allas using the commands:
   ```bash
   module load allas
   allas-conf
@@ -102,7 +102,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 # Allas -- `a-tools`
 
 - `a-tools` provide an easy and safe way to use Allas for occasional Allas users
-- Default bucket names are based on directories on Puhti/Mahti
+- Default bucket names are based on directories on Roihu
 - Unlike `rclone`, `a-tools` does not overwrite or remove data without asking!
 - Developed for the CSC supercomputers, but you can install the tools in other Linux and Mac machines as well
 - Automatic packing (compression can be enabled as well if needed)
