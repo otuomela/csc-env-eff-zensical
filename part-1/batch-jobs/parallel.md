@@ -17,7 +17,7 @@ permalink: /hands-on/batch_jobs/parallel.html
 
 💬 A batch job consists of two parts: resource requests and the job step(s)
 
-☝🏻 Examples are done on Puhti. If using the web interface, open a login node shell.
+☝🏻 Examples are done on Roihu. If using the web interface, open a login node shell.
 
 ## Parallel jobs
 
@@ -112,11 +112,10 @@ permalink: /hands-on/batch_jobs/parallel.html
 3. The results should look something like this:
 
    ```bash
-   cat slurm-5118404.out
    Hello from thread: 0
    Hello from thread: 3
-   Hello from thread: 2
    Hello from thread: 1
+   Hello from thread: 2
    ```
 
 ### A simple MPI job
@@ -178,20 +177,20 @@ permalink: /hands-on/batch_jobs/parallel.html
 2. The output should look something like this:
 
    ```bash
-   Hello world from node r07c01.bullx, rank 0 out of 8 tasks
-   Hello world from node r07c02.bullx, rank 5 out of 8 tasks
-   Hello world from node r07c02.bullx, rank 7 out of 8 tasks
-   Hello world from node r07c01.bullx, rank 2 out of 8 tasks
-   Hello world from node r07c02.bullx, rank 4 out of 8 tasks
-   Hello world from node r07c01.bullx, rank 3 out of 8 tasks
-   Hello world from node r07c01.bullx, rank 1 out of 8 tasks
-   Hello world from node r07c02.bullx, rank 6 out of 8 tasks
+   Hello world from node rc4184, rank 2 out of 8 tasks
+   Hello world from node rc4184, rank 1 out of 8 tasks
+   Hello world from node rc4184, rank 3 out of 8 tasks
+   Hello world from node rc4184, rank 0 out of 8 tasks
+   Hello world from node rc4284, rank 4 out of 8 tasks
+   Hello world from node rc4284, rank 5 out of 8 tasks
+   Hello world from node rc4284, rank 7 out of 8 tasks
+   Hello world from node rc4284, rank 6 out of 8 tasks
    ```
 
-3. The output above verifies that the requested 8 tasks were distributed over two nodes (`r07c01.bullx, r07c02.bullx`), four tasks on each
+3. The output above verifies that the requested 8 tasks were distributed over two nodes (`rc4184, rc4284`), four tasks on each
 4. Check the efficiency of the job compared to the reserved resources by issuing the command `seff <jobid>` (replace `<jobid>` with the actual Slurm job ID)
 
-🗯 **Note!** This example asks 4 cores from each of the 2 nodes. Normally, this would not make sense, and instead it would be better to run all 8 cores in the same node (in Puhti one node has 40 cores!). Typically, you want your resources (cores) to be spread on as few nodes as possible to avoid unnecessary communication between nodes.
+🗯 **Note!** This example asks 4 cores from each of the 2 nodes. Normally, this would not make sense, and instead it would be better to run all 8 cores in the same node (in Roihu one node has 384 cores!). Typically, you want your resources (cores) to be spread on as few nodes as possible to avoid unnecessary communication between nodes.
 
 ## More information
 

@@ -10,7 +10,7 @@ lang: en
 </div>
 <div class="column">
 <small>
-All materials (c) 2020-2025 by CSC – IT Center for Science Ltd.
+All materials (c) 2020-2026 by CSC – IT Center for Science Ltd.
 This work is licensed under a **Creative Commons Attribution-ShareAlike** 4.0
 Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creativecommons.org/licenses/by-sa/4.0/)
 </small>
@@ -44,7 +44,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
    - The _initial_ priority of a job _decreases_ if the user has recently run lots of jobs
    - Over time (while queueing) its priority _increases_ and eventually it will run
    - Some queues have a lower priority (e.g. _longrun_ -- use shorter if you can!)
-- See our documentation for more information on [Getting started with running batch jobs on Puhti/Mahti](https://docs.csc.fi/computing/running/getting-started/) and [LUMI](https://docs.lumi-supercomputer.eu/runjobs/).
+- See our documentation for more information on [Getting started with running batch jobs on Roihu](https://docs.csc.fi/computing/running/getting-started/) and [LUMI](https://docs.lumi-supercomputer.eu/runjobs/).
 
 # Schema of how the batch job scheduler works
 
@@ -59,16 +59,16 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
     - number of cores
     - amount of memory
     - other resources like GPUs, local disk, _etc._
-- Getting started with Slurm batch jobs on [Puhti/Mahti](https://docs.csc.fi/computing/running/getting-started/) and [LUMI](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/slurm-quickstart/)
+- Getting started with Slurm batch jobs on [Roihu](https://docs.csc.fi/computing/running/getting-started/) and [LUMI](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/slurm-quickstart/)
 
-# An example serial batch job script for Puhti
+# An example serial batch job script for Roihu
 
 - A batch script is a shell script (bash) that consists of two sections:
    - Resource requests flagged with `#SBATCH` and the actual computing step(s)
 
 ```bash
 #!/bin/bash
-#SBATCH --time=00:01:00             # Defines the max time the job can run
+#SBATCH --time=00:01:00             # Defines the max time the job can run (1 min)
 #SBATCH --partition=test            # Defines the queue in which to run the job
 #SBATCH --ntasks=1                  # Defines the number of tasks (processes)
 #SBATCH --cpus-per-task=1           # Total number of cores is ntasks * cpus-per-task
@@ -77,9 +77,9 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 srun echo "Hello $USER! You are on node $HOSTNAME"
 ```
 
-- The options are described in Docs CSC: [Create Puhti batch jobs](https://docs.csc.fi/computing/running/creating-job-scripts-puhti/)
+- The options are described in Docs CSC: [Create Roihu batch jobs](https://docs.csc.fi/computing/running/creating-job-scripts-roihu/)
    - The actual _program_ is launched using the `srun` command
-   - The content above could be copied into a file `serial.bash` and submitted to the queue with `sbatch simple_serial.bash`
+   - The content above could be copied into a file `simple_serial.bash` and submitted to the queue with `sbatch simple_serial.bash`
 
 # Using an application-specific batch script template
 
@@ -137,33 +137,41 @@ srun echo "Hello $USER! You are on node $HOSTNAME"
     - Pre-installed software
     - Memory and/or disk demands
 
-# Running multiple serial jobs
+# Running multiple serial jobs 1/2
 
 - You can utilize HPC resources for running multiple independent serial jobs at the same time (task farming)
     - [Array jobs](https://docs.csc.fi/computing/running/array-jobs/)
     - [Other high-throughput tools](https://docs.csc.fi/computing/running/throughput/)
-- On Mahti, pure serial resources are only available in `small` partition
-    - Some tools, e.g. [HyperQueue](https://docs.csc.fi/apps/hyperqueue/), can make a set of serial jobs suitable also for `medium` partition
-    - **But**, the workflow needs to fill (at least) one Mahti node (128 cores) and keep the CPUs busy for the job duration
 - When running many jobs, make sure that you don't overload the batch queue system or the parallel file system (mind your I/O and job steps)!
+
+# Running multiple serial jobs 2/2
+
+- On Roihu, pure serial resources are only available in `small` and `longrun` partitions
+    - Some tools, e.g. [HyperQueue](https://docs.csc.fi/apps/hyperqueue/), can make a set of serial jobs suitable also for `medium` partition
+    - **But**, the workflow needs to fill (at least) one Roihu node (384 cores) and keep the CPUs busy for the job duration
+    - Due to the high core count, **it is important that all the resources are used efficiently inside a reserved node!**
 
 # HPC parallel jobs
 
 - A parallel job distributes the calculation over several cores in order to achieve a shorter wall-time (and/or a larger allocatable memory)
    - The total computational problem is divided into subtasks, which are processed by each core in parallel
 - There are two major parallelization standards: [OpenMP](https://en.wikipedia.org/wiki/OpenMP) and [MPI](https://en.wikipedia.org/wiki/Message_Passing_Interface)
-   - Note, depending on the parallellization scheme there is a slight difference between _how_ the resource reservation is done
-- Batch job scripts for Puhti ([how to create](https://docs.csc.fi/computing/running/creating-job-scripts-puhti/) and [examples](https://docs.csc.fi/computing/running/example-job-scripts-puhti/)), Mahti ([how to create](https://docs.csc.fi/computing/running/creating-job-scripts-mahti/) and [examples](https://docs.csc.fi/computing/running/example-job-scripts-mahti/)) and LUMI ([quickstart](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/slurm-quickstart/), [CPU](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumic-job/) and [GPU examples](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumig-job/))
+   - Note, depending on the parallelization scheme there is a slight difference between _how_ the resource reservation is done
+- Batch job scripts for Roihu ([how to create](https://docs.csc.fi/computing/running/creating-job-scripts-roihu/) and [examples](https://docs.csc.fi/computing/running/example-job-scripts-roihu/)) and LUMI ([quickstart](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/slurm-quickstart/), [CPU](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumic-job/) and [GPU examples](https://docs.lumi-supercomputer.eu/runjobs/scheduled-jobs/lumig-job/))
 - **The best starting point:** [Software specific batch scripts in Docs CSC](https://docs.csc.fi/apps/)
 
-# HPC GPU jobs
+# HPC GPU jobs 1/2
 
 - A graphics processing unit (GPU, a graphics card), is capable of doing a certain type of simultaneous calculations _very_ efficiently
 - In order to take advantage of this power, an application must be (re)programmed to adapt to how the GPUs process data
-- CSC's GPU resources on Puhti and Mahti are relatively scarce and should be used only by applications [that really benefit from GPUs](https://docs.csc.fi/computing/usage-policy/#gpu-nodes)
-    - A GPU on Puhti/Mahti uses 60-100 times more GPU BUs than a single CPU core uses CPU BUs - see above for performance requirements
-    - In practice, 1-10 CPUs (but not more) should be allocated per GPU on Puhti
-    - Note that [LUMI-G](https://docs.lumi-supercomputer.eu/hardware/compute/lumig/) has a massive GPU capacity available, which is also "cheaper" as measured in BUs compared to Puhti/Mahti
+
+# HPC GPU jobs 2/2
+
+- CSC's GPU resources on Roihu are relatively scarce and should be used only by applications [that really benefit from GPUs](https://docs.csc.fi/computing/usage-policy/#gpu-nodes)
+    - A GPU on Roihu uses 270 times more GPU BUs than a single CPU core uses CPU BUs - see above for performance requirements
+    - On Roihu GPU nodes, each reserved GPU grants access to up to 72 CPU cores
+    - The CPU cores on Roihu GPU nodes don't affect the billing but must be requested explicitely
+    - Note that [LUMI-G](https://docs.lumi-supercomputer.eu/hardware/lumig/) has a massive GPU capacity available, which is also "cheaper" as measured in BUs compared to Roihu
 
 # Interactive jobs
 

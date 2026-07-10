@@ -12,7 +12,7 @@ permalink: /hands-on/singularity/singularity-tutorial_how_to_get_containers.html
 # How to get containers
 
 💬 Building containers from scratch requires root privileges, so it can not be
-done on Puhti as is.
+done on Roihu as is.
 
 - Instead, you will have to import a ready image file (or use
   [Tykky](https://docs.csc.fi/computing/containers/tykky/) if containerizing a
@@ -39,6 +39,8 @@ done on Puhti as is.
    apptainer run hello-world_latest.sif
    ```
 
+💡 Roihu base containers are available through [Satama](https://docs.csc.fi/support/tutorials/roihu/#containers).
+
 ## 2. Convert an existing Docker container to an Apptainer container
 
 💬 Docker images are downloaded as layers. These layers are stored in a cache
@@ -61,12 +63,16 @@ directory.
 ### Option B
 
 1. If you're running interactively or as a batch job on an I/O node, you can
-   use the fast local storage:
+   use the fast temporary local storage:
 
    ```bash
-   export APPTAINER_TMPDIR=$LOCAL_SCRATCH
-   export APPTAINER_CACHEDIR=$LOCAL_SCRATCH
+   export APPTAINER_TMPDIR=$TMPDIR
+   export APPTAINER_CACHEDIR=$TMPDIR
    ```
+
+   ‼️ The hugemem (XL) and visualization (Viz) nodes will provide local scratch
+   under $LOCAL_SCRATCH, but this is not yet implemented. More information
+   available in [Docs CSC](https://docs.csc.fi/computing/roihu-disk/#compute-nodes).
 
 2. Avoid some unnecessary warnings by unsetting a certain environment variable:
 
@@ -81,20 +87,20 @@ directory.
    ```
 
 💡 You can find more detailed instructions on converting Docker containers in
-[Docs CSC](https://docs.csc.fi/computing/containers/creating/#converting-a-docker-container).
+[Docs CSC](https://docs.csc.fi/computing/containers/overview/#building-sif-image-from-existing-docker-or-oci-image).
 
-## 3. Build the container on another system and transfer the image file to Puhti
+## 3. Build the container on another system and transfer the image file to Roihu
 
 ‼️ To do this you will need access to a system where you have root privileges
 and that has Apptainer installed.
 
-1. You can check the current Apptainer version on Puhti with:
+1. You can check the current Apptainer version on Roihu with:
 
    ```bash
    apptainer --version
    ```
 
-2. After creating an image file, you can transfer it to Puhti.
+2. After creating an image file, you can transfer it to Roihu.
 
 ## More information
 

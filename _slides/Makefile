@@ -8,9 +8,10 @@ LECTURES= \
 05_batch_jobs.md \
 06_understanding_usage.md \
 07_allas.md \
-08_installing.md \
-09_singularity.md \
-10_speed_up_jobs.md \
+08_datamigration_io.md \
+09_installing.md \
+10_singularity.md \
+11_speed_up_jobs.md \
 csc-env.md
 # csc-env.md creates the index for allas
 

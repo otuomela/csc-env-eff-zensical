@@ -11,10 +11,10 @@ permalink: /hands-on/throughput/hyperqueue.html
 
 # Using HyperQueue and local disk to process many small files efficiently
 
-> This tutorial is done on **Puhti**, which requires that
+> This tutorial is done on **Roihu**, which requires that
 
 - you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
-- your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+- your account belongs to a project [that has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 ## Overview
 
@@ -37,14 +37,14 @@ another format.
 ### The workflow of this exercise
 
 1. Download the files from Allas.
-2. Decompress the files to `$LOCAL_SCRATCH`.
+2. Decompress the files to `$TMPDIR`.
 3. Convert each `.smi` file to a three-dimensional `.sdf` molecular file
    format.
 4. Archive and compress the output files and move them back to `/scratch`.
 
 ## Download the input files
 
-1. Create and enter a suitable scratch directory on Puhti (replace `<project>`
+1. Create and enter a suitable scratch directory on Roihu (replace `<project>`
    with your CSC project, e.g. `project_2001234`):
 
    ```bash
@@ -86,8 +86,11 @@ looping `srun` or `sbatch` commands.
    #SBATCH --ntasks-per-node=1
    #SBATCH --cpus-per-task=40
    #SBATCH --time=00:10:00
-   #SBATCH --gres=nvme:1
- 
+
+   # Required by openbabel
+   module load gcc/15.2.0
+   module load openmpi/5.0.10
+
    module load hyperqueue openbabel
  
    # Specify a location for the HyperQueue server
@@ -103,8 +106,8 @@ looping `srun` or `sbatch` commands.
    hq worker wait "${SLURM_NTASKS}"
  
    # Extract the input files to the local disk and cd there
-   tar -xf smiles.tar.gz -C $LOCAL_SCRATCH
-   cd $LOCAL_SCRATCH/smiles
+   tar -xf smiles.tar.gz -C $TMPDIR
+   cd $TMPDIR/smiles
  
    # Submit each Open Babel conversion as a separate HyperQueue job
    for f in *.smi ; do
@@ -126,8 +129,8 @@ looping `srun` or `sbatch` commands.
    execute commands that the client submitted to the server.
     - This is in principle what Slurm also does, only difference is that you
       need to start the server and workers yourself.
-    - In this example, one full Puhti node is reserved for processing the
-      files, meaning that 40 conversion commands will be running in parallel.
+    - In this example, one full Roihu node is reserved for processing the
+      files, meaning that 384 conversion commands will be running in parallel.
 
    ☝🏻 Ideally, the number of sub-tasks should be larger than the amount that
    can fit running on the reserved resources simultaneously to avoid too short

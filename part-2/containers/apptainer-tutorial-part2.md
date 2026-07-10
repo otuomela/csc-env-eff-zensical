@@ -35,8 +35,8 @@ syntax is `--bind /path/inside/host:/path/inside/container`.
 - The option is available for all run methods described in the previous
   tutorial.  
 
-1. To run these exercises on Puhti, use `sinteractive` or open a compute node
-   shell in the [Puhti web interface](https://www.puhti.csc.fi):
+1. To run these exercises on Roihu, use `sinteractive` or open a compute node
+   shell in the [Roihu web interface](https://www.roihu.csc.fi):
 
    ```bash
    sinteractive --account <project>  # replace <project> with your CSC project, e.g. project_2001234
@@ -72,32 +72,15 @@ syntax is `--bind /path/inside/host:/path/inside/container`.
    💡 You can use `--bind` to set the container, for example, to find input
    data or configuration files from a certain directory.
 
-6. Bind a host directory in `/projappl` to a directory called `/config` indide
+6. Bind a host directory in `/projappl` to a directory called `/config` inside
 the container:
 
    ```bash
    apptainer exec --bind /projappl/<project>:/config tutorial.sif ls /config # replace <project> with your CSC project, e.g. project_2001234
    ```
 
-### Using the `apptainer_wrapper` script
-
-1. If you use the wrapper script `apptainer_wrapper`, it will automatically
-   take care of the most common bind use cases.
-
-2. You just need to set a `$SING_IMAGE` environment variable to point to the
-   correct Apptainer image file:
-
-   ```bash
-   export SING_IMAGE=$PWD/tutorial.sif
-   apptainer_wrapper exec ls /projappl/<project> # replace <project> with your CSC project, e.g. project_2001234
-   ```
-
-   💡 Note that the image file name is not needed in the `apptainer_wrapper`
-   command since `$SING_IMAGE` is set.
-
-   ‼️ Since some modules set `$SING_IMAGE` when loaded, it is a good idea to
-   start with `module purge` to make sure the correct image is used if you plan
-   to use `apptainer_wrapper`.
+   💡 You can use `--bind="$(csc-common-bind)"` to automatically take care of
+   most common bind use cases.
 
 ## Environment variables
 

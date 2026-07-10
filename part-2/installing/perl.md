@@ -14,35 +14,8 @@ permalink: /hands-on/installing/installing_hands-on_perl.html
 💬 Perl scripts and applications do not need installation. They can be simply
 downloaded and run.
 
-💬 To run Perl applications, it's usually best to first load a Perl module.
-
-☝🏻 A system Perl installation is available (without a module), but it is very
-bare-bones and is missing many commonly used libraries.
-
-1. To check available module versions, use:
-
-   ```bash
-   module spider perl
-   ```
-
-2. The current default version is `5.34.1` and can be loaded with:
-
-   ```bash
-   module load perl
-   ```
-
-3. To ensure scripts use the intended Perl version after loading a module you
-should either call the script with `perl`:
-
-   ```bash
-   perl my_app.pl
-   ```
-
-4. or make sure the shebang line of the script is:
-
-   ```bash
-   #!/usr/bin/env perl
-   ```
+☝🏻  Roihu does not have a `perl` module. A system Perl is available at
+`/usr/bin/perl`, but it does not include `cpanm` or most common libraries.
 
 ## Installing Perl modules
 
@@ -82,21 +55,19 @@ libraries in CPAN, the easiest method is to use `cpanm`.
    export PERL_MM_OPT="INSTALL_BASE=$PERL_BASE"
    export PERL_MB_OPT="--install_base $PERL_BASE"
    export PERL5LIB="$PERL_BASE/lib/perl5"
+   export PATH="$PERL_BASE/bin:$PATH"
    mkdir -p $PERL_BASE
    ```
 
-3. You can now install the module. In this case, it is in CPAN, so you can use
-   `cpanm`:
+3. Install `cpanm` (only needs to be done once):
+   ```bash
+   curl -L https://cpanmin.us | perl - App::cpanminus
+   ```
+
+4. You can now install the module:
 
    ```bash
    cpanm JSON
-   ```
-
-4. To use the module, you need to tell Perl where to find it. In this case, you
-   can set the `$PERL5LIB` environment variable (already done above):
-
-   ```bash
-   export PERL5LIB="/projappl/<project>/$USER/myperl/lib/perl5"  # replace <project> with your CSC project, e.g. project_2001234
    ```
 
 5. You can now try again:
@@ -135,15 +106,7 @@ Perl knows where to find the installed modules.
 
 - Include the path in your Perl script with `use lib`:
 
-  ```bash
+  ```perl
   use lib '/projappl/<project>/$USER/myperl/lib/perl5';
   use My::Module;
   ```
-
-## Bioperl
-
-💬 If you need the BioPerl collection of Perl modules, you can find this
-pre-installed on Puhti (try `module spider bioperl`).
-
-💡 See our [BioPerl documentation](https://docs.csc.fi/apps/bioperl/) for more
-details.

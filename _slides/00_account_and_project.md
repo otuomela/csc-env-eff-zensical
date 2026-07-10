@@ -12,7 +12,7 @@ This topic explains what CSC accounts and projects are and how to manage them.
 </div>
 <div class="column">
 <small>
-All materials (c) 2020-2025 by CSC – IT Center for Science Ltd.
+All materials (c) 2020-2026 by CSC – IT Center for Science Ltd.
 This work is licensed under a **Creative Commons Attribution-ShareAlike** 4.0
 Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creativecommons.org/licenses/by-sa/4.0/)
 </small>
@@ -24,7 +24,7 @@ Unported License, [http://creativecommons.org/licenses/by-sa/4.0/](http://creati
 - With the account, you can join projects and access resources
 - Check out the [tutorial](https://csc-training.github.io/csc-env-eff/hands-on/connecting/credentials.html) and the [documentation](https://docs.csc.fi/accounts/)
 - The password of your CSC user account is valid for one year at a time
-    - You will recieve a notification when it is about to expire
+    - You will receive a notification when it is about to expire
 - Never share your account or send the password to anyone
 
 # CSC project

@@ -3,19 +3,19 @@ layout: default
 title: Basic Linux commands
 parent: 1. Prerequisites
 grand_parent: Part 1
-nav_order: 4
+nav_order: 5
 permalink: /hands-on/linux_prerequisites/basic-linux-commands.html
 ---
 
 # Basic Linux commands
 
-> ‼️ To begin make sure you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project which [has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+> ‼️ To begin make sure you have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/) that is a member of a project which [has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 >
-> ☝🏻 You should also have already [logged in to Puhti with SSH](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-puhti.html) or via the Puhti web interface (and opened a login node shell).
+> ☝🏻 You should also have already [logged in to Roihu with SSH](https://csc-training.github.io/csc-env-eff/hands-on/connecting/ssh-roihu.html) or via the Roihu web interface (and opened a login node shell).
 
 ## Navigating folders
 
-1. Now that you have logged in to Puhti, check which folder you are in by typing `pwd` and hitting `Enter`:
+1. Now that you have logged in to Roihu, check which folder you are in by typing `pwd` and hitting `Enter`:
 
    ```bash
    pwd
@@ -53,7 +53,7 @@ permalink: /hands-on/linux_prerequisites/basic-linux-commands.html
 2. Check what kind of file you got and what size it is using the `ls` command with some extra options:
 
    ```bash
-   ls -lth         # options are l for long format, t for sorting by time and h for convenient size units. Anything that starts with a hashtag is a comment and is not executed
+   ls -lth         # options are l for long format, t for sorting by time and h for convenient size units. Anything that starts with a hashtag is a comment
    ```
 
 3. Use the `less` command to check out what the file looks like:
@@ -87,6 +87,6 @@ permalink: /hands-on/linux_prerequisites/basic-linux-commands.html
 
 - Learn [how to edit that file](https://csc-training.github.io/csc-env-eff/hands-on/linux_prerequisites/basic-file-editing.html) in the next tutorial!
 
-💡 For more information of a given command line `command`: type `man command` or `command --help` where `command` is replaced with the one that you need help with.
+💡 For more information of a given command line `command`, type `man command` or `command --help` where `command` is replaced with the one that you need help with.
 
 💡 Tip: If you remember *a part of a command* that you have used recently you can search for it with the command `history | grep string`. This will show all your used commands that have included the string `string` (replace this with the pattern you are searching for).

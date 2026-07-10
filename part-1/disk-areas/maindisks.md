@@ -16,16 +16,16 @@ permalink: /hands-on/disk-areas/disk-areas-tutorial-maindisks.html
 > - Familiarize yourself with personal and project-specific disk areas and their quotas on CSC supercomputers.
 > - Learn how to share your files, such as software installations and data, to other project members on CSC supercomputers.
 
-💬 Each user of CSC supercomputers (Puhti and Mahti) have access to different disk areas (or directories) for managing their data. Each disk area has its own specific purpose.
+💬 Each user of CSC supercomputers (Roihu and LUMI) have access to different disk areas (or directories) for managing their data. Each disk area has its own specific purpose.
 
 💬 Active data files needed for computational simulations and analyses should be stored and shared in directories under `/scratch` while any software installations and binaries should be shared under the `/projappl` directory.
 
-## Identify your personal and project-specific directories on Puhti and Mahti supercomputers
+## Identify your personal and project-specific directories on Roihu supercomputer
 
-1. First login to Puhti using SSH (or by opening a login node shell in the [Puhti web interface](https://www.puhti.csc.fi)):
+1. First login to Roihu using SSH (or by opening a login node shell in the [Roihu web interface](https://www.roihu.csc.fi)):
   
    ```bash
-   ssh <username>@puhti.csc.fi    # replace <username> with your CSC username, e.g. myname@puhti.csc.fi
+   ssh <username>@roihu-cpu.csc.fi    # replace <username> with your CSC username, e.g. myname@roihu-cpu.csc.fi
    ```
 
 2. Get an overview of your projects and directories by running the following commands on the login node:
@@ -54,7 +54,7 @@ permalink: /hands-on/disk-areas/disk-areas-tutorial-maindisks.html
 
 - User-specific directory (i.e. your personal home folder)
   - Your home directory (path stored in environment variable `$HOME`)
-  - The default directory when you login to Puhti/Mahti
+  - The default directory when you login to Roihu/LUMI
   - You can store configuration files and other minor data for personal use
 - Project-specific directories:
   - The project's `/scratch` and `/projappl` directories
@@ -90,9 +90,9 @@ Let's assume that
 - `Merged.fasta` is a data file intended for computational use
 - `ggplot2_3.3.3_Rprogramme.tar.gz` is a software tool needed for the analysis.
 
-### Move the files to Puhti `/scratch` and `/projappl`
+### Move the files to Roihu `/scratch` and `/projappl`
 
-1. Create folders with your username (using environment variable `$USER`) in your project directories under `/scratch` and `/projappl` on Puhti.
+1. Create folders with your username (using environment variable `$USER`) in your project directories under `/scratch` and `/projappl` on Roihu.
 
    ```bash
    mkdir -p /projappl/<project>/$USER   # replace <project> with your CSC project, e.g. project_2001234
@@ -120,26 +120,26 @@ Let's assume that
    chmod g-w Merged.fasta          # g-w means that we "subtract" write permissions for users belong to our group (g), i.e. our project
    ```
 
-### Copying files from Puhti to Mahti (optional)
+### Copying files from Roihu to LUMI (optional)
 
-☝🏻 For this part you must ensure you have forwarded your SSH agent to Puhti, otherwise you will not be able to connect to Mahti.
+☝🏻 For this part you must ensure you have forwarded your SSH agent to Roihu, otherwise you will not be able to connect to LUMI.
 
-1. Check if your SSH keys are available on Puhti using command `ssh-add -L`.
+1. Check if your SSH keys are available on Roihu using command `ssh-add -L`.
 2. If true, it will print your public key. Proceed to step 4.
 3. If not:
    1. Linux/macOS: Log out and log back in using `ssh -A` option.
    2. Windows: Log out. Toggle option *Allow agent forwarding* found under "Session" -> "SSH" -> "Advanced SSH settings" -> "Expert SSH settings" (MobaXterm) **or** under "Connection" -> "SSH" -> "Auth" (PuTTY) before connecting again.
 4. Change to the folder where you have the example files
-5. Copy `Merged.fasta` file from Puhti to the `/scratch` drive of Mahti:
+5. Copy `Merged.fasta` file from Roihu to the `/scratch` drive of LUMI:
 
    ```bash
-   rsync -P Merged.fasta <username>@mahti.csc.fi:/scratch/<project>/$USER/    # replace <username> with your CSC username and <project> with your CSC project, e.g. project_2001234
+   rsync -P Merged.fasta <username>@lumi.csc.fi:/scratch/<project>/$USER/    # replace <username> with your CSC username and <project> with your CSC project, e.g. project_2001234
    ```
 
-6. Copy the `ggplot2_3.3.3_Rprogramme.tar.gz` file from Puhti to the `/projappl` directory on Mahti:
+6. Copy the `ggplot2_3.3.3_Rprogramme.tar.gz` file from Roihu to the `/projappl` directory on LUMI:
 
    ```bash
-   rsync -P ggplot2_3.3.3_Rprogramme.tar.gz <username>@mahti.csc.fi:/projappl/<project>/$USER/    # replace <username> with your CSC username and <project> with your CSC project, e.g. project_2001234
+   rsync -P ggplot2_3.3.3_Rprogramme.tar.gz <username>@lumi.csc.fi:/projappl/<project>/$USER/    # replace <username> with your CSC username and <project> with your CSC project, e.g. project_2001234
    ```
 
 ## More information

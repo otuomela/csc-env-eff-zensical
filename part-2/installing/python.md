@@ -11,14 +11,14 @@ permalink: /hands-on/installing/installing_hands-on_python.html
 
 # Python
 
-> This tutorial is done on **Puhti**, which requires that:
+> This tutorial is done on **Roihu**, which requires that:
   - You have a [user account at CSC](https://docs.csc.fi/accounts/how-to-create-new-user-account/).
-  - Your account belongs to a project [that has access to the Puhti service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
+  - Your account belongs to a project [that has access to the Roihu service](https://docs.csc.fi/accounts/how-to-add-service-access-for-project/).
 
 💬 To run Python applications, first load a suitable Python module. CSC has
 several Python environments available with focus on different application
 areas, e.g. [data science and machine learning](https://docs.csc.fi/apps/python-data/),
-as well as [geoinformatics](https://docs.csc.fi/apps/geoconda/).
+as well as [geoinformatics](https://docs.csc.fi/apps/python-geo/).
 
 💡 For more details, please see the [Python page](https://docs.csc.fi/apps/python/)
 and [Python usage guide](https://docs.csc.fi/support/tutorials/python-usage-guide/)

@@ -23,7 +23,7 @@ skills in working with containers. For tutorials on using Tykky, see:
 ## Conda
 
 💬 Conda is a useful tool for installing software with complex dependencies. It
-has, however, some problems, especially on HPC systems like Puhti with shared
+has, however, some problems, especially on HPC systems like Roihu with shared
 parallel file systems. Because of these issues, installing Conda environments
 directly on the file system of CSC supercomputers is
 [not allowed](https://docs.csc.fi/computing/usage-policy/#conda-installations).
@@ -49,10 +49,10 @@ It is also relatively easy to containerize an existing Conda environment.
 💬 You should first check if the software package is already available as an
 Apptainer/Singularity or Docker container. The advantage of a ready-made
 container is that it can usually be pulled/converted with normal user
-privileges on Puhti.
+privileges on Roihu.
 
 You can find more detailed instructions on converting Docker containers in
-[Docs CSC](https://docs.csc.fi/computing/containers/creating/#converting-a-docker-container).
+[Docs CSC](https://docs.csc.fi/computing/containers/overview/#building-sif-image-from-existing-docker-or-oci-image).
 
 ## Replicating an existing Conda environment
 
