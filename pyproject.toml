@@ -1,0 +1,19 @@
+[project]
+name = "csc-env-eff-zensical"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "otuomela", email = "onnituom@csc.fi" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "zensical>=0.0.52",
+]
+
+[project.scripts]
+csc-env-eff-zensical = "csc_env_eff_zensical:main"
+
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
