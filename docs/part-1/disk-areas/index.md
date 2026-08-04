@@ -5,5 +5,5 @@
 
 ## 3.2 Tutorials and exercises
 
-1. [Essential tutorial - Main disk areas on Roihu]({{ site.baseurl }}{% link part-1/disk-areas/maindisks.md %})
-2. [Tutorial - Finding out where you have a lot of data]({{ site.baseurl }}{% link part-1/disk-areas/lue.md %})
+1. [Essential tutorial - Main disk areas](maindisks.md)
+2. [Tutorial - Finding out where you have a lot of data (Roihu)](lue.md)
