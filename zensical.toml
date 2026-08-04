@@ -44,10 +44,52 @@ Copyright &copy; 2026 The authors
 # can be defined using TOML syntax.
 #
 # Read more: https://zensical.org/docs/setup/navigation/
-# nav = [
-#   { "Get started" = "index.md" },
-#   { "Markdown in 5min" = "markdown.md" },
-# ]
+nav = [
+    "index.md",
+    { "Part 1" = [
+      "part-1/index.md",
+      { "1. Prerequisites" = [
+        "part-1/prerequisites/index.md",
+        "part-1/prerequisites/credentials.md",
+        "part-1/prerequisites/ssh-keys.md",
+        "part-1/prerequisites/ssh-certificate.md",
+        "part-1/prerequisites/ssh-roihu.md",
+        "part-1/prerequisites/basic-linux-commands.md",
+        "part-1/prerequisites/basic-file-editing.md"
+      ]},
+      { "2. Introduction to the HPC environment" = [
+        "part-1/hpc-intro/index.md"
+      ]},
+      { "3. Disk areas" = [
+        "part-1/disk-areas/index.md",
+        "part-1/disk-areas/maindisks.md",
+        "part-1/disk-areas/lue.md"
+      ]},
+      { "4. Module system" = [
+        "part-1/modules/index.md",
+        "part-1/modules/modules-roihu.md",
+        "part-1/modules/modules-bio.md"
+      ]},
+      { "5. Batch queue system and interactive use" = [
+        "part-1/batch-jobs/index.md",
+        "part-1/batch-jobs/serial.md",
+        "part-1/batch-jobs/parallel.md",
+        "part-1/batch-jobs/interactive.md",
+        "part-1/batch-jobs/bio-data.md"
+      ]},
+      { "6. Batch job resource usage" = [
+        "part-1/batch-resources/index.md",
+        "part-1/batch-resources/tutorial-sacct-seff.md",
+        "part-1/batch-resources/exercise-sacct-seff.md"
+      ]},
+      { "7. Allas" = [
+        "part-1/allas/index.md",
+        "part-1/allas/allas-usage.md",
+        "part-1/allas/allas-backup.md",
+        "part-1/allas/allas-bio-data.md"
+      ]}
+    ]}
+]
 
 # With the "extra_css" option you can add your own CSS styling to customize
 # your Zensical project according to your needs. You can add any number of
