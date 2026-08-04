@@ -1,13 +1,3 @@
----
-layout: default
-title: File backup with Allas
-parent: 7. Allas
-grand_parent: Part 1
-nav_order: 2
-has_children: false
-has_toc: false
-permalink: /hands-on/allas/tutorial_allas-file-backup.html
----
 
 # Backing up files to Allas from Roihu
 

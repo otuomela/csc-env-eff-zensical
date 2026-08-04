@@ -1,13 +1,3 @@
----
-layout: default
-title: Find resource usage of recent jobs
-parent: 6. Batch job resource usage
-grand_parent: Part 1
-nav_order: 2
-has_children: false
-has_toc: false
-permalink: /hands-on/batch_resources/exercise_sacct_and_seff.html
----
 
 # Get an overview of the resource usage of recent jobs
 

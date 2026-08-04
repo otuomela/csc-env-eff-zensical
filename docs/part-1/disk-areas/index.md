@@ -1,11 +1,3 @@
----
-layout: default
-title: 3. Disk areas
-parent: Part 1
-nav_order: 3
-has_children: true
-has_toc: false
----
 
 # 3. Disk areas
 

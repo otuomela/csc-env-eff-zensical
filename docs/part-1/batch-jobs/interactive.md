@@ -1,13 +1,3 @@
----
-layout: default
-title: Interactive batch jobs
-parent: 5. Batch queue system and interactive use
-grand_parent: Part 1
-nav_order: 3
-has_children: false
-has_toc: false
-permalink: /hands-on/batch_jobs/interactive.html
----
 
 # Batch job tutorial - Interactive jobs
 

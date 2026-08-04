@@ -1,11 +1,3 @@
----
-layout: default
-title: 1. Prerequisites
-parent: Part 1
-nav_order: 1
-has_children: true
-has_toc: false
----
 
 # 1. Prerequisites (accounts, connecting, command-line basics)
 

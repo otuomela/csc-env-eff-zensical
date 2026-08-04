@@ -1,11 +1,3 @@
----
-layout: default
-title: 5. Batch queue system and interactive use
-parent: Part 1
-nav_order: 5
-has_children: true
-has_toc: false
----
 
 # 5. Batch queue system and interactive use
 

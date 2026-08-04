@@ -1,13 +1,3 @@
----
-layout: default
-title: Finding where you have lots of data
-parent: 3. Disk areas
-grand_parent: Part 1
-nav_order: 2
-has_children: false
-has_toc: false
-permalink: /hands-on/disk-areas/disk-areas-tutorial-lue.html
----
 
 # Where do I have a lot of data?
 

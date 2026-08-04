@@ -1,11 +1,3 @@
----
-layout: default
-title: Login to Roihu
-parent: 1. Prerequisites
-grand_parent: Part 1
-nav_order: 4
-permalink: /hands-on/connecting/ssh-roihu.html
----
 
 # Log in to Roihu
 

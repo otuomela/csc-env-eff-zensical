@@ -1,13 +1,3 @@
----
-layout: default
-title: Retrieving data from bio data repositories (Puhti)
-parent: 5. Batch queue system and interactive use
-grand_parent: Part 1
-nav_order: 4
-has_children: false
-has_toc: false
-permalink: /hands-on/batch_jobs/exercise_retrieving-bio-data.html
----
 
 # Exercise: Retrieving data from bio data repositories (Puhti)
 

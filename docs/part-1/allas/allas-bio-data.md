@@ -1,13 +1,3 @@
----
-layout: default
-title: Using Allas with bio data
-parent: 7. Allas
-grand_parent: Part 1
-nav_order: 3
-has_children: false
-has_toc: false
-permalink: /hands-on/allas/allas-tutorial.html
----
 
 # Using Allas in CSC's HPC environment
 

@@ -1,11 +1,3 @@
----
-layout: default
-title: Working with SSH certificates
-parent: 1. Prerequisites
-grand_parent: Part 1
-nav_order: 3
-permalink: /hands-on/connecting/ssh-certificate.html
----
 
 # Working with SSH certificates
 

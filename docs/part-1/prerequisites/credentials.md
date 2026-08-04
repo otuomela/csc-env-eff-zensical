@@ -1,10 +1,5 @@
 ---
-layout: default
 title: CSC account and project
-parent: 1. Prerequisites
-grand_parent: Part 1
-nav_order: 1
-permalink: /hands-on/connecting/credentials.html
 ---
 
 # Get a CSC account and a project

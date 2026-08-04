@@ -1,13 +1,3 @@
----
-layout: default
-title: Basic usage of Allas
-parent: 7. Allas
-grand_parent: Part 1
-nav_order: 1
-has_children: false
-has_toc: false
-permalink: /hands-on/allas/tutorial_allas-file-transfer.html
----
 
 # Basic usage of Allas
 

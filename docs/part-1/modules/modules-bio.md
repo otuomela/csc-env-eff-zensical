@@ -1,11 +1,3 @@
----
-layout: default
-title: Biosoftware in Puhti
-parent: 4. Module system
-grand_parent: Part 1
-nav_order: 2
-permalink: /hands-on/modules/module-exercise-with-aligners.html
----
 
 # Biosoftware in Puhti
 

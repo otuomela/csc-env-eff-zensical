@@ -1,13 +1,3 @@
----
-layout: default
-title: Understanding resource usage with sacct and seff
-parent: 6. Batch job resource usage
-grand_parent: Part 1
-nav_order: 1
-has_children: false
-has_toc: false
-permalink: /hands-on/batch_resources/tutorial_sacct_and_seff.html
----
 
 # Using `sacct` and `seff` to understand resource usage of finished jobs
 

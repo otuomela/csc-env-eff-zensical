@@ -1,11 +1,3 @@
----
-layout: default
-title: 6. Batch job resource usage
-parent: Part 1
-nav_order: 6
-has_children: true
-has_toc: false
----
 
 # 6. Batch job resource usage
 

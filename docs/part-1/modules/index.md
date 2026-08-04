@@ -1,11 +1,3 @@
----
-layout: default
-title: 4. Module system
-parent: Part 1
-nav_order: 4
-has_children: true
-has_toc: false
----
 
 # 4. Module system
 

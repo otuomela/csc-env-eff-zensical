@@ -1,11 +1,3 @@
----
-layout: default
-title: 7. Allas
-parent: Part 1
-nav_order: 7
-has_children: true
-has_toc: false
----
 
 # 7. Allas and where to keep your data
 

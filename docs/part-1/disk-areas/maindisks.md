@@ -1,13 +1,3 @@
----
-layout: default
-title: Main disk areas
-parent: 3. Disk areas
-grand_parent: Part 1
-nav_order: 1
-has_children: false
-has_toc: false
-permalink: /hands-on/disk-areas/disk-areas-tutorial-maindisks.html
----
 
 # Where to store files in CSC's computing environment?
 

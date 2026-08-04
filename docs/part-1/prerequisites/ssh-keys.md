@@ -1,11 +1,3 @@
----
-layout: default
-title: Setting up SSH keys
-parent: 1. Prerequisites
-grand_parent: Part 1
-nav_order: 2
-permalink: /hands-on/connecting/ssh-keys.html
----
 
 # Creating and adding SSH keys
 
